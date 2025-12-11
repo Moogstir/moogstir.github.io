@@ -1,64 +1,469 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novelative | The Ultimate Studio for World-Builders</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
+                        // Colors based on the actual Novelative Dark UI
                         app: {
-                            bg: '#1E1E1E',      // Deepest background (Editor main)
-                            surface: '#252525', // Cards/Panels
+                            bg: '#1E1E1E',      // Deepest background
+                            surface: '#252525', // Main window/card surface
                             sidebar: '#2B2B2B', // Sidebar background
-                            highlight: '#FBBC04', // Google Gold/Yellow
+                            highlight: '#FBBC04', // Google's Gold/Yellow for active states
                             text: '#DCDCDC',
                             muted: '#A9A9A9',
-                            border: '#444444',
-                            darker: '#141414'   // Header bars
+                            border: '#444444'
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
                     }
                 }
             }
         }
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
-  }
-}
-</script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E1E1E; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444444; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555555; 
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mockup UI CSS - Mimicking the App's Structure */
+        .app-mockup {
+            background: #1E1E1E;
+            border: 1px solid #444444;
+            border-radius: 0.75rem;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            position: relative;
+        }
+        .app-header {
+            background: #141414;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #444444;
+        }
+        
+        .skeleton-text { height: 0.75rem; background: #333333; border-radius: 0.125rem; margin-bottom: 0.5rem; }
+        .skeleton-line { width: 100%; }
+        
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(to right, #FBBC04, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Tag Colors (Used in Mockups) */
+        .tag-red { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+        .tag-green { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid #22c55e; }
+        .tag-blue { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
+        
+    </style>
 </head>
-  <body class="bg-app-bg text-app-text antialiased selection:bg-app-highlight selection:text-app-bg">
-    <div id="root"></div>
-  </body>
+<body class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-feather-pointed text-app-highlight text-2xl"></i>
+                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="#features" class="hover:text-white transition-colors">Features</a>
+                <a href="#visualize" class="hover:text-white transition-colors">Visualize</a>
+                <a href="#download" class="hover:text-white transition-colors">Download</a>
+            </div>
+            <a href="#download" class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-5 py-2 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+                Start Drafting
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Canvas Background for Graph Effect (Dark/Gold Theme) -->
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-20"></canvas>
+        
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-app-highlight/30 bg-app-highlight/10 text-app-highlight text-sm font-semibold mb-6 fade-in-up">
+                ✨ Offline-First Writing Studio
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 fade-in-up" style="transition-delay: 100ms;">
+                The most powerful tool for <br>
+                <span class="text-gold-gradient">complex narratives.</span>
+            </h1>
+            <p class="text-xl text-app-muted max-w-2xl mx-auto mb-10 fade-in-up" style="transition-delay: 200ms;">
+                Novelative is a distraction-free writing environment built for world-builders, offering robust organization, visual plotting, and local data control.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="transition-delay: 300ms;">
+                <button class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E8AF04] transition-all shadow-xl shadow-app-highlight/40 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> Download Novelative
+                </button>
+                <button class="border border-app-border hover:border-app-muted bg-app-surface/50 text-white px-8 py-4 rounded-lg font-bold text-lg backdrop-blur-sm transition-all">
+                    See How It Works
+                </button>
+            </div>
+
+            <!-- Hero Mockup - Split View Mimic -->
+            <div class="relative max-w-4xl mx-auto fade-in-up" style="transition-delay: 500ms;">
+                <img src="app-screenshot.png" alt="Novelative App Interface showing Split View" class="w-full h-auto rounded-xl shadow-2xl border border-app-border">
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Prop / Philosophy -->
+    <section class="py-24 bg-app-surface border-y border-app-border">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
+                <div class="fade-in-up">
+                    <div class="w-12 h-12 bg-app-highlight/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
+                        <i class="fa-solid fa-lock text-app-highlight text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Own Your Work</h3>
+                    <p class="text-app-muted leading-relaxed">Offline-first design ensures your novels, notes, and world data are stored securely on your local device. True data ownership guaranteed.</p>
+                </div>
+                <div class="fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
+                        <i class="fa-solid fa-sitemap text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Structured Freedom</h3>
+                    <p class="text-app-muted leading-relaxed">Combine the rigid structure of a file-tree for organization with the limitless freedom of an infinite canvas for plotting and connections.</p>
+                </div>
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
+                        <i class="fa-solid fa-circle-half-stroke text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Designed for Focus</h3>
+                    <p class="text-app-muted leading-relaxed">A dark, distraction-free environment with intelligent collapsing sidebars and a clean WYSIWYG editor keeps you immersed in your story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section: Visualization -->
+    <section id="visualize" class="py-24 bg-app-bg">
+        <div class="max-w-7xl mx-auto px-6 space-y-32">
+            
+            <!-- Feature 1: The Graph View (Clustered) -->
+            <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
+                <div class="md:w-1/2">
+                    <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">The Graph View</div>
+                    <h2 class="font-serif text-4xl font-bold mb-6">Instantly Grasp Your World's Complexity.</h2>
+                    <p class="text-app-muted text-lg mb-6">
+                        Stop drawing diagrams by hand. Novelative automatically maps your project files as a physics-based, force-directed graph.
+                    </p>
+                    <ul class="space-y-4 text-app-muted text-lg">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-cube text-app-highlight mt-1.5"></i>
+                            <span><strong>Physics-Based Layout:</strong> See relationships settle into place naturally.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
+                            <span><strong>Tag Grouping:</strong> One-click commands to cluster nodes based on Smart Tags (e.g., all "Characters" together).</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <!-- CSS Mockup: Clustered Graph View (Based on screenshots) -->
+                    <div class="app-mockup h-[400px] flex items-center justify-center relative bg-app-surface">
+                        <div class="absolute top-4 left-4 text-xs font-bold text-app-text/70">Kyx Kalibetus: Echoes End</div>
+
+                        <!-- Cluster 1: Protagonists (Blue) -->
+                        <div class="absolute top-10 left-10 w-48 border border-blue-500 bg-blue-500/10 p-4 rounded-lg shadow-xl">
+                            <div class="text-blue-400 font-bold mb-2 flex items-center gap-1"><i class="fa-solid fa-user-astronaut"></i> Protagonists <span class="text-xs text-app-muted ml-2">(3 files)</span></div>
+                            <div class="h-2 w-1/2 bg-blue-400/50 rounded-full mb-1"></div>
+                            <div class="h-2 w-2/3 bg-blue-400/50 rounded-full mb-1"></div>
+                        </div>
+
+                        <!-- Cluster 2: Plot (Green) -->
+                        <div class="absolute top-24 right-8 w-40 border border-green-500 bg-green-500/10 p-3 rounded-lg shadow-xl">
+                            <div class="text-green-400 font-bold mb-2 flex items-center gap-1"><i class="fa-solid fa-scroll"></i> Plot <span class="text-xs text-app-muted ml-2">(5 files)</span></div>
+                            <div class="h-2 w-full bg-green-400/50 rounded-full mb-1"></div>
+                            <div class="h-2 w-3/4 bg-green-400/50 rounded-full"></div>
+                        </div>
+
+                        <!-- Cluster 3: Systems (Yellow) -->
+                        <div class="absolute bottom-10 left-1/3 w-32 border border-yellow-500 bg-yellow-500/10 p-3 rounded-lg shadow-xl">
+                            <div class="text-yellow-400 font-bold mb-2 flex items-center gap-1"><i class="fa-solid fa-gear"></i> Systems</div>
+                            <div class="h-2 w-4/5 bg-yellow-400/50 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2: Smart Tagging & Split View -->
+            <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
+                <div class="md:w-1/2 order-2 md:order-1 relative">
+                    <!-- CSS Mockup: Tag Management/Split View -->
+                    <div class="app-mockup h-[400px] flex">
+                        <!-- Left Editor (Chapter Draft) -->
+                        <div class="w-1/2 border-r border-app-border p-6 bg-app-surface relative">
+                            <h3 class="text-lg font-bold text-app-highlight mb-4">Chapter 5: Firestorm</h3>
+                            <div class="space-y-3 text-sm text-app-muted">
+                                <p>She looked across the plains. The air shimmered...</p>
+                                <p class="text-app-text font-medium border-l-2 border-red-500 pl-2">
+                                    <span class="text-red-500">[[Antagonist]]</span> was waiting.
+                                </p>
+                                <p>This link will appear in the Link Analysis graph.</p>
+                            </div>
+                        </div>
+                        <!-- Right Sidebar (Tag Panel) -->
+                        <div class="w-1/2 p-4 bg-app-sidebar relative">
+                            <h3 class="text-lg font-bold text-white mb-4">Tag Panel</h3>
+                            <div class="space-y-4">
+                                <!-- Tag Item 1 -->
+                                <div class="p-2 border border-green-500 bg-green-500/10 rounded-lg">
+                                    <div class="flex items-center gap-2 text-green-400 font-medium">
+                                        <i class="fa-solid fa-leaf"></i> Worldbuilding
+                                    </div>
+                                    <p class="text-xs text-app-muted mt-1">Inherited from 'Lore' folder.</p>
+                                </div>
+                                <!-- Tag Item 2 -->
+                                <div class="p-2 border border-red-500 bg-red-500/10 rounded-lg">
+                                    <div class="flex items-center gap-2 text-red-400 font-medium">
+                                        <i class="fa-solid fa-skull"></i> Antagonist
+                                    </div>
+                                    <p class="text-xs text-app-muted mt-1">Manually applied to this file.</p>
+                                </div>
+                                <!-- Tag Item 3 -->
+                                <div class="p-2 border border-yellow-500 bg-yellow-500/10 rounded-lg">
+                                    <div class="flex items-center gap-2 text-yellow-400 font-medium">
+                                        <i class="fa-solid fa-lightbulb"></i> Ideas
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <div class="text-red-400 font-bold tracking-widest text-sm uppercase mb-2">Structure & Focus</div>
+                    <h2 class="font-serif text-4xl font-bold mb-6">Smart Organization, Zero Clutter.</h2>
+                    <p class="text-app-muted text-lg mb-6">
+                        Novelative’s organizational tools are designed to surface the information you need, exactly when you need it, without distracting you from drafting.
+                    </p>
+                    <ul class="space-y-4 text-app-muted text-lg">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-wand-magic-sparkles text-red-400 mt-1.5"></i>
+                            <span><strong>Smart Tagging:</strong> Tags applied to folders automatically cascade to all children files.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-table-columns text-red-400 mt-1.5"></i>
+                            <span><strong>Dynamic Split View:</strong> Open a chapter, a character sheet, or a canvas side-by-side—seamlessly.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Download Section -->
+    <section id="download" class="py-24 relative overflow-hidden bg-app-surface border-t border-app-border">
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-5xl font-bold mb-6">Built for writers. <br>Ready for launch.</h2>
+            <p class="text-xl text-app-muted mb-10">
+                Download Novelative today and take control of your complex narrative structure.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <button class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">
+                    Free Download (Beta)
+                </button>
+                <div class="text-app-muted text-sm">
+                    <div class="mb-1"><i class="fa-brands fa-windows"></i> Windows | <i class="fa-brands fa-apple"></i> macOS</div>
+                    <div>14-Day Trial. No Sign-Up Required.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4 text-white">
+                    <i class="fa-solid fa-feather-pointed text-app-highlight"></i>
+                    <span class="font-serif text-xl font-bold">Novelative</span>
+                </div>
+                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-discord text-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-github text-lg"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white">Download</a></li>
+                    <li><a href="#" class="hover:text-white">Roadmap</a></li>
+                    <li><a href="#" class="hover:text-white">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white">Help Docs</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- 1. Graph Background Animation (Canvas) ---
+        const canvas = document.getElementById('graphCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const ACCENT_COLOR = 'rgba(251, 191, 36, 0.7)'; // Gold/Yellow
+
+        // Particle Class (MOVED TO TOP TO PREVENT REFERENCE ERROR)
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.size = Math.random() * 1.5 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = ACCENT_COLOR;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Resize handling
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            // Reinitialize particles on resize to maintain density
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+        resize(); // Calling resize() here triggers initParticles()
+
+
+        // Initialize particles
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(width / 20); // Responsive count
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Draw connections
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        // Fade lines out quickly
+                        ctx.strokeStyle = `rgba(251, 191, 36, ${0.1 - distance/1200})`; 
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        window.onload = function () {
+            animate();
+        }
+
+
+        // --- 2. Scroll Reveal Animation ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+    </script>
+</body>
 </html>
