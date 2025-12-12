@@ -108,7 +108,7 @@
     <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <i class="fa-solid fa-feather-pointed text-app-highlight text-2xl"></i>
+                <img src="./assets/headericon.png" class="w-7">
                 <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
             </div>
             <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
@@ -152,7 +152,7 @@
 
             <!-- Hero Mockup - Split View Mimic -->
             <div class="relative max-w-4xl mx-auto fade-in-up" style="transition-delay: 500ms;">
-                <img src="app-screenshot.png" alt="Novelative App Interface showing Split View" class="w-full h-auto rounded-xl shadow-2xl border border-app-border">
+                <img src="assets/app-screenshot.png" alt="Novelative App Interface showing Split View" class="w-full h-auto shadow-2xl ">
             </div>
         </div>
     </section>
@@ -190,115 +190,84 @@
     <section id="visualize" class="py-24 bg-app-bg">
         <div class="max-w-7xl mx-auto px-6 space-y-32">
             
-            <!-- Feature 1: The Graph View (Clustered) -->
+            <!-- Feature 1: Infinite Canvases (Clustered) -->
             <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
                 <div class="md:w-1/2">
-                    <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">The Graph View</div>
+                    <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Infinite Canvases</div>
                     <h2 class="font-serif text-4xl font-bold mb-6">Instantly Grasp Your World's Complexity.</h2>
                     <p class="text-app-muted text-lg mb-6">
-                        Stop drawing diagrams by hand. Novelative automatically maps your project files as a physics-based, force-directed graph.
+                        Stop drawing diagrams by hand. Novelative Canvas's help you plot out your ideas on an infinite canvas.
                     </p>
                     <ul class="space-y-4 text-app-muted text-lg">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-cube text-app-highlight mt-1.5"></i>
-                            <span><strong>Physics-Based Layout:</strong> See relationships settle into place naturally.</span>
+                            <span><strong>Every File Incorporated:</strong> Drag and drop character, locations, chapters or any other file directly into a canvas.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
-                            <span><strong>Tag Grouping:</strong> One-click commands to cluster nodes based on Smart Tags (e.g., all "Characters" together).</span>
+                            <span><strong>Nodules:</strong> Snap node cards together or add node connection lines to map out complex ideas.</span>
                         </li>
                     </ul>
                 </div>
                 <div class="md:w-1/2 relative">
-                    <!-- CSS Mockup: Clustered Graph View (Based on screenshots) -->
-                    <div class="app-mockup h-[400px] flex items-center justify-center relative bg-app-surface">
-                        <div class="absolute top-4 left-4 text-xs font-bold text-app-text/70">Kyx Kalibetus: Echoes End</div>
-
-                        <!-- Cluster 1: Protagonists (Blue) -->
-                        <div class="absolute top-10 left-10 w-48 border border-blue-500 bg-blue-500/10 p-4 rounded-lg shadow-xl">
-                            <div class="text-blue-400 font-bold mb-2 flex items-center gap-1"><i class="fa-solid fa-user-astronaut"></i> Protagonists <span class="text-xs text-app-muted ml-2">(3 files)</span></div>
-                            <div class="h-2 w-1/2 bg-blue-400/50 rounded-full mb-1"></div>
-                            <div class="h-2 w-2/3 bg-blue-400/50 rounded-full mb-1"></div>
-                        </div>
-
-                        <!-- Cluster 2: Plot (Green) -->
-                        <div class="absolute top-24 right-8 w-40 border border-green-500 bg-green-500/10 p-3 rounded-lg shadow-xl">
-                            <div class="text-green-400 font-bold mb-2 flex items-center gap-1"><i class="fa-solid fa-scroll"></i> Plot <span class="text-xs text-app-muted ml-2">(5 files)</span></div>
-                            <div class="h-2 w-full bg-green-400/50 rounded-full mb-1"></div>
-                            <div class="h-2 w-3/4 bg-green-400/50 rounded-full"></div>
-                        </div>
-
-                        <!-- Cluster 3: Systems (Yellow) -->
-                        <div class="absolute bottom-10 left-1/3 w-32 border border-yellow-500 bg-yellow-500/10 p-3 rounded-lg shadow-xl">
-                            <div class="text-yellow-400 font-bold mb-2 flex items-center gap-1"><i class="fa-solid fa-gear"></i> Systems</div>
-                            <div class="h-2 w-4/5 bg-yellow-400/50 rounded-full"></div>
-                        </div>
-                    </div>
+                    
+                    <img src="assets/app-screenshot-canvas.png" alt="Novelative App Canvas System" class="w-full h-auto shadow-2xl ">
+                    
                 </div>
             </div>
 
             <!-- Feature 2: Smart Tagging & Split View -->
             <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
                 <div class="md:w-1/2 order-2 md:order-1 relative">
-                    <!-- CSS Mockup: Tag Management/Split View -->
-                    <div class="app-mockup h-[400px] flex">
-                        <!-- Left Editor (Chapter Draft) -->
-                        <div class="w-1/2 border-r border-app-border p-6 bg-app-surface relative">
-                            <h3 class="text-lg font-bold text-app-highlight mb-4">Chapter 5: Firestorm</h3>
-                            <div class="space-y-3 text-sm text-app-muted">
-                                <p>She looked across the plains. The air shimmered...</p>
-                                <p class="text-app-text font-medium border-l-2 border-red-500 pl-2">
-                                    <span class="text-red-500">[[Antagonist]]</span> was waiting.
-                                </p>
-                                <p>This link will appear in the Link Analysis graph.</p>
-                            </div>
-                        </div>
-                        <!-- Right Sidebar (Tag Panel) -->
-                        <div class="w-1/2 p-4 bg-app-sidebar relative">
-                            <h3 class="text-lg font-bold text-white mb-4">Tag Panel</h3>
-                            <div class="space-y-4">
-                                <!-- Tag Item 1 -->
-                                <div class="p-2 border border-green-500 bg-green-500/10 rounded-lg">
-                                    <div class="flex items-center gap-2 text-green-400 font-medium">
-                                        <i class="fa-solid fa-leaf"></i> Worldbuilding
-                                    </div>
-                                    <p class="text-xs text-app-muted mt-1">Inherited from 'Lore' folder.</p>
-                                </div>
-                                <!-- Tag Item 2 -->
-                                <div class="p-2 border border-red-500 bg-red-500/10 rounded-lg">
-                                    <div class="flex items-center gap-2 text-red-400 font-medium">
-                                        <i class="fa-solid fa-skull"></i> Antagonist
-                                    </div>
-                                    <p class="text-xs text-app-muted mt-1">Manually applied to this file.</p>
-                                </div>
-                                <!-- Tag Item 3 -->
-                                <div class="p-2 border border-yellow-500 bg-yellow-500/10 rounded-lg">
-                                    <div class="flex items-center gap-2 text-yellow-400 font-medium">
-                                        <i class="fa-solid fa-lightbulb"></i> Ideas
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <img src="assets/app-screenshot-tag.png" alt="Novelative App Tagging System" class="w-full h-auto shadow-2xl ">
+                    
                 </div>
                 <div class="md:w-1/2 order-1 md:order-2">
-                    <div class="text-red-400 font-bold tracking-widest text-sm uppercase mb-2">Structure & Focus</div>
+                    <div class="text-red-400 font-bold tracking-widest text-sm uppercase mb-2">Tagging System</div>
                     <h2 class="font-serif text-4xl font-bold mb-6">Smart Organization, Zero Clutter.</h2>
                     <p class="text-app-muted text-lg mb-6">
-                        Novelative’s organizational tools are designed to surface the information you need, exactly when you need it, without distracting you from drafting.
+                        Novelative's tagging system allows you to organize your files YOUR way, integrated systems allthroughout the app make it a breeze to visualize your project in a variety of useful ways.
                     </p>
                     <ul class="space-y-4 text-app-muted text-lg">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-wand-magic-sparkles text-red-400 mt-1.5"></i>
-                            <span><strong>Smart Tagging:</strong> Tags applied to folders automatically cascade to all children files.</span>
+                            <span><strong>Custom Tags:</strong> Customize the appearance of every tag and apply as many tags as needed for every file.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-table-columns text-red-400 mt-1.5"></i>
-                            <span><strong>Dynamic Split View:</strong> Open a chapter, a character sheet, or a canvas side-by-side—seamlessly.</span>
+                            <span><strong>Tagging Utility:</strong> Tags appear in the hierarchy next to your file's name. But tags are also visualized inside canvases. And use the Graph View to visualize your tagged files in a whole new way.</span>
                         </li>
                     </ul>
                 </div>
             </div>
+            
+            <!-- Feature 1: Infinite Canvases (Clustered) -->
+            <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
+                <div class="md:w-1/2">
+                    <div class="text-blue-400 text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Graph View</div>
+                    <h2 class="font-serif text-4xl font-bold mb-6">Smart Organization, Zero Clutter.</h2>
+                    <p class="text-app-muted text-lg mb-6">
+                        Use Novelative's Graph View to navigate and organize your files to get a view of your project.
+                    </p>
+                    <ul class="space-y-4 text-app-muted text-lg">
+                        <li class="flex items-start gap-3">
+                            <i class="text-blue-400 fa-solid fa-cube text-app-highlight mt-1.5"></i>
+                            <span><strong>Tag View:</strong> Every file is organized into groups of tags, easy for navigating files with certain tags.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="text-blue-400 fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
+                            <span><strong>Link View:</strong> Show's the links between all your files that have hyperlinks.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 relative">
+                    
+                    <img src="assets/app-screenshot-graph.png" alt="Novelative Graph View" class="w-full h-auto shadow-2xl ">
+                    
+                </div>
+            </div>
+            
         </div>
     </section>
 
@@ -363,7 +332,7 @@
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        const ACCENT_COLOR = 'rgba(251, 191, 36, 0.7)'; // Gold/Yellow
+        const ACCENT_COLOR = 'rgba(251, 191, 36, 1)'; // Gold/Yellow
 
         // Particle Class (MOVED TO TOP TO PREVENT REFERENCE ERROR)
         class Particle {
