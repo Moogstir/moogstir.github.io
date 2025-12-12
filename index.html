@@ -16,91 +16,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // Colors based on the actual Novelative Dark UI
-                        app: {
-                            bg: '#1E1E1E',      // Deepest background
-                            surface: '#252525', // Main window/card surface
-                            sidebar: '#2B2B2B', // Sidebar background
-                            highlight: '#FBBC04', // Google's Gold/Yellow for active states
-                            text: '#DCDCDC',
-                            muted: '#A9A9A9',
-                            border: '#444444'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="theme.js"></script>
 
-    <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1E1E1E; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #444444; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555555; 
-        }
-
-        /* Animations */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mockup UI CSS - Mimicking the App's Structure */
-        .app-mockup {
-            background: #1E1E1E;
-            border: 1px solid #444444;
-            border-radius: 0.75rem;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
-            overflow: hidden;
-            position: relative;
-        }
-        .app-header {
-            background: #141414;
-            padding: 0.5rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #444444;
-        }
-        
-        .skeleton-text { height: 0.75rem; background: #333333; border-radius: 0.125rem; margin-bottom: 0.5rem; }
-        .skeleton-line { width: 100%; }
-        
-        /* Gold Gradient Text */
-        .text-gold-gradient {
-            background: linear-gradient(to right, #FBBC04, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* Tag Colors (Used in Mockups) */
-        .tag-red { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
-        .tag-green { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid #22c55e; }
-        .tag-blue { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
-        
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden">
 
@@ -114,9 +32,9 @@
             <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
                 <a href="#features" class="hover:text-white transition-colors">Features</a>
                 <a href="#visualize" class="hover:text-white transition-colors">Visualize</a>
-                <a href="#download" class="hover:text-white transition-colors">Download</a>
+                <a href="download.html" class="hover:text-white transition-colors">Download</a>
             </div>
-            <a href="#download" class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-5 py-2 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+            <a href="download.html" class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-5 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
                 Start Drafting
             </a>
         </div>
@@ -131,7 +49,7 @@
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0"></div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <div class="inline-block px-4 py-1.5 rounded-full border border-app-highlight/30 bg-app-highlight/10 text-app-highlight text-sm font-semibold mb-6 fade-in-up">
+            <div class="inline-block px-4 py-1.5 rounded-lg border border-app-highlight/30 bg-app-highlight/10 text-app-highlight text-sm font-semibold mb-6 fade-in-up">
                 ✨ Offline-First Writing Studio
             </div>
             <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 fade-in-up" style="transition-delay: 100ms;">
@@ -142,9 +60,7 @@
                 Novelative is a distraction-free writing environment built for world-builders, offering robust organization, visual plotting, and local data control.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="transition-delay: 300ms;">
-                <button class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E8AF04] transition-all shadow-xl shadow-app-highlight/40 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Download Novelative
-                </button>
+                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E8AF04] transition-all shadow-xl shadow-app-highlight/40 flex items-center justify-center gap-2">Download Novelative</a>
                 <button class="border border-app-border hover:border-app-muted bg-app-surface/50 text-white px-8 py-4 rounded-lg font-bold text-lg backdrop-blur-sm transition-all">
                     See How It Works
                 </button>
@@ -274,18 +190,16 @@
     <!-- Call to Action / Download Section -->
     <section id="download" class="py-24 relative overflow-hidden bg-app-surface border-t border-app-border">
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <h2 class="font-serif text-5xl font-bold mb-6">Built for writers. <br>Ready for launch.</h2>
+            <h2 class="font-serif text-5xl font-bold mb-6">Built for writers. <br>Ready for anything.</h2>
             <p class="text-xl text-app-muted mb-10">
                 Download Novelative today and take control of your complex narrative structure.
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <button class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">
-                    Free Download (Beta)
-                </button>
+                <a href="download.html" class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Free Download (Beta)</a>
                 <div class="text-app-muted text-sm">
                     <div class="mb-1"><i class="fa-brands fa-windows"></i> Windows | <i class="fa-brands fa-apple"></i> macOS</div>
-                    <div>14-Day Trial. No Sign-Up Required.</div>
+                    <div>First 30 days of use FREE. No Sign-Up Required.</div>
                 </div>
             </div>
         </div>
@@ -296,7 +210,7 @@
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
                 <div class="flex items-center gap-2 mb-4 text-white">
-                    <i class="fa-solid fa-feather-pointed text-app-highlight"></i>
+                    <img src="./assets/headericon.png" class="w-7">
                     <span class="font-serif text-xl font-bold">Novelative</span>
                 </div>
                 <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
@@ -309,7 +223,7 @@
             <div>
                 <h4 class="font-bold text-white mb-4">Product</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-white">Download</a></li>
+                    <li><a href="download.html" class="hover:text-white">Download</a></li>
                     <li><a href="#" class="hover:text-white">Roadmap</a></li>
                     <li><a href="#" class="hover:text-white">Pricing</a></li>
                 </ul>
