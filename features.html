@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features | Novelative: The Writer's IDE</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Script) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Shared Tailwind Config -->
+    <script src="theme.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Shared Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Section-specific styling for icons */
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #FBBC04;
+        }
+    </style>
+</head>
+<body class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="./assets/headericon.png" class="w-7">
+                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="features.html" class="hover:text-white transition-colors text-white">Features</a>
+                <a href="index.html#visualize" class="hover:text-white transition-colors">Visualize</a>
+                <a href="download.html" class="hover:text-white transition-colors">Download</a>
+            </div>
+            <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+                Start Drafting
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-40 pb-20 bg-app-bg">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="font-serif text-6xl md:text-7xl font-bold mb-6 fade-in-up">
+                Features That <span class="text-gold-gradient">Define</span>
+            </h1>
+            <p class="text-xl text-app-muted max-w-3xl mx-auto fade-in-up" style="transition-delay: 100ms;">
+                Novelative is for novelists — writers who need control, structure, and visualization far beyond standard word processors.
+            </p>
+        </div>
+    </section>
+
+    <!-- Feature Groups -->
+    <main class="flex-grow bg-app-surface border-y border-app-border py-20">
+        <div class="max-w-7xl mx-auto px-6 space-y-32">
+
+            <!-- Group 1: The Core Editor & Rendering -->
+            <div class="fade-in-up">
+                <div class="text-center mb-16">
+                    <span class="text-app-highlight font-bold tracking-widest text-sm uppercase">1. Page-Perfect Engine</span>
+                    <h2 class="font-serif text-4xl font-bold mt-2">What You See Is Exactly What You Print.</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div>
+                        <!-- Image Placeholder 1 (Editor) -->
+                        <div class="h-64 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-app-muted">Image: Editor Canvas View (Page Break Example)</span>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-file-invoice feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Canvas Rendering Core</h3>
+                                <p class="text-app-muted">Documents are rendered onto an HTML5 `<canvas>`, not standard DOM elements. This eliminates layout shifts and guarantees precise, fixed-page formatting, simulating a professional word processor.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-calculator feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Custom Layout Engine</h3>
+                                <p class="text-app-muted">A mathematical engine manually calculates the exact X/Y coordinate for every word, handling line wrapping, justification, and dynamic page breaks instantly as you type.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-ruler-combined feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Visual Ruler System</h3>
+                                <p class="text-app-muted">Fine-tune your typography using a visual ruler. Drag-and-drop margins, first-line indents, and hanging indents—changes immediately trigger a full document recalculation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group 2: Interconnectivity & Structure -->
+            <div class="fade-in-up">
+                <div class="text-center mb-16">
+                    <span class="text-red-400 font-bold tracking-widest text-sm uppercase">2. Deep Interconnectivity</span>
+                    <h2 class="font-serif text-4xl font-bold mt-2">Structure Your World with Smart Logic.</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-code-fork feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Smart Inheritance</h3>
+                                <p class="text-app-muted">Tags applied to parent folders (e.g., "Draft 1") are automatically inherited by all children files, making project-wide versioning and filtering seamless and automated.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-link feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Wiki-Linking & Backlinks</h3>
+                                <p class="text-app-muted">Create internal links by typing `[[File Name]]`. The system automatically tracks backlinks, showing every document that references your current file in the sidebar.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-tree feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Recursive File Tree</h3>
+                                <p class="text-app-muted">Organize characters, chapters, and lore into a highly nested file tree structure. Supports three node types: Folders, Text Documents, and Whiteboard Canvases.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Image Placeholder 2 (Sidebar/File Tree) -->
+                        <div class="h-64 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-app-muted">Image: File Tree & Smart Tagging</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group 3: Visualization & Plotting -->
+            <div class="fade-in-up">
+                <div class="text-center mb-16">
+                    <span class="text-blue-400 font-bold tracking-widest text-sm uppercase">3. Visual Thinking</span>
+                    <h2 class="font-serif text-4xl font-bold mt-2">Nonlinear Plotting Meets Physics.</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div>
+                        <!-- Image Placeholder 3 (Whiteboard/Graph) -->
+                        <div class="h-64 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-app-muted">Image: Whiteboard/Graph View in action</span>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-diagram-project feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">The Dynamic Graph View</h3>
+                                <p class="text-app-muted">Visualize your entire project's structure as an interactive network. Switch between **Tag Mode** (clusters) and **Link Mode** (relationship visualization).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-bezier-curve feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Whiteboard Orthogonal Routing</h3>
+                                <p class="text-app-muted">Plot scenes and ideas on an infinite canvas. Connections between cards use smart orthogonal (right-angle) routing for clean, grid-like, and professional flowcharts.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-magnet feature-icon"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Draggable Entities & Snapping</h3>
+                                <p class="text-app-muted">Drag files directly from the sidebar onto the whiteboard to create linked cards. Cards snap and group together, allowing you to move complex plot segments as one unit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group 4: Meta-Tools & Desktop Power -->
+            <div class="fade-in-up">
+                <div class="text-center mb-16">
+                    <span class="text-green-400 font-bold tracking-widest text-sm uppercase">4. Right Sidebar & Desktop Power</span>
+                    <h2 class="font-serif text-4xl font-bold mt-2">Offline Persistence and Context-Rich Tools.</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-10 text-center">
+                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
+                        <i class="fa-solid fa-magnifying-glass feature-icon mb-3"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">Global Search & Thesaurus</h3>
+                        <p class="text-app-muted text-sm">Project-wide search scans all JSON content. A built-in, offline thesaurus offers instant synonyms without breaking flow.</p>
+                    </div>
+                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
+                        <i class="fa-solid fa-comments feature-icon mb-3"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">Contextual Commenting</h3>
+                        <p class="text-app-muted text-sm">Highlight text to add comments. The sidebar instantly scrolls the editor to the exact location of the highlighted text for easy review.</p>
+                    </div>
+                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
+                        <i class="fa-solid fa-desktop feature-icon mb-3"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">Electron & Offline First</h3>
+                        <p class="text-app-muted text-sm">Built on Electron and React for a native experience. Data is stored locally in JSON files, requiring zero internet connection to work.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4 text-white">
+                    <img src="./assets/headericon.png" class="w-5 grayscale opacity-70" alt="Logo">
+                    <span class="font-serif text-xl font-bold">Novelative</span>
+                </div>
+                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-discord text-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-github text-lg"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="download.html" class="hover:text-white">Download</a></li>
+                    <li><a href="#" class="hover:text-white">Roadmap</a></li>
+                    <li><a href="#" class="hover:text-white">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white">Help Docs</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- Scroll Reveal Animation ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        window.onload = function () {
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>
