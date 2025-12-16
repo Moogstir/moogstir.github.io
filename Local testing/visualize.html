@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualize | Novelative</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Script) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Shared Tailwind Config -->
+    <script src="theme.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Shared Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a  href="index.html" class="flex items-center gap-2">
+                <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
+                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+                <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
+                <a href="visualize.html" class="underline text-app-text transition-colors">Visualize</a>
+                <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="purchase.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+                    BUY NOW
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-40 pb-20 bg-app-bg relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center" style="z-index: 2; position: relative;">
+            <h1 class="font-serif text-6xl md:text-7xl font-bold mb-6 fade-in-up">
+                See Novelative <span class="text-gold-gradient">In Action.</span>
+            </h1>
+            <p class="text-xl text-app-muted max-w-3xl mx-auto fade-in-up" style="transition-delay: 100ms;">
+                Experience the themes, customizations, and real-time workflow that make Novelative the ultimate tool for world-builders.
+            </p>
+        </div>
+        <!-- Graph Background (Visual Consistency) -->
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-60"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0" style="z-index: 1;"></div>
+    </section>
+    
+    <!-- Main Content: GIF Demos Section -->
+    <section class="py-20 bg-app-surface border-y border-app-border">
+        <div class="max-w-7xl mx-auto px-6 space-y-24">
+            <!-- Demos Overview -->
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-blue-400 font-bold tracking-widest text-sm uppercase">Real-Time Workflow</span>
+                <h2 class="font-serif text-4xl font-bold mt-2">Watch Novelative Come Alive.</h2>
+                <p class="text-app-muted max-w-2xl mx-auto mt-4">Quick demos of key features in action, from editing to visualization.</p>
+            </div>
+
+            <!-- GIF Grid -->
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- GIF 1: Editing -->
+                <div class="fade-in-up">
+                    <img src="assets/editing-demo.gif" alt="Novelative Editing Demo" class="w-full h-auto rounded-lg shadow-2xl mb-4">
+                    <h3 class="text-xl font-bold text-app-text mb-2">Seamless Editing</h3>
+                    <p class="text-app-muted">Real-time page rendering and typing with precise layout control.</p>
+                </div>
+
+                <!-- GIF 2: Canvas Whiteboard -->
+                <div class="fade-in-up" style="transition-delay: 100ms;">
+                    <img src="assets/canvas-demo.gif" alt="Novelative Canvas Demo" class="w-full h-auto rounded-lg shadow-2xl mb-4">
+                    <h3 class="text-xl font-bold text-app-text mb-2">Infinite Canvas Plotting</h3>
+                    <p class="text-app-muted">Drag, connect, and organize ideas on an endless whiteboard.</p>
+                </div>
+
+                <!-- GIF 3: Graph View -->
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <img src="assets/graph-view-demo.gif" alt="Novelative Graph View Demo" class="w-full h-auto rounded-lg shadow-2xl mb-4">
+                    <h3 class="text-xl font-bold text-app-text mb-2">Dynamic Graph Navigation</h3>
+                    <p class="text-app-muted">Visualize tags and links interactively.</p>
+                </div>
+
+                <!-- GIF 4: Tagging -->
+                <div class="fade-in-up" style="transition-delay: 300ms;">
+                    <img src="assets/tagging-demo.gif" alt="Novelative Tagging Demo" class="w-full h-auto rounded-lg shadow-2xl mb-4">
+                    <h3 class="text-xl font-bold text-app-text mb-2">Smart Tagging System</h3>
+                    <p class="text-app-muted">Apply and inherit tags for effortless organization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content: Themes Section -->
+    <section class="py-20 bg-app-bg">
+        <div class="max-w-7xl mx-auto px-6 space-y-24">
+            <!-- Themes Overview -->
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-app-highlight font-bold tracking-widest text-sm uppercase">Customizable Themes</span>
+                <h2 class="font-serif text-4xl font-bold mt-2">Light, Dark, or Your Own Style.</h2>
+                <p class="text-app-muted max-w-2xl mx-auto mt-4">Switch between light and dark modes effortlessly, or dive into customization to tailor the interface to your creative flow.</p>
+            </div>
+
+            <!-- Theme Cards -->
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Dark Theme -->
+                <div class="bg-app-bg border border-app-border rounded-xl p-6 flex flex-col items-center text-center fade-in-up">
+                    <img src="assets/dark-theme-screenshot.png" alt="Novelative in Dark Theme" class="w-full h-auto rounded-lg mb-6 shadow-lg">
+                    <h3 class="text-2xl font-bold text-app-text mb-2">Dark Theme</h3>
+                    <p class="text-app-muted text-sm mb-4">Perfect for late-night writing sessions with reduced eye strain.</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-app-highlight text-3xl w-7 h-7"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </div>
+
+                <!-- Light Theme -->
+                <div class="bg-app-bg border border-app-border rounded-xl p-6 flex flex-col items-center text-center fade-in-up" style="transition-delay: 100ms;">
+                    <img src="assets/light-theme-screenshot.png" alt="Novelative in Light Theme" class="w-full h-auto rounded-lg mb-6 shadow-lg">
+                    <h3 class="text-2xl font-bold text-app-text mb-2">Light Theme</h3>
+                    <p class="text-app-muted text-sm mb-4">Bright and clean for daytime productivity.</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-app-highlight text-3xl w-7 h-7"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </div>
+
+                <!-- Custom Theme -->
+                <div class="bg-app-bg border border-app-border rounded-xl p-6 flex flex-col items-center text-center fade-in-up" style="transition-delay: 200ms;">
+                    <img src="assets/custom-theme-screenshot.png" alt="Novelative Custom Theme Editor" class="w-full h-auto rounded-lg mb-6 shadow-lg">
+                    <h3 class="text-2xl font-bold text-app-text mb-2">Customize Theme</h3>
+                    <p class="text-app-muted text-sm mb-4">Adjust colors, fonts, and layouts to match your vision.</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-app-highlight text-3xl w-7 h-7"><path d="M10 2v2"/><path d="M14 2v4"/><path d="M17 2a1 1 0 0 1 1 1v9H6V3a1 1 0 0 1 1-1z"/><path d="M6 12a1 1 0 0 0-1 1v1a2 2 0 0 0 2 2h2a1 1 0 0 1 1 1v2.9a2 2 0 1 0 4 0V17a1 1 0 0 1 1-1h2a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1"/></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4 text-app-text">
+                    <img id="footer-logo" src="./assets/darkmodeicon.png" class="w-5 grayscale opacity-70" alt="Logo">
+                    <span class="font-serif text-xl font-bold">Novelative</span>
+                </div>
+                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
+                <div class="flex gap-4">
+                	<a href="https://discord.gg/XtXJhXDF3y" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
+                	<!-- remove other social links for now>
+                    <a href="#" class="hover:text-app-text"><i class="fa-brands fa-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-app-text"><i class="fa-brands fa-github text-lg"></i></a>
+                    -->
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-app-text mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
+                    <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-app-text mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="contact.html" class="hover:text-app-text">Contact</a></li>
+                    <li><a href="privacypolicy.html" class="hover:text-app-text">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- 1. Graph Background Animation (Canvas) ---
+        const canvas = document.getElementById('graphCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        function getAccentColor() {
+            const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
+            // FIX: Replace spaces with commas for valid RGB syntax in Canvas
+            return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
+        }
+
+        let accentColor = getAccentColor();
+
+        // Listen for theme changes to update color
+        window.addEventListener('themeChanged', () => {
+            accentColor = getAccentColor();
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.size = Math.random() * 1.5 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = accentColor;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function resize() {
+            width = window.innerWidth;
+            // Only cover the top section to keep performance high
+            height = Math.min(window.innerHeight * 1.2, 900); 
+            canvas.width = width;
+            canvas.height = height;
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(width / 20); // Responsive count
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
+                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1200})`; 
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        // --- 2. Scroll Reveal Animation ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        window.onload = function () {
+            animate();
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>

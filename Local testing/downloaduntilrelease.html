@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Novelative | Start Writing</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	<script src="theme.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar (Matches Landing Page) -->
+    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <!-- Use your asset here -->
+                <img src="./assets/headericon.png" class="w-7" alt="Logo">
+                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                <a href="index.html#features" class="hover:text-white transition-colors">Features</a>
+                <a href="index.html#visualize" class="hover:text-white transition-colors">Visualize</a>
+            </div>
+            <a href="#" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+                BUY NOW
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow relative flex items-center justify-center pt-32 pb-24">
+        
+        <!-- Canvas Background -->
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-20 pointer-events-none"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
+            
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6 fade-in-up">
+                    Novelative is set to release Feb 1st, 2026
+                </h1>
+                <p class="text-xl text-app-muted max-w-2xl mx-auto fade-in-up" style="transition-delay: 100ms;">
+                    Upon release, Novelative will be completely free for a limited amount of time for beta testing.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4 text-white">
+                    <img src="./assets/headericon.png" class="w-5 grayscale opacity-70" alt="Logo">
+                    <span class="font-serif text-xl font-bold">Novelative</span>
+                </div>
+                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-discord text-lg"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-github text-lg"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="download.html" class="hover:text-white">Download</a></li>
+                    <li><a href="#" class="hover:text-white">Roadmap</a></li>
+                    <li><a href="#" class="hover:text-white">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white">Help Docs</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (Animation Logic) -->
+    <script>
+        // --- Graph Background Animation (Reused) ---
+        const canvas = document.getElementById('graphCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const ACCENT_COLOR = 'rgba(251, 191, 36, 1)'; // Gold/Yellow
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.3; // Slower for download page
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.size = Math.random() * 1.5 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = ACCENT_COLOR;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight; // Full viewport height for simplicity here
+            // Or use document body height if content scrolls a lot
+            if(document.body.scrollHeight > window.innerHeight) {
+                 height = document.body.scrollHeight;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+        
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(width / 25); // Slightly less dense
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(251, 191, 36, ${0.1 - distance/1000})`; 
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // --- Scroll Reveal ---
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        window.onload = function () {
+            resize();
+            animate();
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+        }
+    </script>
+</body>
+</html>

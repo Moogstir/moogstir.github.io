@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Novelative</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Script) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Shared Tailwind Config -->
+    <script src="theme.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Shared Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a  href="index.html" class="flex items-center gap-2">
+                <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
+                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+                <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
+                <a href="visualize.html" class="hover:text-app-text transition-colors">Visualize</a>
+                <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="purchase.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+                    BUY NOW
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-40 pb-16 bg-app-bg relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center" style="z-index: 2; position: relative;">
+            <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6 fade-in-up">
+                Privacy Policy
+            </h1>
+            <p class="text-xl text-app-muted max-w-2xl mx-auto fade-in-up" style="transition-delay: 100ms;">
+                Your stories belong to you.
+            </p>
+        </div>
+        <!-- Graph Background (Visual Consistency) -->
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-60"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0" style="z-index: 1;"></div>
+    </section>
+
+    <!-- Policy Content -->
+    <section class="flex-grow bg-app-surface border-y border-app-border py-20 relative z-10">
+        <div class="max-w-4xl mx-auto px-6 fade-in-up">
+            
+            <div class="prose prose-invert max-w-none text-app-text">
+                <p class="text-app-muted mb-8">Last Updated: December 2025</p>
+
+                <h3 class="text-2xl font-bold text-app-text mb-4">1. Overview</h3>
+                <p class="mb-8 text-app-muted leading-relaxed">
+                    Novelative is an <strong>offline-first</strong> desktop application. We designed it with the philosophy that your creative work is personal and private. Unlike cloud-based writing platforms, we do not store, process, or have access to the novels, notes, or world-building data you create within the application.
+                </p>
+
+                <h3 class="text-2xl font-bold text-app-text mb-4">2. Data Storage</h3>
+                <p class="mb-4 text-app-muted leading-relaxed">
+                    <strong>Local Storage:</strong> All content you create in Novelative (projects, chapters, characters, graphs) is stored locally on your computer's hard drive in standard JSON and text file formats.
+                </p>
+                <p class="mb-8 text-app-muted leading-relaxed">
+                    <strong>Cloud Sync:</strong> Novelative does not automatically sync your data to our servers. If you wish to back up your work or sync between devices, you must use your own third-party cloud service (e.g., Dropbox, Google Drive, OneDrive, or iCloud) by saving your project files into those synced folders. We have no access to these accounts.
+                </p>
+
+                <h3 class="text-2xl font-bold text-app-text mb-4">3. Data Collection</h3>
+                <p class="mb-8 text-app-muted leading-relaxed">
+                    <strong>We collect minimal data only for the purpose of licensing and software improvement:</strong>
+                </p>
+                <ul class="list-disc pl-6 mb-8 text-app-muted space-y-2">
+                    <li><strong>License Validation:</strong> When you activate Novelative, we communicate with our licensing server to verify your key. We store your license key and a unique hardware identifier to manage device limits.</li>
+                    <li><strong>Crash Reports:</strong> If the application crashes, you may be prompted to send an anonymous crash report. This is optional and helps us fix bugs. These reports do not contain your manuscript text.</li>
+                    <li><strong>Website Analytics:</strong> On this website (novelative.com), we may use privacy-friendly analytics to count visitors and downloads. We do not track individual users across the web.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-app-text mb-4">4. Payment Information</h3>
+                <p class="mb-8 text-app-muted leading-relaxed">
+                    We use a secure third-party payment processor (Stripe & Lemon Squeezy) to handle all transactions. Novelative does not store or have access to your credit card information.
+                </p>
+
+                <h3 class="text-2xl font-bold text-app-text mb-4">5. Updates</h3>
+                <p class="mb-8 text-app-muted leading-relaxed">
+                    The application periodically checks our servers to see if a new version is available. This check sends your current version number to our server. No personal data is exchanged during this process.
+                </p>
+
+                <h3 class="text-2xl font-bold text-app-text mb-4">6. Contact Us</h3>
+                <p class="text-app-muted leading-relaxed">
+                    If you have any questions about this Privacy Policy, please contact us by email at <a href="#" onclick="copyAndShowPopup(event, this)" class="text-app-highlight hover:underline">support@novelative.com<span id="copyPopup" class="popup-bubble">Copied!</span></a>.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4 text-app-text">
+                    <img id="footer-logo" src="./assets/darkmodeicon.png" class="w-5 grayscale opacity-70" alt="Logo">
+                    <span class="font-serif text-xl font-bold">Novelative</span>
+                </div>
+                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
+                <div class="flex gap-4">
+                	<a href="https://discord.gg/XtXJhXDF3y" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-app-text mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
+                    <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-app-text mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="contact.html" class="hover:text-app-text">Contact</a></li>
+                    <li><a href="privacypolicy.html" class="hover:text-app-text underline">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+	<style>
+	/* Styling for the popup */
+	.popup-bubble {
+		visibility: hidden;
+		width: 80px;
+		background-color: #333;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+		transition: opacity 0.3s;
+		font-size: 12px;
+		margin-left:15px;
+	}
+	
+	/* Little arrow pointing down */
+	.popup-bubble::after {
+		content: "";
+		position: absolute;
+		top: 32%;
+		right: 100%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: transparent #333 transparent transparent;
+	}
+	
+	/* Class to trigger the animation */
+	.show-popup {
+		visibility: visible;
+		opacity: 1;
+	}
+	</style>
+
+    <!-- Scripts -->
+    <script>
+        // --- 1. Graph Background Animation (Canvas) ---
+        const canvas = document.getElementById('graphCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        function getAccentColor() {
+            const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
+            return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
+        }
+
+        let accentColor = getAccentColor();
+
+        // Listen for theme changes to update color
+        window.addEventListener('themeChanged', () => {
+            accentColor = getAccentColor();
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.size = Math.random() * 1.5 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = accentColor;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function resize() {
+            width = window.innerWidth;
+            height = Math.min(window.innerHeight * 0.8, 600); // Limit height for text page
+            canvas.width = width;
+            canvas.height = height;
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(width / 25);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
+                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1200})`; 
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        // --- 2. Scroll Reveal Animation ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        window.onload = function () {
+            animate();
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+		function copyAndShowPopup(event, element) {
+			event.preventDefault();
+		  
+			// 1. Copy text to clipboard
+			const text = element.innerText;
+			navigator.clipboard.writeText(text).then(() => {
+		    
+				// 2. Show the popup
+		    	const popup = document.getElementById("copyPopup");
+		    	popup.classList.add("show-popup");
+		    
+		    	// 3. Hide it after 1.5 seconds
+		    	setTimeout(() => {
+					popup.classList.remove("show-popup");
+		    	}, 1500);
+			    
+			}).catch(err => {
+				console.error("Failed to copy", err);
+			});
+		}
+        
+    </script>
+</body>
+</html>
