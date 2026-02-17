@@ -1,16 +1,44 @@
+
 /* --- Custom Scrollbar --- */
 ::-webkit-scrollbar {
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #1E1E1E; 
+    background: rgb(var(--color-app-bg)); 
 }
 ::-webkit-scrollbar-thumb {
-    background: #444444; 
+    background: rgb(var(--color-app-border)); 
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #555555; 
+    background: rgb(var(--color-app-muted)); 
+}
+
+/* --- Variables --- */
+:root {
+    /* Dark Mode (Default) */
+    --color-app-bg: 30 30 30;          /* #1E1E1E */
+    --color-app-surface: 37 37 37;     /* #252525 */
+    --color-app-sidebar: 43 43 43;     /* #2B2B2B */
+    --color-app-highlight: 251 188 4;  /* #FBBC04 */
+    --color-app-highlightHover: 232 175 4; /* #E8AF04 */
+    --color-app-gradient-to: 255 215 0; /* #FFD700 Gold */
+    --color-app-text: 220 220 220;     /* #DCDCDC */
+    --color-app-muted: 169 169 169;    /* #A9A9A9 */
+    --color-app-border: 68 68 68;      /* #444444 */
+}
+
+html.light-mode {
+    /* Light Mode */
+    --color-app-bg: 249 250 251;       /* Gray-50 */
+    --color-app-surface: 255 255 255;  /* White */
+    --color-app-sidebar: 243 244 246;  /* Gray-100 */
+    --color-app-highlight: 59 130 246;  /* Blue-500 (#3b82f6) */
+    --color-app-highlightHover: 37 99 235; /* Blue-600 (#2563eb) */
+    --color-app-gradient-to: 96 165 250; /* Blue-400 (#60a5fa) */
+    --color-app-text: 17 24 39;        /* Gray-900 */
+    --color-app-muted: 75 85 99;       /* Gray-600 */
+    --color-app-border: 229 231 235;   /* Gray-200 */
 }
 
 /* --- Animations --- */
@@ -27,29 +55,29 @@
 /* --- Typography & Colors --- */
 /* Gold Gradient Text */
 .text-gold-gradient {
-    background: linear-gradient(to right, #FBBC04, #FFD700);
+    background: linear-gradient(to right, rgb(var(--color-app-highlight)), rgb(var(--color-app-gradient-to)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 /* --- Mockup UI Styles (Index Page) --- */
 .app-mockup {
-    background: #1E1E1E;
-    border: 1px solid #444444;
+    background: rgb(var(--color-app-bg));
+    border: 1px solid rgb(var(--color-app-border));
     border-radius: 0.75rem;
     box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
     overflow: hidden;
     position: relative;
 }
 .app-header {
-    background: #141414;
+    background: rgb(var(--color-app-bg)); /* Approximating #141414 slightly darker if needed, but using BG for consistency */
     padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid rgb(var(--color-app-border));
 }
-.skeleton-text { height: 0.75rem; background: #333333; border-radius: 0.125rem; margin-bottom: 0.5rem; }
+.skeleton-text { height: 0.75rem; background: rgb(var(--color-app-surface)); border-radius: 0.125rem; margin-bottom: 0.5rem; }
 .skeleton-line { width: 100%; }
 
 /* Tag Colors */
@@ -63,6 +91,6 @@
 }
 .download-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px -10px rgba(251, 188, 4, 0.15);
-    border-color: #FBBC04;
+    box-shadow: 0 20px 40px -10px rgba(var(--color-app-highlight), 0.15);
+    border-color: rgb(var(--color-app-highlight));
 }

@@ -3,78 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novelative | The Ultimate Studio for World-Builders</title>
+    <title>Novelative</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="theme.js"></script>
 
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden">
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden">
 
-    <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img src="./assets/headericon.png" class="w-7">
+            <a  href="index.html" class="flex items-center gap-2">
+                <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
                 <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
-                <a href="features.html" class="hover:text-white transition-colors">Features</a>
-                <a href="#visualize" class="hover:text-white transition-colors">Visualize</a>
-                <a href="download.html" class="hover:text-white transition-colors">Download</a>
-            </div>
-            <a href="download.html" class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-5 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
-                Start Drafting
             </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="index.html" class="underline text-app-text transition-colors">Home</a>
+                <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
+                <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-md font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+                    Create Your Novel
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Canvas Background for Graph Effect (Dark/Gold Theme) -->
-        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-20"></canvas>
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50"></canvas>
         
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <div class="inline-block px-4 py-1.5 rounded-lg border border-app-highlight/30 bg-app-highlight/10 text-app-highlight text-sm font-semibold mb-6 fade-in-up">
-                ✨ Offline-First Writing Studio
-            </div>
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center p-20">
             <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 fade-in-up" style="transition-delay: 100ms;">
                 The most powerful tool for <br>
                 <span class="text-gold-gradient">complex narratives.</span>
             </h1>
             <p class="text-xl text-app-muted max-w-2xl mx-auto mb-10 fade-in-up" style="transition-delay: 200ms;">
-                Novelative is a distraction-free writing environment built for world-builders, offering robust organization, visual plotting, and local data control.
+                Start Building Your World
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="transition-delay: 300ms;">
-                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#E8AF04] transition-all shadow-xl shadow-app-highlight/40 flex items-center justify-center gap-2">Download Novelative</a>
-                <button class="border border-app-border hover:border-app-muted bg-app-surface/50 text-white px-8 py-4 rounded-lg font-bold text-lg backdrop-blur-sm transition-all">
-                    See How It Works
-                </button>
+                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-xl shadow-app-highlight/40 flex items-center justify-center gap-2">Download Novelative</a>
+                <a href="features.html" class="border border-app-border hover:border-app-muted bg-app-surface/50 text-app-text px-8 py-4 rounded-lg font-bold text-lg backdrop-blur-sm transition-all">
+                    Explore Features
+                </a>
+
             </div>
 
-            <!-- Hero Mockup - Split View Mimic -->
             <div class="relative max-w-4xl mx-auto fade-in-up" style="transition-delay: 500ms;">
-                <img src="assets/app-screenshot.png" alt="Novelative App Interface showing Split View" class="w-full h-auto shadow-2xl ">
+                <img id="hero-mockup" src="./assets/intro -dark.png" alt="Novelative App Interface showing Split View" class="w-full h-auto shadow-2xl ">
             </div>
         </div>
     </section>
 
-    <!-- Value Prop / Philosophy -->
     <section class="py-24 bg-app-surface border-y border-app-border">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
@@ -86,28 +80,26 @@
                     <p class="text-app-muted leading-relaxed">Offline-first design ensures your novels, notes, and world data are stored securely on your local device. True data ownership guaranteed.</p>
                 </div>
                 <div class="fade-in-up" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
-                        <i class="fa-solid fa-sitemap text-blue-400 text-xl"></i>
+                    <div class="w-12 h-12 bg-app-highlight/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
+                        <i class="fa-solid fa-sitemap text-app-highlight text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Structured Freedom</h3>
                     <p class="text-app-muted leading-relaxed">Combine the rigid structure of a file-tree for organization with the limitless freedom of an infinite canvas for plotting and connections.</p>
                 </div>
                 <div class="fade-in-up" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
-                        <i class="fa-solid fa-circle-half-stroke text-green-400 text-xl"></i>
+                    <div class="w-12 h-12 bg-app-highlight/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
+                        <i class="fa-solid fa-circle-half-stroke text-app-highlight text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Designed for Focus</h3>
-                    <p class="text-app-muted leading-relaxed">A dark, distraction-free environment with intelligent collapsing sidebars and a clean WYSIWYG editor keeps you immersed in your story.</p>
+                    <p class="text-app-muted leading-relaxed">Dark, Light, or Custom themes with intelligent collapsing sidebars and Novelative-only features engineered to simplify your complex projects.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Feature Section: Visualization -->
     <section id="visualize" class="py-24 bg-app-bg">
         <div class="max-w-7xl mx-auto px-6 space-y-32">
             
-            <!-- Feature 1: Infinite Canvases (Clustered) -->
             <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
                 <div class="md:w-1/2">
                     <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Infinite Canvases</div>
@@ -127,22 +119,17 @@
                     </ul>
                 </div>
                 <div class="md:w-1/2 relative">
-                    
-                    <img src="assets/app-screenshot-canvas.png" alt="Novelative App Canvas System" class="w-full h-auto shadow-2xl ">
-                    
+                    <img data-base-src="assets/app-screenshot-canvas" data-ext="png" src="assets/app-screenshot-canvas-dark.png" alt="Novelative Canvas System" class="theme-toggle-img w-full h-auto shadow-2xl rounded-lg">
                 </div>
             </div>
 
-            <!-- Feature 2: Smart Tagging & Split View -->
             <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
                 <div class="md:w-1/2 order-2 md:order-1 relative">
-                    
-                    <img src="assets/app-screenshot-tag.png" alt="Novelative App Tagging System" class="w-full h-auto shadow-2xl ">
-                    
+                    <img data-base-src="assets/app-screenshot-tag" data-ext="png" src="assets/app-screenshot-tag-dark.png" alt="Novelative App Tagging System" class="theme-toggle-img w-full h-auto shadow-2xl rounded-lg">
                 </div>
                 <div class="md:w-1/2 order-1 md:order-2">
                     <div class="text-red-400 font-bold tracking-widest text-sm uppercase mb-2">Tagging System</div>
-                    <h2 class="font-serif text-4xl font-bold mb-6">Smart Organization, Zero Clutter.</h2>
+                    <h2 class="font-serif text-4xl font-bold mb-6">Powerful Organization, Personalized for You</h2>
                     <p class="text-app-muted text-lg mb-6">
                         Novelative's tagging system allows you to organize your files YOUR way, integrated systems allthroughout the app make it a breeze to visualize your project in a variety of useful ways.
                     </p>
@@ -159,45 +146,41 @@
                 </div>
             </div>
             
-            <!-- Feature 1: Infinite Canvases (Clustered) -->
             <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
                 <div class="md:w-1/2">
-                    <div class="text-blue-400 text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Graph View</div>
-                    <h2 class="font-serif text-4xl font-bold mb-6">Smart Organization, Zero Clutter.</h2>
+                    <div class="text-green-400 text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Graph View</div>
+                    <h2 class="font-serif text-4xl font-bold mb-6">Visualize & Navigate.</h2>
                     <p class="text-app-muted text-lg mb-6">
                         Use Novelative's Graph View to navigate and organize your files to get a view of your project.
                     </p>
                     <ul class="space-y-4 text-app-muted text-lg">
                         <li class="flex items-start gap-3">
-                            <i class="text-blue-400 fa-solid fa-cube text-app-highlight mt-1.5"></i>
+                            <i class="text-green-400 fa-solid fa-cube text-app-highlight mt-1.5"></i>
                             <span><strong>Tag View:</strong> Every file is organized into groups of tags, easy for navigating files with certain tags.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i class="text-blue-400 fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
+                            <i class="text-green-400 fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
                             <span><strong>Link View:</strong> Show's the links between all your files that have hyperlinks.</span>
                         </li>
                     </ul>
                 </div>
                 <div class="md:w-1/2 relative">
-                    
-                    <img src="assets/app-screenshot-graph.png" alt="Novelative Graph View" class="w-full h-auto shadow-2xl ">
-                    
+                    <img data-base-src="assets/app-screenshot-graph" data-ext="png" src="assets/app-screenshot-graph-dark.png" alt="Novelative Graph View" class="theme-toggle-img w-full h-auto shadow-2xl rounded-lg">
                 </div>
             </div>
             
         </div>
     </section>
 
-    <!-- Call to Action / Download Section -->
     <section id="download" class="py-24 relative overflow-hidden bg-app-surface border-t border-app-border">
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <h2 class="font-serif text-5xl font-bold mb-6">Built for writers. <br>Ready for anything.</h2>
             <p class="text-xl text-app-muted mb-10">
-                Download Novelative today and take control of your complex narrative structure.
+                Download Novelative today and take control of your narrative.
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="download.html" class="bg-app-highlight hover:bg-[#E8AF04] text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Free Download (Beta)</a>
+                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Free Download</a>
                 <div class="text-app-muted text-sm">
                     <div class="mb-1"><i class="fa-brands fa-windows"></i> Windows | <i class="fa-brands fa-apple"></i> macOS</div>
                     <div>First 30 days of use FREE. No Sign-Up Required.</div>
@@ -206,50 +189,79 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted">
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 mb-4 text-white">
-                    <img src="./assets/headericon.png" class="w-7">
+                <div class="flex items-center gap-2 mb-4 text-app-text">
+                    <img id="footer-logo" src="./assets/darkmodeicon.png" class="w-5 grayscale opacity-70" alt="Logo">
                     <span class="font-serif text-xl font-bold">Novelative</span>
                 </div>
                 <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter text-lg"></i></a>
-                    <a href="#" class="hover:text-white"><i class="fa-brands fa-discord text-lg"></i></a>
-                    <a href="#" class="hover:text-white"><i class="fa-brands fa-github text-lg"></i></a>
+                	<a href="https://discord.gg/XtXJhXDF3y" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
                 </div>
             </div>
             <div>
-                <h4 class="font-bold text-white mb-4">Product</h4>
+                <h4 class="font-bold text-app-text mb-4">Product</h4>
                 <ul class="space-y-2">
-                    <li><a href="download.html" class="hover:text-white">Download</a></li>
-                    <li><a href="#" class="hover:text-white">Roadmap</a></li>
-                    <li><a href="#" class="hover:text-white">Pricing</a></li>
+                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
+                    <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-white mb-4">Support</h4>
+                <h4 class="font-bold text-app-text mb-4">Support</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-white">Help Docs</a></li>
-                    <li><a href="#" class="hover:text-white">Contact</a></li>
-                    <li><a href="#" class="hover:text-white">Privacy</a></li>
+                    <li><a href="contact.html" class="hover:text-app-text">Contact</a></li>
+                    <li><a href="privacypolicy.html" class="hover:text-app-text">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
+        // --- Theme Image Toggling Logic ---
+        function isDarkMode() {
+            return !document.documentElement.classList.contains('light-mode');
+        }
+
+        function getThemeSuffix() {
+            return isDarkMode() ? '-dark' : '-light';
+        }
+
+        function updateImageThemes() {
+            const suffix = getThemeSuffix();
+            document.querySelectorAll('.theme-toggle-img').forEach(img => {
+                if (img.dataset.baseSrc && img.dataset.ext) {
+                    img.src = img.dataset.baseSrc + suffix + '.' + img.dataset.ext;
+                }
+            });
+        }
+
         // --- 1. Graph Background Animation (Canvas) ---
         const canvas = document.getElementById('graphCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        const ACCENT_COLOR = 'rgba(251, 191, 36, 1)'; // Gold/Yellow
+        
+        // Helper to get accent color dynamically
+        function getAccentColor() {
+            const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
+            // Default to gold if not set
+            // FIX: Replace spaces with commas for valid RGB syntax in Canvas
+            return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
+        }
 
-        // Particle Class (MOVED TO TOP TO PREVENT REFERENCE ERROR)
+        let accentColor = getAccentColor();
+
+        // Listen for theme changes to update color & images
+        window.addEventListener('themeChanged', () => {
+            accentColor = getAccentColor();
+            updateImageThemes();
+        });
+
+        // Initialize theme images on content load
+        document.addEventListener('DOMContentLoaded', updateImageThemes);
+
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
@@ -267,7 +279,7 @@
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
             draw() {
-                ctx.fillStyle = ACCENT_COLOR;
+                ctx.fillStyle = accentColor;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -312,8 +324,11 @@
                     
                     if (distance < 120) {
                         ctx.beginPath();
-                        // Fade lines out quickly
-                        ctx.strokeStyle = `rgba(251, 191, 36, ${0.1 - distance/1200})`; 
+                        // Fade lines out quickly - use accentColor base but change alpha
+                        // We extract rgb values from accentColor string "rgba(r,g,b,1)"
+                        const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
+                        
+                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1200})`; 
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -324,30 +339,29 @@
             requestAnimationFrame(animate);
         }
         window.onload = function () {
+            updateImageThemes(); // Run once more to ensure stability on load
             animate();
-        }
+            
+             // --- 2. Scroll Reveal Animation ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
 
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
 
-        // --- 2. Scroll Reveal Animation ---
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once
-                }
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            observer.observe(el);
-        });
-
+        }
     </script>
 </body>
 </html>

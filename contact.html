@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download | Novelative</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	<script src="theme.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Navbar (Matches Landing Page) -->
+    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a  href="index.html" class="flex items-center gap-2">
+                <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
+                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+                <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
+                <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-md font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
+                    DOWNLOAD FREE
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow relative flex items-center justify-center pt-32 pb-24">
+        
+        <!-- Canvas Background -->
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50 pointer-events-none"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
+            
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6 fade-in-up">
+                    Get In Touch.
+                </h1>
+                <p class="text-xl text-app-muted max-w-2xl mx-auto fade-in-up" style="transition-delay: 100ms;">
+                    Have questions about the software, an idea, found a bug, or just want to share your writing success? We'd love to hear from you.
+                </p>
+            </div>
+
+        <!-- Contact Form & Info -->
+	    <section class="bg-app-surface border border-app-border rounded-xl p-8 shadow-2xl fade-in-up py-20 relative z-10">
+	        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+	            
+	            <!-- Contact Information -->
+	            <div class="fade-in-up">
+	                <h2 class="text-3xl font-bold text-bg-text mb-6">How can we help?</h2>
+	                <p class="text-app-muted mb-10 leading-relaxed">
+	                    We are a small, dedicated team building the best tool for novelists. We try to respond to all inquiries within 24-48 hours.
+	                </p>
+	
+	                <div class="space-y-8">
+	                    <div class="flex items-start gap-4">
+	                        <div class="w-12 h-12 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-app-highlight text-xl flex-shrink-0">
+	                            <i class="fa-solid fa-envelope"></i>
+	                        </div>
+	                        <div>
+	                            <h3 class="text-app-text font-bold text-lg">Email Support</h3>
+	                            <p class="text-app-muted text-sm mb-1">For general inquiries and license issues.</p>
+	                            <a href="#" onclick="copyAndShowPopup(event, this)" class="text-app-highlight hover:text-app-text transition-colors">support@novelative.com<span id="copyPopup" class="popup-bubble">Copied!</span></a>
+	                        </div>
+	                    </div>
+	
+	                    <div class="flex items-start gap-4">
+	                        <div class="w-12 h-12 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-blue-400 text-xl flex-shrink-0">
+	                            <i class="fa-brands fa-discord"></i>
+	                        </div>
+	                        <div>
+	                            <h3 class="text-app-text font-bold text-lg">Community Discord</h3>
+	                            <p class="text-app-muted text-sm mb-1">Join other writers, report bugs, and suggest features.</p>
+	                            <a href="https://discord.gg/XtXJhXDF3y" class="text-blue-400 hover:text-app-text transition-colors">Join the Server</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	
+	            <!-- Contact Form -->
+	            <div class="bg-app-bg border border-app-border rounded-xl p-8 shadow-2xl fade-in-up" style="transition-delay: 200ms;">
+	                <!-- 
+	                     ACTION REQUIRED: 
+	                     Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID (e.g. https://formspree.io/f/xvqnwvb)
+	                -->
+	                <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST" class="space-y-6">
+	                    
+	                    <div class="grid md:grid-cols-2 gap-6">
+	                        <div>
+	                            <label for="name" class="block text-sm font-medium text-app-muted mb-2">Name</label>
+	                            <input type="text" id="name" name="name" required class="bg-app-surface form-input w-full px-4 py-3 rounded-lg" placeholder="Jane Doe">
+	                        </div>
+	                        <div>
+	                            <label for="email" class="block text-sm font-medium text-app-muted mb-2">Email</label>
+	                            <input type="email" id="email" name="email" required class="bg-app-surface form-input w-full px-4 py-3 rounded-lg" placeholder="jane@example.com">
+	                        </div>
+	                    </div>
+	
+	                    <div>
+	                        <label for="subject" class="block text-sm font-medium text-app-muted mb-2">Subject</label>
+	                        <select id="subject" name="subject" class="bg-app-surface form-input w-full px-4 py-3 rounded-lg">
+	                            <option>General Inquiry</option>
+	                            <option>Bug Report</option>
+	                            <option>Feature Request</option>
+	                            <option>Licensing Issue</option>
+	                        </select>
+	                    </div>
+	
+	                    <div>
+	                        <label for="message" class="block text-sm font-medium text-app-muted mb-2">Message</label>
+	                        <textarea id="message" name="message" rows="5" required class="bg-app-surface form-input w-full px-4 py-3 rounded-lg" placeholder="How can we help you?"></textarea>
+	                    </div>
+	
+	                    <button type="submit" class="w-full bg-app-highlight hover:bg-app-highlightHover text-app-bg font-bold py-4 rounded-lg shadow-lg shadow-app-highlight/20 transition-all transform hover:scale-[1.02]">
+	                        Send Message
+	                    </button>
+	                </form>
+	            </div>
+	
+	        </div>
+	    </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4 text-app-text">
+                    <img id="footer-logo" src="./assets/darkmodeicon.png" class="w-5 grayscale opacity-70" alt="Logo">
+                    <span class="font-serif text-xl font-bold">Novelative</span>
+                </div>
+                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
+                <div class="flex gap-4">
+                	<a href="https://discord.gg/XtXJhXDF3y" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
+                	<!-- remove other social links for now>
+                    <a href="#" class="hover:text-app-text"><i class="fa-brands fa-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-app-text"><i class="fa-brands fa-github text-lg"></i></a>
+                    -->
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-app-text mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
+                    <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-app-text mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="contact.html" class="hover:text-app-text underline">Contact</a></li>
+                    <li><a href="privacypolicy.html" class="hover:text-app-text">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+	<style>
+	/* Styling for the popup */
+	.popup-bubble {
+		visibility: hidden;
+		width: 80px;
+		background-color: #333;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+		transition: opacity 0.3s;
+		font-size: 12px;
+		margin-left:15px;
+	}
+	
+	/* Little arrow pointing down */
+	.popup-bubble::after {
+		content: "";
+		position: absolute;
+		top: 32%;
+		right: 100%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: transparent #333 transparent transparent;
+	}
+	
+	/* Class to trigger the animation */
+	.show-popup {
+		visibility: visible;
+		opacity: 1;
+	}
+	</style>
+	
+    <!-- Scripts (Animation Logic) -->
+    <script>
+        // --- Graph Background Animation (Reused) ---
+        const canvas = document.getElementById('graphCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        function getAccentColor() {
+            const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
+            // FIX: Replace spaces with commas for valid RGB syntax in Canvas
+            return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
+        }
+
+        let accentColor = getAccentColor();
+
+        // Listen for theme changes to update color
+        window.addEventListener('themeChanged', () => {
+            accentColor = getAccentColor();
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.3; // Slower for download page
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.size = Math.random() * 1.5 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = accentColor;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight; // Full viewport height for simplicity here
+            // Or use document body height if content scrolls a lot
+            if(document.body.scrollHeight > window.innerHeight) {
+                 height = document.body.scrollHeight;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+        
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(width / 25); // Slightly less dense
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
+                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1000})`; 
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // --- Scroll Reveal ---
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        window.onload = function () {
+            resize();
+            animate();
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+        }
+
+		function copyAndShowPopup(event, element) {
+			event.preventDefault();
+		  
+			// 1. Copy text to clipboard
+			const text = element.innerText;
+			navigator.clipboard.writeText(text).then(() => {
+		    
+				// 2. Show the popup
+		    	const popup = document.getElementById("copyPopup");
+		    	popup.classList.add("show-popup");
+		    
+		    	// 3. Hide it after 1.5 seconds
+		    	setTimeout(() => {
+					popup.classList.remove("show-popup");
+		    	}, 1500);
+			    
+			}).catch(err => {
+				console.error("Failed to copy", err);
+			});
+		}
+
+    </script>
+</body>
+</html>
