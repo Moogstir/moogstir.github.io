@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-T9DS3YHVV6');
+	</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download | Novelative</title>
+    <title>Contact | Novelative</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     
     <!-- Google Fonts -->
@@ -17,16 +28,18 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-	<script src="theme.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
+    <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-    <!-- Navbar (Matches Landing Page) -->
+    <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a  href="index.html" class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
                 <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
                 <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
             </a>
@@ -39,8 +52,8 @@
                 <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-md font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
-                    DOWNLOAD FREE
+                <a href="download.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                    Download Free
                 </a>
             </div>
         </div>
@@ -49,13 +62,11 @@
     <!-- Main Content -->
     <main class="flex-grow relative flex items-center justify-center pt-32 pb-24">
         
-        <!-- Canvas Background -->
         <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50 pointer-events-none"></canvas>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
             
-            <!-- Header -->
             <div class="text-center mb-16">
                 <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6 fade-in-up">
                     Get In Touch.
@@ -65,89 +76,113 @@
                 </p>
             </div>
 
-        <!-- Contact Form & Info -->
-	    <section class="bg-app-surface border border-app-border rounded-xl p-8 shadow-2xl fade-in-up py-20 relative z-10">
-	        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-	            
-	            <!-- Contact Information -->
-	            <div class="fade-in-up">
-	                <h2 class="text-3xl font-bold text-bg-text mb-6">How can we help?</h2>
-	                <p class="text-app-muted mb-10 leading-relaxed">
-	                    We are a small, dedicated team building the best tool for novelists. We try to respond to all inquiries within 24-48 hours.
-	                </p>
-	
-	                <div class="space-y-8">
-	                    <div class="flex items-start gap-4">
-	                        <div class="w-12 h-12 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-app-highlight text-xl flex-shrink-0">
-	                            <i class="fa-solid fa-envelope"></i>
-	                        </div>
-	                        <div>
-	                            <h3 class="text-app-text font-bold text-lg">Email Support</h3>
-	                            <p class="text-app-muted text-sm mb-1">For general inquiries and license issues.</p>
-	                            <a href="#" onclick="copyAndShowPopup(event, this)" class="text-app-highlight hover:text-app-text transition-colors">support@novelative.com<span id="copyPopup" class="popup-bubble">Copied!</span></a>
-	                        </div>
-	                    </div>
-	
-	                    <div class="flex items-start gap-4">
-	                        <div class="w-12 h-12 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-blue-400 text-xl flex-shrink-0">
-	                            <i class="fa-brands fa-discord"></i>
-	                        </div>
-	                        <div>
-	                            <h3 class="text-app-text font-bold text-lg">Community Discord</h3>
-	                            <p class="text-app-muted text-sm mb-1">Join other writers, report bugs, and suggest features.</p>
-	                            <a href="https://discord.gg/XtXJhXDF3y" class="text-blue-400 hover:text-app-text transition-colors">Join the Server</a>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	
-	            <!-- Contact Form -->
-	            <div class="bg-app-bg border border-app-border rounded-xl p-8 shadow-2xl fade-in-up" style="transition-delay: 200ms;">
-	                <!-- 
-	                     ACTION REQUIRED: 
-	                     Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID (e.g. https://formspree.io/f/xvqnwvb)
-	                -->
-	                <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST" class="space-y-6">
-	                    
-	                    <div class="grid md:grid-cols-2 gap-6">
-	                        <div>
-	                            <label for="name" class="block text-sm font-medium text-app-muted mb-2">Name</label>
-	                            <input type="text" id="name" name="name" required class="bg-app-surface form-input w-full px-4 py-3 rounded-lg" placeholder="Jane Doe">
-	                        </div>
-	                        <div>
-	                            <label for="email" class="block text-sm font-medium text-app-muted mb-2">Email</label>
-	                            <input type="email" id="email" name="email" required class="bg-app-surface form-input w-full px-4 py-3 rounded-lg" placeholder="jane@example.com">
-	                        </div>
-	                    </div>
-	
-	                    <div>
-	                        <label for="subject" class="block text-sm font-medium text-app-muted mb-2">Subject</label>
-	                        <select id="subject" name="subject" class="bg-app-surface form-input w-full px-4 py-3 rounded-lg">
-	                            <option>General Inquiry</option>
-	                            <option>Bug Report</option>
-	                            <option>Feature Request</option>
-	                            <option>Licensing Issue</option>
-	                        </select>
-	                    </div>
-	
-	                    <div>
-	                        <label for="message" class="block text-sm font-medium text-app-muted mb-2">Message</label>
-	                        <textarea id="message" name="message" rows="5" required class="bg-app-surface form-input w-full px-4 py-3 rounded-lg" placeholder="How can we help you?"></textarea>
-	                    </div>
-	
-	                    <button type="submit" class="w-full bg-app-highlight hover:bg-app-highlightHover text-app-bg font-bold py-4 rounded-lg shadow-lg shadow-app-highlight/20 transition-all transform hover:scale-[1.02]">
-	                        Send Message
-	                    </button>
-	                </form>
-	            </div>
-	
-	        </div>
-	    </section>
+            <section class="bg-app-surface border border-app-border rounded-xl p-8 shadow-2xl fade-in-up py-20 relative z-10">
+                <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+                    
+                    <div class="fade-in-up">
+                        <h2 class="text-3xl font-bold text-bg-text mb-6">How can we help?</h2>
+                        <p class="text-app-muted mb-10 leading-relaxed">
+                            We are a small, dedicated team building the best tool for novelists. We try to respond to all inquiries within 24-48 hours.
+                        </p>
+        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-app-highlight text-xl flex-shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-app-text font-bold text-lg">Email Support</h3>
+                                    <p class="text-app-muted text-sm mb-1">For general inquiries and license issues.</p>
+                                    <a href="#" onclick="copyAndShowPopup(event, this)" class="text-app-highlight hover:text-app-text transition-colors relative inline-block">
+                                        support@novelative.com
+                                        <span id="copyPopup" class="popup-bubble">Copied!</span>
+                                    </a>
+                                </div>
+                            </div>
+        
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-app-bg border border-app-border flex items-center justify-center text-blue-400 text-xl flex-shrink-0">
+                                    <i class="fa-brands fa-discord"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-app-text font-bold text-lg">Community Discord</h3>
+                                    <p class="text-app-muted text-sm mb-1">Join other writers, report bugs, and suggest features.</p>
+                                    <a href="https://discord.gg/XtXJhXDF3y" target="_blank" class="text-blue-400 hover:text-app-text transition-colors">Join the Server</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="bg-app-bg border border-app-border rounded-xl p-8 shadow-2xl fade-in-up" style="transition-delay: 200ms;">
+                        <form id="contactForm" class="space-y-6">
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-app-muted mb-2">Name</label>
+                                    <input type="text" id="name" name="name" required class="bg-app-surface text-app-text border border-app-border focus:outline-none focus:border-app-highlight focus:ring-1 focus:ring-app-highlight form-input w-full px-4 py-3 rounded-lg transition-colors" placeholder="Jane Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-app-muted mb-2">Email</label>
+                                    <input type="email" id="email" name="email" required class="bg-app-surface text-app-text border border-app-border focus:outline-none focus:border-app-highlight focus:ring-1 focus:ring-app-highlight form-input w-full px-4 py-3 rounded-lg transition-colors" placeholder="jane@example.com">
+                                </div>
+                            </div>
+        
+                            <!-- CUSTOM SELECT DROPDOWN -->
+                            <div class="relative" id="customDropdown">
+                                <label class="block text-sm font-medium text-app-muted mb-2">Subject</label>
+                                
+                                <button type="button" id="dropdownBtn" class="bg-app-surface text-app-text border border-app-border focus:outline-none focus:border-app-highlight focus:ring-1 focus:ring-app-highlight w-full px-4 py-3 rounded-lg flex justify-between items-center transition-all shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <i id="selectedIcon" class="fa-regular fa-message text-app-muted w-4 text-center"></i>
+                                        <span id="selectedOption" class="font-medium">General Inquiry</span>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-down text-xs text-app-muted transition-transform duration-300" id="dropdownArrow"></i>
+                                </button>
+                                
+                                <!-- Hidden Input for Form Submission -->
+                                <input type="hidden" name="subject" id="subjectInput" value="General Inquiry">
 
+                                <!-- Dropdown Menu (Premium styling) -->
+                                <div id="dropdownMenu" class="absolute left-0 right-0 mt-2 bg-app-surface/95 backdrop-blur-md border border-app-border rounded-xl shadow-2xl z-50 p-1.5 opacity-0 pointer-events-none transform -translate-y-2 transition-all duration-200 origin-top">
+                                    
+                                    <div class="dropdown-item px-3 py-2.5 rounded-lg cursor-pointer text-app-muted hover:text-app-text hover:bg-app-bg transition-all flex items-center gap-3 mb-1 last:mb-0" data-value="General Inquiry" data-icon="fa-regular fa-message">
+                                        <i class="fa-regular fa-message w-5 text-center"></i>
+                                        <span class="font-medium">General Inquiry</span>
+                                    </div>
+                                    
+                                    <div class="dropdown-item px-3 py-2.5 rounded-lg cursor-pointer text-app-muted hover:text-app-text hover:bg-app-bg transition-all flex items-center gap-3 mb-1 last:mb-0" data-value="Bug Report" data-icon="fa-solid fa-bug">
+                                        <i class="fa-solid fa-bug w-5 text-center"></i>
+                                        <span class="font-medium">Bug Report</span>
+                                    </div>
+                                    
+                                    <div class="dropdown-item px-3 py-2.5 rounded-lg cursor-pointer text-app-muted hover:text-app-text hover:bg-app-bg transition-all flex items-center gap-3 mb-1 last:mb-0" data-value="Feature Request" data-icon="fa-regular fa-lightbulb">
+                                        <i class="fa-regular fa-lightbulb w-5 text-center"></i>
+                                        <span class="font-medium">Feature Request</span>
+                                    </div>
+                                    
+                                    <div class="dropdown-item px-3 py-2.5 rounded-lg cursor-pointer text-app-muted hover:text-app-text hover:bg-app-bg transition-all flex items-center gap-3 mb-0 last:mb-0" data-value="Licensing Issue" data-icon="fa-solid fa-key">
+                                        <i class="fa-solid fa-key w-5 text-center"></i>
+                                        <span class="font-medium">Licensing Issue</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+        
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-app-muted mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5" required class="bg-app-surface text-app-text border border-app-border focus:outline-none focus:border-app-highlight focus:ring-1 focus:ring-app-highlight form-input w-full px-4 py-3 rounded-lg transition-colors" placeholder="How can we help you?"></textarea>
+                            </div>
+        
+                            <button type="submit" id="submitBtn" class="w-full bg-app-highlight hover:bg-app-highlightHover text-app-bg font-bold py-4 rounded-lg shadow-lg shadow-app-highlight/20 transition-all transform hover:scale-[1.02]">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
@@ -156,12 +191,8 @@
                     <span class="font-serif text-xl font-bold">Novelative</span>
                 </div>
                 <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
-                <div class="flex gap-4">
-                	<a href="https://discord.gg/XtXJhXDF3y" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
-                	<!-- remove other social links for now>
-                    <a href="#" class="hover:text-app-text"><i class="fa-brands fa-twitter text-lg"></i></a>
-                    <a href="#" class="hover:text-app-text"><i class="fa-brands fa-github text-lg"></i></a>
-                    -->
+                <p class="mb-4">© Novelative 2026</p> <div class="flex gap-4">
+                	<a href="https://discord.gg/XtXJhXDF3y" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
                 </div>
             </div>
             <div>
@@ -174,115 +205,164 @@
             <div>
                 <h4 class="font-bold text-app-text mb-4">Support</h4>
                 <ul class="space-y-2">
-                    <li><a href="contact.html" class="hover:text-app-text underline">Contact</a></li>
+                    <li><a href="contact.html" class="hover:text-app-text">Contact</a></li>
                     <li><a href="privacypolicy.html" class="hover:text-app-text">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
     </footer>
     
-	<style>
-	/* Styling for the popup */
-	.popup-bubble {
-		visibility: hidden;
-		width: 80px;
-		background-color: #333;
-		color: #fff;
-		text-align: center;
-		border-radius: 6px;
-		padding: 5px 0;
-		position: absolute;
-		z-index: 1;
-		opacity: 0;
-		transition: opacity 0.3s;
-		font-size: 12px;
-		margin-left:15px;
-	}
-	
-	/* Little arrow pointing down */
-	.popup-bubble::after {
-		content: "";
-		position: absolute;
-		top: 32%;
-		right: 100%;
-		margin-left: -5px;
-		border-width: 5px;
-		border-style: solid;
-		border-color: transparent #333 transparent transparent;
-	}
-	
-	/* Class to trigger the animation */
-	.show-popup {
-		visibility: visible;
-		opacity: 1;
-	}
-	</style>
-	
-    <!-- Scripts (Animation Logic) -->
+    <style>
+        .popup-bubble {
+            visibility: hidden; width: 80px; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0;
+            position: absolute; z-index: 10; top: -30px; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s;
+            font-size: 12px; pointer-events: none;
+        }
+        .popup-bubble::after {
+            content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent;
+        }
+        .show-popup { visibility: visible; opacity: 1; }
+        
+        /* Modern Dropdown Open State Animations */
+        .dropdown-open #dropdownMenu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .dropdown-open #dropdownArrow {
+            transform: rotate(180deg);
+        }
+        /* Make the button glow slightly when the menu is open */
+        .dropdown-open #dropdownBtn {
+            border-color: var(--color-app-highlight, #f59e0b);
+            box-shadow: 0 0 0 1px var(--color-app-highlight, #f59e0b);
+        }
+    </style>
+    
     <script>
-        // --- Graph Background Animation (Reused) ---
+        // --- EmailJS Initialization ---
+        (function() {
+            emailjs.init({
+                publicKey: "7Lq-JMbXtVbwLCluy",
+            });
+        })();
+
+        // --- Premium Custom Dropdown Logic ---
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const selectedLabel = document.getElementById('selectedOption');
+        const selectedIcon = document.getElementById('selectedIcon');
+        const subjectInput = document.getElementById('subjectInput');
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.body.classList.toggle('dropdown-open');
+        });
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const val = item.getAttribute('data-value');
+                const iconClass = item.getAttribute('data-icon');
+                
+                // Update text and input
+                selectedLabel.innerText = val;
+                subjectInput.value = val;
+                
+                // Update the icon and make it take the highlight color to look active
+                selectedIcon.className = iconClass + ' w-4 text-center text-app-highlight transition-colors';
+                
+                // Close menu
+                document.body.classList.remove('dropdown-open');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            document.body.classList.remove('dropdown-open');
+        });
+
+        // --- Form Submission ---
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerText;
+            
+            submitBtn.innerText = 'Sending...';
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            submitBtn.disabled = true;
+
+            emailjs.sendForm('service_ixkkajg', 'template_u2gzusr', this)
+                .then(() => {
+                    submitBtn.innerText = 'Message Sent!';
+                    submitBtn.classList.replace('bg-app-highlight', 'bg-green-500');
+                    document.getElementById('contactForm').reset();
+                    
+                    // Reset custom dropdown state
+                    selectedLabel.innerText = "General Inquiry";
+                    selectedIcon.className = "fa-regular fa-message text-app-muted w-4 text-center transition-colors";
+                    subjectInput.value = "General Inquiry";
+                    
+                    setTimeout(() => {
+                        submitBtn.innerText = originalText;
+                        submitBtn.classList.replace('bg-green-500', 'bg-app-highlight');
+                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                        submitBtn.disabled = false;
+                    }, 6000);
+                }, (error) => {
+                    console.log('FAILED...', error);
+                    submitBtn.innerText = 'Failed to Send.';
+                    submitBtn.classList.replace('bg-app-highlight', 'bg-red-500');
+                    setTimeout(() => {
+                        submitBtn.innerText = originalText;
+                        submitBtn.classList.replace('bg-red-500', 'bg-app-highlight');
+                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                        submitBtn.disabled = false;
+                    }, 6000);
+                });
+        });
+
+        // --- Graph Background Animation ---
         const canvas = document.getElementById('graphCanvas');
         const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
+        let width, height, particles = [];
         
         function getAccentColor() {
             const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
-            // FIX: Replace spaces with commas for valid RGB syntax in Canvas
             return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
         }
-
         let accentColor = getAccentColor();
-
-        // Listen for theme changes to update color
-        window.addEventListener('themeChanged', () => {
-            accentColor = getAccentColor();
-        });
+        window.addEventListener('themeChanged', () => { accentColor = getAccentColor(); });
 
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.3; // Slower for download page
+                this.vx = (Math.random() - 0.5) * 0.3;
                 this.vy = (Math.random() - 0.5) * 0.3;
                 this.size = Math.random() * 1.5 + 1;
             }
             update() {
-                this.x += this.vx;
-                this.y += this.vy;
+                this.x += this.vx; this.y += this.vy;
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
             draw() {
                 ctx.fillStyle = accentColor;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
             }
         }
         
         function resize() {
             width = window.innerWidth;
-            height = window.innerHeight; // Full viewport height for simplicity here
-            // Or use document body height if content scrolls a lot
-            if(document.body.scrollHeight > window.innerHeight) {
-                 height = document.body.scrollHeight;
-            }
-
-            canvas.width = width;
-            canvas.height = height;
-            initParticles();
+            height = Math.max(window.innerHeight, document.body.scrollHeight);
+            canvas.width = width; canvas.height = height;
+            particles = [];
+            for (let i = 0; i < Math.floor(width / 25); i++) particles.push(new Particle());
         }
         window.addEventListener('resize', resize);
         
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.floor(width / 25); // Slightly less dense
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
         function animate() {
             ctx.clearRect(0, 0, width, height);
             for (let i = 0; i < particles.length; i++) {
@@ -306,44 +386,30 @@
             requestAnimationFrame(animate);
         }
 
-        // --- Scroll Reveal ---
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    obs.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
         window.onload = function () {
-            resize();
-            animate();
+            resize(); animate();
             document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
         }
 
-		function copyAndShowPopup(event, element) {
-			event.preventDefault();
-		  
-			// 1. Copy text to clipboard
-			const text = element.innerText;
-			navigator.clipboard.writeText(text).then(() => {
-		    
-				// 2. Show the popup
-		    	const popup = document.getElementById("copyPopup");
-		    	popup.classList.add("show-popup");
-		    
-		    	// 3. Hide it after 1.5 seconds
-		    	setTimeout(() => {
-					popup.classList.remove("show-popup");
-		    	}, 1500);
-			    
-			}).catch(err => {
-				console.error("Failed to copy", err);
-			});
-		}
-
+        function copyAndShowPopup(event, element) {
+            event.preventDefault();
+            const text = element.innerText.replace('Copied!', '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const popup = document.getElementById("copyPopup");
+                popup.classList.add("show-popup");
+                setTimeout(() => popup.classList.remove("show-popup"), 1500);
+            });
+        }
     </script>
 </body>
 </html>

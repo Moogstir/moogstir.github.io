@@ -1,69 +1,148 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-T9DS3YHVV6');
+	</script>
+	
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Novelative | Start Writing</title>
+    <title>Download | Novelative</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<script src="theme.js"></script>
 
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-    <!-- Navbar (Matches Landing Page) -->
     <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <!-- Use your asset here -->
-                <img src="./assets/headericon.png" class="w-7" alt="Logo">
+            <a  href="index.html" class="flex items-center gap-2">
+                <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
                 <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
-            </div>
+            </a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
-                <a href="index.html" class="hover:text-white transition-colors">Home</a>
-                <a href="features.html" class="hover:text-white transition-colors">Features</a>
+                <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+                <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
                 <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
             </div>
-            <a href="purchase.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
-                BUY NOW
-            </a>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+				<a href="purchase.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                    View Pricing
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="flex-grow relative flex items-center justify-center pt-32 pb-24">
         
-        <!-- Canvas Background -->
-        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-20 pointer-events-none"></canvas>
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50 pointer-events-none"></canvas>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
             
-            <!-- Header -->
             <div class="text-center mb-16">
                 <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6 fade-in-up">
-                    Novelative is set to release May 1st, 2026
+                    Begin Your <span class="text-gold-gradient">Masterpiece.</span> 
                 </h1>
                 <p class="text-xl text-app-muted max-w-2xl mx-auto fade-in-up" style="transition-delay: 100ms;">
-                    Upon release, Novelative will be completely free for a limited amount of time for beta testing. Delays are possible.
+                    Download the latest version of Novelative (v0.1.0-beta). <br>
+                    You get 30 days of use <span class="text-app-highlight">FREE</span>.
                 </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
+                
+                <div class="bg-app-surface border border-app-border rounded-xl p-8 flex flex-col items-center text-center fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 bg-gray-600/20 rounded-lg flex items-center justify-center mb-6 text-app-text">
+                        <i class="fa-brands fa-windows text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-app-text mb-2">Windows</h3>
+                    <p class="text-app-muted text-sm mb-8">Requires Windows 10 or 11 (64-bit)</p>
+                    
+                    <a href="https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe" class="w-full bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-lg shadow-app-highlight/40 flex items-center justify-center gap-2 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-download"></i> Download For Free
+                    </a>
+                    
+                    <div class="mt-4 text-xs text-app-muted">
+                        Version 0.1.0-beta &bull; 203 MB
+                    </div>
+                </div>
+
+                <div class="bg-app-surface border border-app-border rounded-xl p-8 flex flex-col items-center text-center fade-in-up" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 bg-gray-600/20 rounded-lg flex items-center justify-center mb-6 text-app-muted">
+                        <i class="fa-brands fa-apple text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-app-text mb-2">macOS</h3>
+                    <p class="text-app-muted text-sm mb-8">Requires macOS 10.15 (Catalina) or later</p>
+                    
+                    <div class="w-full flex flex-col gap-3">
+                        <button disabled class="w-full bg-app-text/5 border border-app-text/5 text-app-muted font-bold py-3 rounded-lg cursor-not-allowed flex items-center justify-center gap-3 opacity-70">
+                            <i class="fa-solid fa-hourglass-half"></i> Coming Soon
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 text-xs text-app-muted">
+                        Novelative is currently being prepared for Mac.<br>Expect a launch soon!
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="max-w-3xl mx-auto border-t border-app-border pt-12 fade-in-up" style="transition-delay: 400ms;">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h4 class="text-app-text font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-app-highlight"></i> Installation Notes
+                        </h4>
+                        <ul class="space-y-3 text-sm text-app-muted">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
+                                <span>No account creation required to start the trial.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
+                                <span>Data is stored locally in standard JSON/Text formats.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
+                                <span>Offline-first: Works without an internet connection.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-app-text font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-app-highlight"></i> Safety & Privacy
+                        </h4>
+                        <p class="text-sm text-app-muted leading-relaxed">
+                            Novelative is signed and notarized for your security. We do not track your writing content or upload your files to any cloud server unless you explicitly use a third-party backup integration.
+                        </p>
+                        <a href="privacypolicy.html" class="text-app-highlight hover:text-app-text text-sm mt-2 inline-block border-b border-app-highlight/30 hover:border-app-text pb-0.5 transition-colors">Read Privacy Policy</a>
+                    </div>
+                </div>
             </div>
 
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
@@ -72,14 +151,14 @@
                     <span class="font-serif text-xl font-bold">Novelative</span>
                 </div>
                 <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
-                <div class="flex gap-4">
-                	<a href="https://discord.gg/XtXJhXDF3y" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
+                <p class="mb-4">© Novelative 2026</p> <div class="flex gap-4">
+                	<a href="https://discord.gg/XtXJhXDF3y" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
                 </div>
             </div>
             <div>
                 <h4 class="font-bold text-app-text mb-4">Product</h4>
                 <ul class="space-y-2">
-                    <li><a href="download.html" class="hover:text-app-text underline">Download</a></li>
+                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
                     <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
                 </ul>
             </div>
@@ -93,7 +172,6 @@
         </div>
     </footer>
 
-    <!-- Scripts (Animation Logic) -->
     <script>
         // --- Graph Background Animation (Reused) ---
         const canvas = document.getElementById('graphCanvas');

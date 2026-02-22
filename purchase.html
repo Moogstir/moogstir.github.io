@@ -1,69 +1,268 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-T9DS3YHVV6');
+	</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Novelative | Start Writing</title>
+    <title>Purchase | Novelative</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome -->
+    <script src="theme.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-	<script src="theme.js"></script>
-
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .pricing-list i {
+            /* Standard green for checklist success */
+            color: #10B981; 
+        }
+    </style>
 </head>
-<body class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-    <!-- Navbar (Matches Landing Page) -->
     <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <!-- Use your asset here -->
-                <img src="./assets/headericon.png" class="w-7" alt="Logo">
+            <a  href="index.html" class="flex items-center gap-2">
+                <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
                 <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
-                <a href="index.html" class="hover:text-white transition-colors">Home</a>
-                <a href="features.html" class="hover:text-white transition-colors">Features</a>
-                <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
-            </div>
-            <a href="purchase.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
-                BUY NOW
             </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
+                <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+                <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
+                <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="download.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                    Download Free
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow relative flex items-center justify-center pt-32 pb-24">
-        
-        <!-- Canvas Background -->
-        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-20 pointer-events-none"></canvas>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
+    <section class="pt-40 pb-20 bg-app-bg relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center" style="z-index: 2; position: relative;">
+            <h1 class="font-serif text-6xl md:text-7xl font-bold mb-6 fade-in-up">
+                Simple Plans for <span class="text-gold-gradient">Unlimited Creativity.</span>
+            </h1>
+            <p class="text-xl text-app-muted max-w-3xl mx-auto fade-in-up" style="transition-delay: 100ms;">
+                Choose between a simple one-time payment for lifetime access or a flexible low monthly subscription. Both include all features and updates.
+            </p>
+        </div>
+        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-60"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0" style="z-index: 1;"></div>
+    </section>
 
-        <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
+    <section class="flex-grow bg-app-surface border-y border-app-border py-20 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
             
-            <!-- Header -->
-            <div class="text-center mb-16">
-                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6 fade-in-up">
-                    Novelative is set to release May 1st, 2026
-                </h1>
-                <p class="text-xl text-app-muted max-w-2xl mx-auto fade-in-up" style="transition-delay: 100ms;">
-                    Upon release, Novelative will be completely free for a limited amount of time for beta testing. Delays are possible.
-                </p>
+            <div class="bg-app-bg border-2 border-app-highlight/60 rounded-xl p-8 lg:p-12 shadow-[0_0_30px_rgba(251,191,36,0.1)] relative fade-in-up">
+                <div class="text-center">
+                    <div class="flex justify-center flex-wrap gap-2 mb-3">
+                        <span class="inline-block px-3 py-1 bg-red-500/20 text-red-500 rounded text-sm font-bold border border-red-500/30">50% OFF BETA SALE</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-app-text mb-2">Novelative Lifetime</h2>
+                    <p class="text-app-muted mb-6">A single, simple purchase for endless creativity.</p>
+                    <div class="font-serif mb-8 flex flex-col items-center justify-center">
+                        <span class="relative inline-block text-2xl text-red-500 opacity-80 mb-1 after:absolute after:inset-x-0 after:top-[65%] after:h-[1px] after:bg-red-500">
+						    $50.00
+						</span>
+                        <div class="text-6xl font-extrabold text-app-highlight leading-none">
+                            $25<span class="text-2xl text-app-muted">.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="space-y-4 pricing-list mb-10">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">One-Time Payment:</strong> No recurring fees, ever.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">Lifetime Access:</strong> Own Novelative indefinitely.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">All Future Updates:</strong> Includes every new feature and major version.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">Unlimited Potential:</strong> Craft professional-grade narratives with our complete suite of advanced tools.</span>
+                    </li>
+                </ul>
+                <button onclick="showComingSoon()" class="w-full bg-app-highlight hover:bg-app-highlightHover text-app-bg font-bold py-4 rounded-lg text-xl shadow-lg shadow-app-highlight/30 transition-all flex items-center justify-center gap-3 transform hover:scale-[1.02]">
+                    <i class="fa-solid fa-credit-card"></i> Buy Novelative Lifetime
+                </button>
             </div>
 
+            <div class="bg-app-bg border-2 border-app-border rounded-xl p-8 lg:p-12 shadow-2xl fade-in-up" style="transition-delay: 150ms;">
+                <div class="text-center mt-[44px]"> <h2 class="text-3xl font-bold text-app-text mb-2">Novelative Monthly</h2>
+                    <p class="text-app-muted mb-6">Perfect for trying out Novelative or short-term projects.</p>
+                    <div class="font-serif mb-8 flex flex-col items-center justify-center">
+                        <div class="text-2xl opacity-0 mb-1">$0</div> <div class="text-6xl font-extrabold text-app-text leading-none">
+                            $5<span class="text-2xl text-app-muted">/month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="space-y-4 pricing-list mb-10">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">Low Monthly Cost:</strong> Flexible budgeting.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">Latest Updates:</strong> Receive all updates and features while subscribed.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">Cancel Anytime:</strong> Full control over your subscription.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle mt-1 text-lg"></i>
+                        <span><strong class="text-app-text">Unlimited Potential:</strong> Craft professional-grade narratives with our complete suite of advanced tools.</span>
+                    </li>
+                </ul>
+                <button onclick="showComingSoon()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg text-xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-3 transform hover:scale-[1.02]">
+                    <i class="fa-solid fa-repeat"></i> Buy Novelative Monthly
+                </button>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
+	<section class="py-20 bg-app-bg">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-serif text-4xl font-bold text-center mb-16 fade-in-up">
+                Frequently Asked Questions
+            </h2>
+            
+            <div class="space-y-2">
+                
+                <div class="border-b border-app-border fade-in-up">
+                    <button onclick="toggleFaq(this)" class="w-full text-left py-5 flex justify-between items-center focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-app-text flex items-center gap-3 group-hover:text-app-highlight transition-colors">
+                            <i class="fa-solid fa-question-circle text-app-highlight"></i> Is Novelative a one-time purchase or a subscription?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-app-muted transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 pl-7 pr-4">
+                        <p class="text-app-muted leading-relaxed">
+                            Paying once for the Lifetime plan, or maintaining a monthly subscription, both give you indefinite support and updates to all of Novelative FOREVER.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="border-b border-app-border fade-in-up" style="transition-delay: 50ms;">
+                    <button onclick="toggleFaq(this)" class="w-full text-left py-5 flex justify-between items-center focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-app-text flex items-center gap-3 group-hover:text-app-highlight transition-colors">
+                            <i class="fa-solid fa-question-circle text-app-highlight"></i> Can I install Novelative on multiple computers?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-app-muted transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 pl-7 pr-4">
+                        <p class="text-app-muted leading-relaxed">
+                            Yes. The license allows you to install and use Novelative on up to three personal computers (e.g., desktop, laptop, tablet running the OS). The license key is tied to your account for easy management.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-b border-app-border fade-in-up" style="transition-delay: 100ms;">
+                    <button onclick="toggleFaq(this)" class="w-full text-left py-5 flex justify-between items-center focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-app-text flex items-center gap-3 group-hover:text-app-highlight transition-colors">
+                            <i class="fa-solid fa-question-circle text-app-highlight"></i> Is there a free trial?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-app-muted transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 pl-7 pr-4">
+                        <p class="text-app-muted leading-relaxed">
+                            You can try Novelative for free. The first 30 days of use are completely free. After the first 30 days of use, you can pay $25 one time (50% off the regular $50 price during beta) for unlimited use, or $5/month for unlimited use while you hold the subscription.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-b border-app-border fade-in-up" style="transition-delay: 150ms;">
+                    <button onclick="toggleFaq(this)" class="w-full text-left py-5 flex justify-between items-center focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-app-text flex items-center gap-3 group-hover:text-app-highlight transition-colors">
+                            <i class="fa-solid fa-question-circle text-app-highlight"></i> Do I lose my work if I stop paying?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-app-muted transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 pl-7 pr-4">
+                        <p class="text-app-muted leading-relaxed">
+                            Absolutely not. Your work is entirely yours. Novelative saves your project locally to your computer as an easily accessible <code>.json</code> file. Even if your subscription lapses, your files remain completely intact and in your possession.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-b border-app-border fade-in-up" style="transition-delay: 250ms;">
+                    <button onclick="toggleFaq(this)" class="w-full text-left py-5 flex justify-between items-center focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-app-text flex items-center gap-3 group-hover:text-app-highlight transition-colors">
+                            <i class="fa-solid fa-question-circle text-app-highlight"></i> What makes Novelative better than other tools?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-app-muted transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 pl-7 pr-4">
+                        <p class="text-app-muted leading-relaxed">
+                            We built Novelative to get out of your way. It’s intuitive, easy to navigate, and designed so your tools work in harmony. Want to see how your world connects? Our wiki-links and tags feed directly into a live Graph View, while the Infinite Canvas lets you plot relationships without borders. With custom themes and dedicated project hubs for infinite story universes, it’s more than an editor—it’s a workspace that feels as boundless as your imagination.
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-b border-app-border fade-in-up" style="transition-delay: 300ms;">
+                    <button onclick="toggleFaq(this)" class="w-full text-left py-5 flex justify-between items-center focus:outline-none group">
+                        <h3 class="text-xl font-semibold text-app-text flex items-center gap-3 group-hover:text-app-highlight transition-colors">
+                            <i class="fa-solid fa-question-circle text-app-highlight"></i> Can I export my work?
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-app-muted transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="faq-content hidden pb-6 pl-7 pr-4">
+                        <p class="text-app-muted leading-relaxed">
+                            Yes, exporting your work is extremely easy! You can use our built-in Compile tool when you are ready to prepare your manuscript for publishing, or use our backups feature to move your raw project data anywhere.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            function toggleFaq(button) {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.fa-chevron-down');
+                
+                // Toggle visibility
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        </script>
+    </section>
+
     <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
@@ -72,14 +271,14 @@
                     <span class="font-serif text-xl font-bold">Novelative</span>
                 </div>
                 <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
-                <div class="flex gap-4">
-                	<a href="https://discord.gg/XtXJhXDF3y" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
+                <p class="mb-4">© Novelative 2026</p> <div class="flex gap-4">
+                	<a href="https://discord.gg/XtXJhXDF3y" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
                 </div>
             </div>
             <div>
                 <h4 class="font-bold text-app-text mb-4">Product</h4>
                 <ul class="space-y-2">
-                    <li><a href="download.html" class="hover:text-app-text underline">Download</a></li>
+                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
                     <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
                 </ul>
             </div>
@@ -93,9 +292,62 @@
         </div>
     </footer>
 
-    <!-- Scripts (Animation Logic) -->
+    <div id="comingSoonModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop" onclick="hideComingSoon()"></div>
+        
+        <div class="relative bg-app-surface border border-app-border rounded-xl p-8 max-w-md w-full shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalContent">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-app-highlight/20 rounded-full flex items-center justify-center mx-auto mb-6 text-app-highlight text-3xl">
+                    <i class="fa-solid fa-hourglass-start"></i> 
+                </div>
+                <h3 class="font-serif text-3xl font-bold text-app-text mb-4">Coming Soon</h3>
+                <p class="text-app-muted mb-8 leading-relaxed text-lg">
+                    Novelative will soon be available for purchase within the next week or so. Please come back soon!
+                </p>
+                <button onclick="hideComingSoon()" class="w-full bg-app-highlight hover:bg-app-highlightHover text-app-bg font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-app-highlight/20">
+                    Got it, I'll be back!
+                </button>
+            </div>
+            <button onclick="hideComingSoon()" class="absolute top-4 right-4 text-app-muted hover:text-app-text transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+    </div>
+
     <script>
-        // --- Graph Background Animation (Reused) ---
+        // --- Modal Logic ---
+        function showComingSoon() {
+            const modal = document.getElementById('comingSoonModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const content = document.getElementById('modalContent');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Trigger animation
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                content.classList.remove('opacity-0', 'scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function hideComingSoon() {
+            const modal = document.getElementById('comingSoonModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const content = document.getElementById('modalContent');
+            
+            backdrop.classList.add('opacity-0');
+            content.classList.add('opacity-0', 'scale-95');
+            content.classList.remove('scale-100');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300); // Matches transition duration
+        }
+
+        // --- 1. Graph Background Animation (Canvas) ---
         const canvas = document.getElementById('graphCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -103,13 +355,11 @@
         
         function getAccentColor() {
             const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
-            // FIX: Replace spaces with commas for valid RGB syntax in Canvas
             return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
         }
 
         let accentColor = getAccentColor();
 
-        // Listen for theme changes to update color
         window.addEventListener('themeChanged', () => {
             accentColor = getAccentColor();
         });
@@ -118,8 +368,8 @@
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.3; // Slower for download page
-                this.vy = (Math.random() - 0.5) * 0.3;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
                 this.size = Math.random() * 1.5 + 1;
             }
             update() {
@@ -138,21 +388,17 @@
         
         function resize() {
             width = window.innerWidth;
-            height = window.innerHeight; // Full viewport height for simplicity here
-            // Or use document body height if content scrolls a lot
-            if(document.body.scrollHeight > window.innerHeight) {
-                 height = document.body.scrollHeight;
-            }
-
+            height = Math.min(window.innerHeight * 1.2, 900); 
             canvas.width = width;
             canvas.height = height;
             initParticles();
         }
         window.addEventListener('resize', resize);
-        
+        resize();
+
         function initParticles() {
             particles = [];
-            const particleCount = Math.floor(width / 25); // Slightly less dense
+            const particleCount = Math.floor(width / 20);
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
@@ -160,17 +406,20 @@
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
+            
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
+                
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
+                    
+                    if (distance < 120) {
                         ctx.beginPath();
                         const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
-                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1000})`; 
+                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1200})`; 
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -180,9 +429,14 @@
             }
             requestAnimationFrame(animate);
         }
+        
+        // --- 2. Scroll Reveal Animation ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-        // --- Scroll Reveal ---
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -193,9 +447,10 @@
         }, observerOptions);
 
         window.onload = function () {
-            resize();
             animate();
-            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
         }
     </script>
 </body>

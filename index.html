@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-T9DS3YHVV6');
+	</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novelative</title>
@@ -35,8 +46,8 @@
                 <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-5 py-2 rounded-md font-semibold transition-all transform hover:scale-105 shadow-lg shadow-app-highlight/30">
-                    Create Your Novel
+                <a href="download.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                    Start Creating
                 </a>
             </div>
         </div>
@@ -56,7 +67,7 @@
                 Start Building Your World
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="transition-delay: 300ms;">
-                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-xl shadow-app-highlight/40 flex items-center justify-center gap-2">Download Novelative</a>
+                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-lg shadow-app-highlight/40 flex items-center justify-center gap-2">Download Novelative</a>
                 <a href="features.html" class="border border-app-border hover:border-app-muted bg-app-surface/50 text-app-text px-8 py-4 rounded-lg font-bold text-lg backdrop-blur-sm transition-all">
                     Explore Features
                 </a>
@@ -189,6 +200,19 @@
         </div>
     </section>
 
+	<section class="py-20 bg-app-bg border-t border-app-border">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="font-serif text-3xl font-bold mb-4">Deep Dive into the Toolkit</h3>
+            <p class="text-app-muted text-lg mb-8">
+                Unlimited Projects • Wiki-Links • Infinite Canvas's • Tags • Custom Themes • SO MUCH MORE
+            </p>
+            <a href="features.html" class="inline-flex items-center gap-2 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-8 py-3 rounded-lg font-bold transition-all group">
+                See All Features 
+                <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+    </section>
+
     <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
@@ -197,7 +221,7 @@
                     <span class="font-serif text-xl font-bold">Novelative</span>
                 </div>
                 <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
-                <div class="flex gap-4">
+                <p class="mb-4">© Novelative 2026</p> <div class="flex gap-4">
                 	<a href="https://discord.gg/XtXJhXDF3y" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
                 </div>
             </div>
@@ -361,7 +385,33 @@
             document.querySelectorAll('.fade-in-up').forEach(el => {
                 observer.observe(el);
             });
+            
+            const backToTopBtn = document.getElementById('backToTop');
+
+			window.addEventListener('scroll', () => {
+			    if (window.scrollY > 400) {
+			        // Show button
+			        backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+			        backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+			    } else {
+			        // Hide button
+			        backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+			        backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+			    }
+			});
+			
+			backToTopBtn.addEventListener('click', () => {
+			    window.scrollTo({
+			        top: 0,
+			        behavior: 'smooth'
+			    });
+			});
         }
     </script>
+    
+	<button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-app-highlight text-app-bg w-10 h-10 rounded-lg shadow-2xl flex items-center justify-center opacity-0 translate-y-10 pointer-events-none transition-all duration-300 hover:scale-110 hover:bg-app-highlightHover">
+	    <i class="fa-solid fa-arrow-up"></i>
+	</button>
+    
 </body>
 </html>
