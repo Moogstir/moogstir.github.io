@@ -2,7 +2,6 @@
 <html lang="en" class="scroll-smooth">
 <head>
 
-	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -11,10 +10,13 @@
 	
 	  gtag('config', 'G-T9DS3YHVV6');
 	</script>
+	
+	<script>window.lemonSqueezyAffiliateConfig = { store: "novelative" };</script>
+	<script src="https://lmsqueezy.com/affiliate.js" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novelative</title>
+    <title>Novelative | The Writers Studio</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,12 +24,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script src="theme.js"></script>
-
     <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Poll Selection Styles */
+        .poll-card.selected {
+            border-color: rgb(var(--color-app-highlight));
+            background-color: rgba(var(--color-app-highlight), 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .poll-card.selected .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
 </head>
 <body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden">
 
@@ -41,13 +57,14 @@
                 <a href="index.html" class="underline text-app-text transition-colors">Home</a>
                 <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
                 <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
+                <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
             </div>
             <div class="flex items-center">
                 <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-sun"></i>
                 </button>
                 <a href="download.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
-                    Start Creating
+                    Download Beta
                 </a>
             </div>
         </div>
@@ -60,14 +77,10 @@
 
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center p-20">
             <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 fade-in-up" style="transition-delay: 100ms;">
-                The most powerful tool for <br>
-                <span class="text-gold-gradient">complex narratives.</span>
+                <span class="text-gold-gradient">Finish your draft</span> <br><span class="text-4xl">without the "Middle-of-the-Novel" meltdown.</span>
             </h1>
-            <p class="text-xl text-app-muted max-w-2xl mx-auto mb-10 fade-in-up" style="transition-delay: 200ms;">
-                Start Building Your World
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="transition-delay: 300ms;">
-                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-lg shadow-app-highlight/40 flex items-center justify-center gap-2">Download Novelative</a>
+            <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="transition-delay: 300ms;">
+                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-lg shadow-app-highlight/40 flex items-center justify-center gap-2">Download Beta</a>
                 <a href="features.html" class="border border-app-border hover:border-app-muted bg-app-surface/50 text-app-text px-8 py-4 rounded-lg font-bold text-lg backdrop-blur-sm transition-all">
                     Explore Features
                 </a>
@@ -139,18 +152,18 @@
                     <img data-base-src="assets/app-screenshot-tag" data-ext="png" src="assets/app-screenshot-tag-dark.png" alt="Novelative App Tagging System" class="theme-toggle-img w-full h-auto shadow-2xl rounded-lg">
                 </div>
                 <div class="md:w-1/2 order-1 md:order-2">
-                    <div class="text-red-400 font-bold tracking-widest text-sm uppercase mb-2">Tagging System</div>
+                    <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Tagging System</div>
                     <h2 class="font-serif text-4xl font-bold mb-6">Powerful Organization, Personalized for You</h2>
                     <p class="text-app-muted text-lg mb-6">
                         Novelative's tagging system allows you to organize your files YOUR way, integrated systems allthroughout the app make it a breeze to visualize your project in a variety of useful ways.
                     </p>
                     <ul class="space-y-4 text-app-muted text-lg">
                         <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-wand-magic-sparkles text-red-400 mt-1.5"></i>
+                            <i class="fa-solid fa-wand-magic-sparkles text-app-highlight mt-1.5"></i>
                             <span><strong>Custom Tags:</strong> Customize the appearance of every tag and apply as many tags as needed for every file.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-table-columns text-red-400 mt-1.5"></i>
+                            <i class="fa-solid fa-table-columns text-app-highlight mt-1.5"></i>
                             <span><strong>Tagging Utility:</strong> Tags appear in the hierarchy next to your file's name. But tags are also visualized inside canvases. And use the Graph View to visualize your tagged files in a whole new way.</span>
                         </li>
                     </ul>
@@ -159,18 +172,18 @@
             
             <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
                 <div class="md:w-1/2">
-                    <div class="text-green-400 text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Graph View</div>
+                    <div class="text-app-highlight text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Graph View</div>
                     <h2 class="font-serif text-4xl font-bold mb-6">Visualize & Navigate.</h2>
                     <p class="text-app-muted text-lg mb-6">
                         Use Novelative's Graph View to navigate and organize your files to get a view of your project.
                     </p>
                     <ul class="space-y-4 text-app-muted text-lg">
                         <li class="flex items-start gap-3">
-                            <i class="text-green-400 fa-solid fa-cube text-app-highlight mt-1.5"></i>
+                            <i class="text-app-highlight fa-solid fa-cube text-app-highlight mt-1.5"></i>
                             <span><strong>Tag View:</strong> Every file is organized into groups of tags, easy for navigating files with certain tags.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i class="text-green-400 fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
+                            <i class="text-app-highlight fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
                             <span><strong>Link View:</strong> Show's the links between all your files that have hyperlinks.</span>
                         </li>
                     </ul>
@@ -180,6 +193,146 @@
                 </div>
             </div>
             
+        </div>
+        
+        <div class="pt-20 max-w-4xl mx-auto text-center">
+            <a href="features.html" class="inline-flex items-center border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-8 py-3 rounded-lg font-bold transition-all group">
+                See All Features
+                <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+    
+    </section>
+
+    <section class="py-20 bg-app-surface border-y border-app-border">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in-up">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">The "Accidental" App</h2>
+                <div class="w-20 h-1 bg-app-highlight mb-8"></div>
+                
+                <p class="text-app-muted text-lg mb-6 leading-relaxed">
+                    I never planned to create an app for the public, or to ever launch anything. I was deeply into world-building, and used a professional desktop app to create and store my world. But organizing all my thoughts and ideas was a mess.
+                </p>
+                <p class="text-app-muted text-lg mb-6 leading-relaxed">
+                    So I decided I'd make my own app—just for myself. And it worked!
+                </p>
+                <p class="text-app-muted text-lg mb-8 leading-relaxed font-medium text-app-text">
+                    It wasn't until I realized that my self-made app had solved a <em>REAL</em> problem. It's impossible to navigate your complex worlds with standard tools. Novelative is the answer to that problem.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-app-highlight"></i>
+                        <span class="text-app-text font-bold">Built for Writers</span>
+                    </div>
+                    <div class="hidden sm:block text-app-muted">|</div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-app-highlight"></i>
+                        <span class="text-app-text font-bold">Solved by a Writer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative fade-in-up" style="transition-delay: 150ms;">
+                <div class="absolute -inset-4 bg-app-highlight/5 rounded-2xl blur-xl"></div>
+                <div class="relative bg-app-bg border border-app-border p-8 rounded-xl shadow-2xl">
+                    <h3 class="font-bold text-xl mb-4 text-app-text">Why your voice matters</h3>
+                    <p class="text-app-muted mb-6">Since this tool wasn't built in a corporate boardroom, it doesn't have to follow corporate rules. We build what works for <em>us</em>.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-bug text-red-400 mt-1"></i>
+                            <span class="text-app-muted"><strong>Catching Bugs:</strong> No matter how much we test, real-world usage reveals things we miss.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-wand-magic-sparkles text-[#FBBC04] mt-1"></i>
+                            <span class="text-app-muted"><strong>Workflow Refinement:</strong> We want to know where the app feels "slow" or "clunky" in your actual writing process.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-map text-[#3B82F6] mt-1"></i>
+                            <span class="text-app-muted"><strong>Feature Priority:</strong> We have a roadmap, but you tell us which roads to take first.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-app-bg">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Roadmap Voting</div>
+                <h2 class="font-serif text-4xl font-bold mb-4">What should we build next?</h2>
+                <p class="text-app-muted text-lg">Cast your vote to help us prioritize the next major update.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-10">
+                
+                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up" onclick="selectPollOption(1)" id="poll-option-1">
+                    <div class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
+                        <i class="fa-solid fa-circle-check text-xl"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-app-text">Targets & Analytics</h3>
+                    <p class="text-sm text-app-muted">Set project and file word/page count targets with visual progress bars and notification milestones.</p>
+                </div>
+
+                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up" onclick="selectPollOption(2)" style="transition-delay: 50ms;" id="poll-option-2">
+                    <div class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
+                        <i class="fa-solid fa-circle-check text-xl"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-window-restore"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-app-text">Multi-Window Mode</h3>
+                    <p class="text-sm text-app-muted">Ability to pop text files and canvases out into separate desktop windows while keeping them linked.</p>
+                </div>
+
+                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up" onclick="selectPollOption(3)" style="transition-delay: 100ms;" id="poll-option-3">
+                    <div class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
+                        <i class="fa-solid fa-circle-check text-xl"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-green-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-app-text">UI Undo/Redo</h3>
+                    <p class="text-sm text-app-muted">Add visible buttons for Undo and Redo actions in the toolbar (currently shortcut only).</p>
+                </div>
+            </div>
+
+            <div class="text-center fade-in-up" style="transition-delay: 200ms;">
+                <button id="voteBtn" onclick="submitVote()" disabled class="bg-app-surface border border-app-border text-app-muted font-bold py-3 px-10 rounded-lg transition-all cursor-not-allowed opacity-60">
+                    Select an option above
+                </button>
+                <p id="voteThankYou" class="hidden text-app-highlight font-medium mt-4">
+                    Thank you! Your feedback is valuable to us.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-app-bg border-y border-app-border">
+        <div class="max-w-5xl mx-auto px-6 fade-in-up">
+            <div class="bg-app-surface border border-app-border rounded-xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+                
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-[#5865F2] opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center md:text-left relative z-10">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+                        <i class="fa-brands fa-discord text-[#5865F2] text-2xl"></i>
+                        <h2 class="font-serif text-3xl font-bold text-app-text">Join the Community</h2>
+                    </div>
+                    <p class="text-app-muted text-lg max-w-xl">
+                        Connect with other world-builders, chat directly with the developers, and get real-time updates on our Discord server.
+                    </p>
+                </div>
+                
+                <a href="https://discord.gg/XtXJhXDF3y" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg shadow-[#5865F2]/20 transition-all transform hover:scale-105 flex-shrink-0 flex items-center gap-2 relative z-10">
+                    <span>Join Server</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                </a>
+
+            </div>
         </div>
     </section>
 
@@ -191,25 +344,12 @@
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Free Download</a>
+                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Try Free (No Sign-Up)</a>
                 <div class="text-app-muted text-sm">
                     <div class="mb-1"><i class="fa-brands fa-windows"></i> Windows | <i class="fa-brands fa-apple"></i> macOS</div>
-                    <div>First 30 days of use FREE. No Sign-Up Required.</div>
+                    <div>First 30 days of use FREE. No sign-up & no card information.</div>
                 </div>
             </div>
-        </div>
-    </section>
-
-	<section class="py-20 bg-app-bg border-t border-app-border">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="font-serif text-3xl font-bold mb-4">Deep Dive into the Toolkit</h3>
-            <p class="text-app-muted text-lg mb-8">
-                Unlimited Projects • Wiki-Links • Infinite Canvas's • Tags • Custom Themes • SO MUCH MORE
-            </p>
-            <a href="features.html" class="inline-flex items-center gap-2 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-8 py-3 rounded-lg font-bold transition-all group">
-                See All Features 
-                <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
         </div>
     </section>
 
@@ -241,8 +381,88 @@
             </div>
         </div>
     </footer>
+    
+    <button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-app-highlight text-app-bg w-10 h-10 rounded-lg shadow-2xl flex items-center justify-center opacity-0 translate-y-10 pointer-events-none transition-all duration-300 hover:scale-110 hover:bg-app-highlightHover">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script>
+        // --- EmailJS Initialization ---
+        (function() {
+            emailjs.init({
+                publicKey: "7Lq-JMbXtVbwLCluy",
+            });
+        })();
+
+        // --- Poll Logic ---
+        let selectedVote = 0;
+        let selectedFeatureName = "";
+
+        function selectPollOption(id) {
+            // Reset all
+            document.querySelectorAll('.poll-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Select clicked
+            const target = document.getElementById('poll-option-' + id);
+            target.classList.add('selected');
+            
+            selectedVote = id;
+            
+            // Set the feature name based on the ID
+            if(id === 1) selectedFeatureName = "Targets & Analytics";
+            if(id === 2) selectedFeatureName = "Multi-Window Mode";
+            if(id === 3) selectedFeatureName = "UI Undo/Redo";
+            
+            // Enable button
+            const btn = document.getElementById('voteBtn');
+            btn.disabled = false;
+            btn.classList.remove('cursor-not-allowed', 'opacity-60', 'bg-app-surface', 'border', 'text-app-muted');
+            btn.classList.add('bg-app-highlight', 'hover:bg-app-highlightHover', 'text-app-bg', 'shadow-lg');
+            btn.innerText = "Vote for Option #" + id;
+        }
+
+        function submitVote() {
+            if (selectedVote === 0) return;
+            
+            const btn = document.getElementById('voteBtn');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "Sending...";
+            btn.classList.add('cursor-not-allowed', 'opacity-75');
+            btn.disabled = true;
+
+            // Prepare parameters for EmailJS
+            const params = {
+                feature: selectedFeatureName
+            };
+            
+            // Send the email
+            emailjs.send('service_ixkkajg', 'template_b0ni3zg', params)
+                .then(() => {
+                    // Success UI
+                    btn.classList.add('hidden');
+                    
+                    const thanks = document.getElementById('voteThankYou');
+                    thanks.classList.remove('hidden');
+                    // Ensure NO bounce animation is added
+                    
+                    // Lock the poll
+                    document.querySelectorAll('.poll-card').forEach(card => {
+                        card.style.pointerEvents = 'none';
+                        if(!card.classList.contains('selected')) {
+                            card.style.opacity = '0.5';
+                        }
+                    });
+                }, (error) => {
+                    console.log('FAILED...', error);
+                    btn.innerText = 'Failed to vote. Try again.';
+                    btn.disabled = false;
+                    btn.classList.remove('cursor-not-allowed', 'opacity-75');
+                });
+        }
+
         // --- Theme Image Toggling Logic ---
         function isDarkMode() {
             return !document.documentElement.classList.contains('light-mode');
@@ -261,29 +481,24 @@
             });
         }
 
-        // --- 1. Graph Background Animation (Canvas) ---
+        // --- Graph Background Animation (Canvas) ---
         const canvas = document.getElementById('graphCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
         
-        // Helper to get accent color dynamically
         function getAccentColor() {
             const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
-            // Default to gold if not set
-            // FIX: Replace spaces with commas for valid RGB syntax in Canvas
             return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
         }
 
         let accentColor = getAccentColor();
 
-        // Listen for theme changes to update color & images
         window.addEventListener('themeChanged', () => {
             accentColor = getAccentColor();
             updateImageThemes();
         });
 
-        // Initialize theme images on content load
         document.addEventListener('DOMContentLoaded', updateImageThemes);
 
         class Particle {
@@ -297,8 +512,6 @@
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                
-                // Bounce off edges
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
@@ -310,48 +523,35 @@
             }
         }
         
-        // Resize handling
         function resize() {
             width = window.innerWidth;
             height = window.innerHeight;
             canvas.width = width;
             canvas.height = height;
-            // Reinitialize particles on resize to maintain density
             initParticles();
         }
         window.addEventListener('resize', resize);
-        resize(); // Calling resize() here triggers initParticles()
-
-
-        // Initialize particles
+        
         function initParticles() {
             particles = [];
-            const particleCount = Math.floor(width / 20); // Responsive count
+            const particleCount = Math.floor(width / 20);
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
         }
 
-        // Animation Loop
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
-                
-                // Draw connections
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    
                     if (distance < 120) {
                         ctx.beginPath();
-                        // Fade lines out quickly - use accentColor base but change alpha
-                        // We extract rgb values from accentColor string "rgba(r,g,b,1)"
                         const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
-                        
                         ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1200})`; 
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
@@ -362,11 +562,12 @@
             }
             requestAnimationFrame(animate);
         }
+
         window.onload = function () {
-            updateImageThemes(); // Run once more to ensure stability on load
+            resize(); 
             animate();
+            updateImageThemes();
             
-             // --- 2. Scroll Reveal Animation ---
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -377,7 +578,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Only animate once
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
@@ -390,11 +591,9 @@
 
 			window.addEventListener('scroll', () => {
 			    if (window.scrollY > 400) {
-			        // Show button
 			        backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
 			        backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
 			    } else {
-			        // Hide button
 			        backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
 			        backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
 			    }
@@ -408,10 +607,6 @@
 			});
         }
     </script>
-    
-	<button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-app-highlight text-app-bg w-10 h-10 rounded-lg shadow-2xl flex items-center justify-center opacity-0 translate-y-10 pointer-events-none transition-all duration-300 hover:scale-110 hover:bg-app-highlightHover">
-	    <i class="fa-solid fa-arrow-up"></i>
-	</button>
     
 </body>
 </html>
