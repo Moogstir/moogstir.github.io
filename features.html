@@ -2,7 +2,6 @@
 <html lang="en" class="scroll-smooth">
 <head>
 
-	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -31,20 +30,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
-
-    <style>
-        /* Section-specific styling for icons */
-        .feature-icon {
-            font-size: 2.5rem;
-            color: rgb(var(--color-app-highlight));
-        }
-    </style>
 </head>
-<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen relative">
 
-    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
+    <canvas id="graphCanvas" class="fixed inset-0 z-0 opacity-40 pointer-events-none"></canvas>
+
+    <nav class="fixed w-full z-50 bg-app-bg/90 backdrop-blur-md border-b border-app-border">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a  href="index.html" class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
                 <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
                 <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
             </a>
@@ -65,183 +58,301 @@
         </div>
     </nav>
     
-    <section class="pt-40 pb-20 bg-app-bg relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center" style="z-index: 2; position: relative;">
-            <h1 class="font-serif text-6xl md:text-7xl font-bold mb-6 fade-in-up">
-                Features That <span class="text-gold-gradient">Define</span>
-            </h1>
-            <p class="text-xl text-app-muted max-w-3xl mx-auto fade-in-up" style="transition-delay: 100ms;">
-                Novelative is for novelists — writers who need control, structure, and visualization far beyond standard word processors.
-            </p>
-        </div>
-        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-60"></canvas>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0" style="z-index: 1;"></div>
-    </section>
-
-    <main class="flex-grow bg-app-surface border-y border-app-border py-12">
+    <main class="flex-grow relative z-10 w-full pb-32">
         
-        <div class="max-w-7xl mx-auto px-6 mb-16 flex flex-wrap justify-center gap-3 relative z-10 fade-in-up">
-            <button onclick="switchFeatureView('view-projects', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full transition-colors bg-app-highlight text-app-bg font-medium shadow-md">Projects</button>
-            <button onclick="switchFeatureView('view-wikilink', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full hover:border-app-highlight transition-colors bg-app-surface text-app-text font-medium">Wiki-Link</button>
-            <button onclick="switchFeatureView('view-comment', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full hover:border-app-highlight transition-colors bg-app-surface text-app-text font-medium">Word Comment link</button>
-            <button onclick="switchFeatureView('view-tags', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full hover:border-app-highlight transition-colors bg-app-surface text-app-text font-medium">Tags</button>
-            <button onclick="switchFeatureView('view-canvas', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full hover:border-app-highlight transition-colors bg-app-surface text-app-text font-medium">Canvas</button>
-            <button onclick="switchFeatureView('view-graph', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full hover:border-app-highlight transition-colors bg-app-surface text-app-text font-medium">Graph View</button>
-            <button onclick="switchFeatureView('view-themes', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full hover:border-app-highlight transition-colors bg-app-surface text-app-text font-medium">Custom Themes</button>
-            <button onclick="switchFeatureView('view-more', this)" class="feature-nav-btn px-5 py-2 border border-app-border rounded-full hover:border-app-highlight transition-colors bg-app-surface text-app-text font-medium">MORE</button>
-        </div>
+        <div class="relative w-full max-w-[100rem] mx-auto min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-12">
+            
+            <div class="text-center w-full max-w-2xl px-6 z-0">
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+                    Features That <span class="text-gold-gradient">Define</span>
+                </h1>
+                <p class="text-lg md:text-xl text-app-muted mx-auto fade-in-up" style="transition-delay: 100ms;">
+                    Novelative is for novelists — writers who need control, structure, and visualization far beyond standard word processors.
+                </p>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-app-muted opacity-60 pointer-events-none fade-in-up" style="transition-delay: 400ms;">
+			    <span class="text-[10px] font-semibold uppercase tracking-[0.2em]">Scroll</span>
+			    <i class="fa-solid fa-chevron-down text-xs"></i>
+			</div>
 
-        <div id="view-projects" class="feature-view block">
-            <div class="max-w-4xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-folder-tree text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">Projects</h2>
-                <p class="text-xl text-app-muted mb-8">Manage multiple distinct story universes entirely offline with dedicated save files and local data privacy.</p>
-                <div class="relative rounded-lg overflow-hidden border border-app-border shadow-lg bg-app-bg cursor-pointer group" onclick="openModal('assets/GIFS/Projects', 'gif')">
-                    <img data-base-src="assets/GIFS/Projects" data-ext="gif" src="assets/GIFS/Projects-dark.gif" alt="Projects Feature" class="feature-media w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+            <div class="hidden md:block absolute inset-0 pointer-events-none">
+                
+                <div class="absolute top-[15%] left-[5%] lg:left-[15%] pointer-events-auto fade-in-up w-44 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 200ms;" onclick="openFeatureDetail('projects')" onmouseenter="playMedia(this)" onmouseleave="stopMedia(this)">
+                    <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center overflow-hidden">
+                        <div class="media-icon-container absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10">
+                            <i class="fa-solid fa-folder-tree text-5xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <img class="feature-media absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 z-0" data-base-src="assets/GIFS/Projects" data-ext="gif">
+                    </div>
+                    <div class="px-1 pb-1 relative z-10">
+                        <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Projects</h3>
+                        <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Manage distinct story universes entirely offline.</p>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-[20%] right-[5%] lg:right-[15%] pointer-events-auto fade-in-up w-44 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 250ms;" onclick="openFeatureDetail('wikilink')" onmouseenter="playMedia(this)" onmouseleave="stopMedia(this)">
+                    <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center overflow-hidden">
+                        <div class="media-icon-container absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10">
+                            <i class="fa-solid fa-link text-5xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <img class="feature-media absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 z-0" data-base-src="assets/GIFS/Wiki-Links" data-ext="gif">
+                    </div>
+                    <div class="px-1 pb-1 relative z-10">
+                        <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Wiki-Links</h3>
+                        <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Reference characters and lore directly in text.</p>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-[10%] left-[10%] lg:left-[22%] pointer-events-auto fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 300ms;" onclick="openFeatureDetail('editor-notes')">
+                    <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                        <i class="fa-solid fa-note-sticky text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    </div>
+                    <div class="px-1 pb-0.5">
+                        <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Editor Notes</h3>
+                        <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Insert distinct, non-printing text blocks.</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="view-wikilink" class="feature-view hidden">
-            <div class="max-w-4xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-link text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">Wiki-Linking</h2>
-                <p class="text-xl text-app-muted mb-8">Connect your universe effortlessly. Reference characters, settings, and lore directly within your manuscript without breaking your writing flow.</p>
-                <div class="relative rounded-lg overflow-hidden border border-app-border shadow-lg bg-app-bg cursor-pointer group" onclick="openModal('assets/GIFS/Wiki-Links', 'gif')">
-                    <img data-base-src="assets/GIFS/Wiki-Links" data-ext="gif" src="assets/GIFS/Wiki-Links-dark.gif" alt="Wiki-Links Feature" class="feature-media w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+            <div class="md:hidden flex flex-wrap justify-center gap-6 mt-16 px-4">
+                <div class="w-40 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer flex flex-col shadow-sm" onclick="openFeatureDetail('projects')">
+                    <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center">
+                        <i class="fa-solid fa-folder-tree text-5xl text-app-highlight opacity-80"></i>
+                    </div>
+                    <div class="px-1 pb-1">
+                        <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Projects</h3>
+                        <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Manage universes offline.</p>
+                    </div>
+                </div>
+                <div class="w-40 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer flex flex-col shadow-sm" onclick="openFeatureDetail('wikilink')">
+                    <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center">
+                        <i class="fa-solid fa-link text-5xl text-app-highlight opacity-80"></i>
+                    </div>
+                    <div class="px-1 pb-1">
+                        <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Wiki-Links</h3>
+                        <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Reference lore in text.</p>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <div id="view-comment" class="feature-view hidden">
-            <div class="max-w-4xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-comments text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">Word Comment Links</h2>
-                <p class="text-xl text-app-muted mb-8">Leave notes for your future self. Highlight specific words or phrases to anchor contextual margin notes directly tied to your text.</p>
-                <div class="relative rounded-lg overflow-hidden border border-app-border shadow-lg bg-app-bg cursor-pointer group" onclick="openModal('assets/GIFS/Word-Comment-Link', 'gif')">
-                    <img data-base-src="assets/GIFS/Word-Comment-Link" data-ext="gif" src="assets/GIFS/Word-Comment-Link-dark.gif" alt="Word Comment Link Feature" class="feature-media w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+
+        <div class="max-w-[100rem] mx-auto px-6 flex flex-col pt-32 md:pt-48 space-y-32 md:space-y-48">
+            
+            <div class="flex flex-col gap-16 md:gap-24">
+                <div class="text-center max-w-2xl mx-auto fade-in-up">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Build Your World, Your Way</h2>
+                    <p class="text-lg text-app-muted">No distractions. No forced cloud syncing. Just you, your ideas, and a private workspace that scales with your imagination.</p>
+                </div>
+
+                <div class="flex justify-center items-center gap-12 md:gap-20 flex-wrap">
+                    
+                    <div class="md:-mt-16 fade-in-up w-44 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" onclick="openFeatureDetail('canvas')" onmouseenter="playMedia(this)" onmouseleave="stopMedia(this)">
+                        <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center overflow-hidden">
+                            <div class="media-icon-container absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10">
+                                <i class="fa-solid fa-bezier-curve text-5xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                            </div>
+                            <img class="feature-media absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 z-0" data-base-src="assets/GIFS/Canvas" data-ext="gif">
+                        </div>
+                        <div class="px-1 pb-1 relative z-10">
+                            <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Canvas</h3>
+                            <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Plot visually on an unlimited whiteboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:mt-24 fade-in-up w-44 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 50ms;" onclick="openFeatureDetail('tags')" onmouseenter="playMedia(this)" onmouseleave="stopMedia(this)">
+                        <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center overflow-hidden">
+                            <div class="media-icon-container absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10">
+                                <i class="fa-solid fa-tags text-5xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                            </div>
+                            <img class="feature-media absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 z-0" data-base-src="assets/GIFS/Tags" data-ext="gif">
+                        </div>
+                        <div class="px-1 pb-1 relative z-10">
+                            <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Tagging</h3>
+                            <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Organize concepts with global tags.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:-mt-8 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 100ms;" onclick="openFeatureDetail('paged')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-file-lines text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Paged View</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Toggle layout styles seamlessly.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:mt-16 fade-in-up w-44 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 150ms;" onclick="openFeatureDetail('graph')" onmouseenter="playMedia(this)" onmouseleave="stopMedia(this)">
+                        <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center overflow-hidden">
+                            <div class="media-icon-container absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10">
+                                <i class="fa-solid fa-diagram-project text-5xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                            </div>
+                            <img class="feature-media absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 z-0" data-base-src="assets/GIFS/Graph-View" data-ext="gif">
+                        </div>
+                        <div class="px-1 pb-1 relative z-10">
+                            <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Graph View</h3>
+                            <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Trace the web of document connections.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="view-tags" class="feature-view hidden">
-            <div class="max-w-4xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-tags text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">Intelligent Tagging</h2>
-                <p class="text-xl text-app-muted mb-8">Organize by concept, not just by folder. Apply global tags to chapters, characters, and notes to quickly filter your entire project workspace.</p>
-                <div class="relative rounded-lg overflow-hidden border border-app-border shadow-lg bg-app-bg cursor-pointer group" onclick="openModal('assets/GIFS/Tags', 'gif')">
-                    <img data-base-src="assets/GIFS/Tags" data-ext="gif" src="assets/GIFS/Tags-dark.gif" alt="Tags Feature" class="feature-media w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+
+            <div class="flex flex-col gap-16 md:gap-24">
+                
+                <div class="text-center max-w-2xl mx-auto fade-in-up">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Connect the Dots</h2>
+                    <p class="text-lg text-app-muted">Keep track of complex character arcs and rich lore without ever breaking your writing flow.</p>
+                </div>
+
+                <div class="flex justify-center items-center gap-12 md:gap-16 flex-wrap max-w-[80rem] mx-auto w-full">
+                    
+                    <div class="md:-mt-12 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" onclick="openFeatureDetail('split')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-table-columns text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Split View</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Open two documents side-by-side.</p>
+                        </div>
                     </div>
+
+                    <div class="md:mt-20 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 50ms;" onclick="openFeatureDetail('focus')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-eye text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Focus Mode</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Distraction-free writing environment.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:-mt-6 fade-in-up w-44 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 100ms;" onclick="openFeatureDetail('comment')" onmouseenter="playMedia(this)" onmouseleave="stopMedia(this)">
+                        <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center overflow-hidden">
+                            <div class="media-icon-container absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10">
+                                <i class="fa-solid fa-comments text-5xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                            </div>
+                            <img class="feature-media absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 z-0" data-base-src="assets/GIFS/Word-Comment-Link" data-ext="gif">
+                        </div>
+                        <div class="px-1 pb-1 relative z-10">
+                            <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Comments</h3>
+                            <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Anchor contextual notes to specific words.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:mt-16 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 150ms;" onclick="openFeatureDetail('synonym')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-book-open text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Thesaurus</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Find the perfect word instantly.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:-mt-16 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 200ms;" onclick="openFeatureDetail('dictionary')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-spell-check text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Dictionary</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Teach the app your custom terms.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
 
-        <div id="view-canvas" class="feature-view hidden">
-            <div class="max-w-4xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-bezier-curve text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">Infinite Canvas</h2>
-                <p class="text-xl text-app-muted mb-8">Plot visually on an unlimited whiteboard. Snap cards together, draw orthogonal routing lines, and structure complex timelines.</p>
-                <div class="relative rounded-lg overflow-hidden border border-app-border shadow-lg bg-app-bg cursor-pointer group" onclick="openModal('assets/GIFS/Canvas', 'gif')">
-                    <img data-base-src="assets/GIFS/Canvas" data-ext="gif" src="assets/GIFS/Canvas-dark.gif" alt="Canvas Feature" class="feature-media w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+
+            <div class="flex flex-col gap-16 md:gap-24">
+                
+                <div class="text-center max-w-2xl mx-auto fade-in-up">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Refine and Polish</h2>
+                    <p class="text-lg text-app-muted">Powerful built-in utilities to help you format, safeguard, and perfect your final manuscript.</p>
+                </div>
+
+                <div class="flex justify-center items-center gap-12 md:gap-20 flex-wrap">
+                    
+                    <div class="md:mt-12 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" onclick="openFeatureDetail('findreplace')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-magnifying-glass-arrow-right text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Find & Replace</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Update text across your library.</p>
+                        </div>
                     </div>
+
+                    <div class="md:-mt-20 fade-in-up w-44 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-3xl p-3 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 50ms;" onclick="openFeatureDetail('themes')" onmouseenter="playMedia(this)" onmouseleave="stopMedia(this)">
+                        <div class="aspect-square w-full rounded-[1rem] bg-app-bg border border-app-border relative mb-3 flex items-center justify-center overflow-hidden">
+                            <div class="media-icon-container absolute inset-0 flex items-center justify-center transition-opacity duration-300 z-10">
+                                <i class="fa-solid fa-palette text-5xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                            </div>
+                            <video class="feature-media absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 z-0 pointer-events-none" data-base-src="assets/GIFS/Custom-Themes" data-ext="mp4" loop muted playsinline></video>
+                        </div>
+                        <div class="px-1 pb-1 relative z-10">
+                            <h3 class="font-serif text-base font-bold text-app-text mb-0.5">Themes</h3>
+                            <p class="text-[10px] text-app-muted leading-tight line-clamp-2">Design custom color palettes.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:mt-20 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 100ms;" onclick="openFeatureDetail('sections')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-heading text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Styled Blocks</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Apply formatting presets.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:-mt-12 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 150ms;" onclick="openFeatureDetail('backups')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-clock-rotate-left text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Auto Backups</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Rolling snapshots prevent loss.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:mt-12 fade-in-up w-32 bg-app-surface/60 backdrop-blur-md border border-app-border rounded-[1.25rem] p-2 cursor-pointer hover:border-app-highlight hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col shadow-sm" style="transition-delay: 200ms;" onclick="openFeatureDetail('typewriter')">
+                        <div class="aspect-square w-full rounded-[0.85rem] bg-app-bg border border-app-border relative mb-1.5 flex items-center justify-center">
+                            <i class="fa-solid fa-keyboard text-3xl text-app-highlight opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="px-1 pb-0.5">
+                            <h3 class="font-serif text-xs font-bold text-app-text mb-0.5">Typewriter</h3>
+                            <p class="text-[9px] text-app-muted leading-tight line-clamp-2">Lock your active typing line.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
 
-        <div id="view-graph" class="feature-view hidden">
-            <div class="max-w-4xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-diagram-project text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">Dynamic Graph View</h2>
-                <p class="text-xl text-app-muted mb-8">Visualize your story's architecture by switching between Tags view to see thematic clusters and Links view to trace the web of connections between your documents.</p>
-                <div class="relative rounded-lg overflow-hidden border border-app-border shadow-lg bg-app-bg cursor-pointer group" onclick="openModal('assets/GIFS/Graph-View', 'gif')">
-                    <img data-base-src="assets/GIFS/Graph-View" data-ext="gif" src="assets/GIFS/Graph-View-dark.gif" alt="Graph View Feature" class="feature-media w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
-                    </div>
-                </div>
-            </div>
         </div>
-
-        <div id="view-themes" class="feature-view hidden">
-            <div class="max-w-4xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-palette text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">Custom Themes</h2>
-                <p class="text-xl text-app-muted mb-8">Personalize the entire application interface with pre-set light and dark modes or design your own custom color palettes.</p>
-                <div class="relative rounded-lg overflow-hidden border border-app-border shadow-lg bg-app-bg cursor-pointer group" onclick="openModal('assets/GIFS/Custom-Themes', 'mp4')">
-                    <video data-base-src="assets/GIFS/Custom-Themes" data-ext="mp4" src="assets/GIFS/Custom-Themes-dark.mp4" autoplay loop muted playsinline class="feature-media w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03] pointer-events-none"></video>
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="view-more" class="feature-view hidden">
-            <div class="max-w-6xl mx-auto px-6 text-center py-20 fade-in-up">
-                <i class="fa-solid fa-wand-magic-sparkles text-6xl text-app-highlight mb-6"></i>
-                <h2 class="font-serif text-4xl font-bold mb-4">And So Much More</h2>
-                <p class="text-xl text-app-muted mb-12 max-w-4xl mx-auto">From native offline persistence and global thesaurus lookups to recursive file trees and custom layout engines—we're constantly expanding the ultimate novelist toolkit.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Editor Notes</h4>
-                        <p class="text-sm text-app-muted">Insert distinct, non-printing text blocks directly into your manuscript flow for scene goals, reminders, or directorial notes.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Paged vs Continuous</h4>
-                        <p class="text-sm text-app-muted">Toggle your editor view between a traditional print-preview layout with page breaks and an infinite digital scroll.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Split View</h4>
-                        <p class="text-sm text-app-muted">Open two documents side-by-side to reference your outline or character sheets while drafting your chapters.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Focus vs Markup</h4>
-                        <p class="text-sm text-app-muted">Switch between a distraction-free clean writing interface and a detailed editing mode that reveals comments and meta-data.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Synonym Finder</h4>
-                        <p class="text-sm text-app-muted">Access a built-in thesaurus instantly to find the perfect word without leaving your writing environment.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Custom Dictionary</h4>
-                        <p class="text-sm text-app-muted">Teach the spellchecker your unique world-building terms and character names to stop red underlines.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Find & Replace</h4>
-                        <p class="text-sm text-app-muted">Search for and update text across a single document or your entire project library at once.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Styled Sections</h4>
-                        <p class="text-sm text-app-muted">Create and apply reusable formatting presets for recurring elements like chapter headers, blockquotes, or scene breaks.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Backups</h4>
-                        <p class="text-sm text-app-muted">Automatically save rolling snapshots of your work locally to prevent data loss.</p>
-                    </div>
-                    <div class="p-6 bg-app-bg border border-app-border rounded-lg">
-                        <h4 class="font-bold text-app-text mb-2">Typewriter Mode</h4>
-                        <p class="text-sm text-app-muted">Keep your active typing line locked to the vertical center of the screen to reduce eye strain and maintain focus.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </main>
     
-    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
+    <section id="download" class="py-24 relative overflow-hidden mt-24">
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-5xl font-bold mb-6">Built for writers. <br>Ready for anything.</h2>
+            <p class="text-xl text-app-muted mb-10">
+                Download Novelative today and take control of your narrative.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Try Free (No Sign-Up)</a>
+                <div class="text-app-muted text-sm">
+                    <div class="mb-1">Windows | macOS</div>
+                    <div>First 30 days of use FREE. No sign-up & no card information.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted relative z-10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
                 <div class="flex items-center gap-2 mb-4 text-app-text">
@@ -270,17 +381,192 @@
         </div>
     </footer>
 
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeModal(event)">
-        <div class="relative w-[75vw] max-w-7xl" onclick="event.stopPropagation()">
-            <button onclick="closeModal(event)" class="absolute -top-12 right-0 text-gray-300 hover:text-white transition-colors text-4xl" aria-label="Close modal">&times;</button>
-            
-            <img id="modalImage" src="" alt="Expanded Feature GIF" class="hidden w-full h-auto rounded-xl shadow-2xl object-contain ring-1 ring-white/20">
-            
-            <video id="modalVideo" src="" autoplay loop muted playsinline class="hidden w-full h-auto rounded-xl shadow-2xl object-contain ring-1 ring-white/20"></video>
+    <div id="featureDetailModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeFeatureDetail(event)">
+        <div class="relative w-[90vw] max-w-5xl bg-app-bg border border-app-border rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300" id="modalWindow" onclick="event.stopPropagation()">
+            <button onclick="closeFeatureDetail(event)" class="absolute top-5 right-5 z-20 w-10 h-10 bg-app-surface border border-app-border rounded-full flex items-center justify-center text-app-muted hover:text-app-highlight transition-colors shadow-sm" aria-label="Close modal"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div id="modalContent" class="overflow-y-auto w-full h-full p-6 md:p-12 relative flex items-center justify-center">
+                </div>
         </div>
     </div>
 
+    <div id="feature-data" class="hidden">
+        
+        <div id="data-projects">
+            <div class="text-center max-w-3xl mx-auto w-full">
+                <i class="fa-solid fa-folder-tree text-5xl text-app-highlight mb-6"></i>
+                <h2 class="font-serif text-4xl font-bold mb-4">Projects</h2>
+                <p class="text-xl text-app-muted mb-8">Manage multiple distinct story universes entirely offline with dedicated save files and local data privacy.</p>
+                <img class="feature-media w-full h-auto object-cover rounded-xl shadow-lg border border-app-border" data-base-src="assets/GIFS/Projects" data-ext="gif" alt="Projects Feature">
+            </div>
+        </div>
+        <div id="data-wikilink">
+            <div class="text-center max-w-3xl mx-auto w-full">
+                <i class="fa-solid fa-link text-5xl text-app-highlight mb-6"></i>
+                <h2 class="font-serif text-4xl font-bold mb-4">Wiki-Linking</h2>
+                <p class="text-xl text-app-muted mb-8">Connect your universe effortlessly. Reference characters, settings, and lore directly within your manuscript.</p>
+                <img class="feature-media w-full h-auto object-cover rounded-xl shadow-lg border border-app-border" data-base-src="assets/GIFS/Wiki-Links" data-ext="gif" alt="Wiki-Links Feature">
+            </div>
+        </div>
+        <div id="data-comment">
+            <div class="text-center max-w-3xl mx-auto w-full">
+                <i class="fa-solid fa-comments text-5xl text-app-highlight mb-6"></i>
+                <h2 class="font-serif text-4xl font-bold mb-4">Word Comment Links</h2>
+                <p class="text-xl text-app-muted mb-8">Leave notes for your future self. Highlight specific words or phrases to anchor contextual margin notes directly tied to your text.</p>
+                <img class="feature-media w-full h-auto object-cover rounded-xl shadow-lg border border-app-border" data-base-src="assets/GIFS/Word-Comment-Link" data-ext="gif" alt="Word Comment Link Feature">
+            </div>
+        </div>
+        <div id="data-tags">
+            <div class="text-center max-w-3xl mx-auto w-full">
+                <i class="fa-solid fa-tags text-5xl text-app-highlight mb-6"></i>
+                <h2 class="font-serif text-4xl font-bold mb-4">Intelligent Tagging</h2>
+                <p class="text-xl text-app-muted mb-8">Organize by concept, not just by folder. Apply global tags to chapters, characters, and notes to quickly filter your entire project workspace.</p>
+                <img class="feature-media w-full h-auto object-cover rounded-xl shadow-lg border border-app-border" data-base-src="assets/GIFS/Tags" data-ext="gif" alt="Tags Feature">
+            </div>
+        </div>
+        <div id="data-canvas">
+            <div class="text-center max-w-3xl mx-auto w-full">
+                <i class="fa-solid fa-bezier-curve text-5xl text-app-highlight mb-6"></i>
+                <h2 class="font-serif text-4xl font-bold mb-4">Infinite Canvas</h2>
+                <p class="text-xl text-app-muted mb-8">Plot visually on an unlimited whiteboard. Snap cards together, draw orthogonal routing lines, and structure complex timelines.</p>
+                <img class="feature-media w-full h-auto object-cover rounded-xl shadow-lg border border-app-border" data-base-src="assets/GIFS/Canvas" data-ext="gif" alt="Canvas Feature">
+            </div>
+        </div>
+        <div id="data-graph">
+            <div class="text-center max-w-3xl mx-auto w-full">
+                <i class="fa-solid fa-diagram-project text-5xl text-app-highlight mb-6"></i>
+                <h2 class="font-serif text-4xl font-bold mb-4">Dynamic Graph View</h2>
+                <p class="text-xl text-app-muted mb-8">Visualize your story's architecture by switching between Tags view to see thematic clusters and Links view to trace connections.</p>
+                <img class="feature-media w-full h-auto object-cover rounded-xl shadow-lg border border-app-border" data-base-src="assets/GIFS/Graph-View" data-ext="gif" alt="Graph View Feature">
+            </div>
+        </div>
+        <div id="data-themes">
+            <div class="text-center max-w-3xl mx-auto w-full">
+                <i class="fa-solid fa-palette text-5xl text-app-highlight mb-6"></i>
+                <h2 class="font-serif text-4xl font-bold mb-4">Custom Themes</h2>
+                <p class="text-xl text-app-muted mb-8">Personalize the entire application interface with pre-set light and dark modes or design your own custom color palettes.</p>
+                <video class="feature-media w-full h-auto object-cover rounded-xl shadow-lg border border-app-border" data-base-src="assets/GIFS/Custom-Themes" data-ext="mp4" autoplay loop muted playsinline></video>
+            </div>
+        </div>
+
+        <div id="data-editor-notes">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-note-sticky text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Editor Notes</h2>
+                <p class="text-xl text-app-muted">Insert distinct, non-printing text blocks directly into your manuscript flow for scene goals, reminders, or directorial notes.</p>
+            </div>
+        </div>
+        <div id="data-paged">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-file-lines text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Paged vs Continuous</h2>
+                <p class="text-xl text-app-muted">Toggle your editor view between a traditional print-preview layout with page breaks and an infinite digital scroll.</p>
+            </div>
+        </div>
+        <div id="data-split">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-table-columns text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Split View</h2>
+                <p class="text-xl text-app-muted">Open two documents side-by-side to reference your outline or character sheets while drafting your chapters.</p>
+            </div>
+        </div>
+        <div id="data-focus">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-eye text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Focus vs Markup</h2>
+                <p class="text-xl text-app-muted">Switch between a distraction-free clean writing interface and a detailed editing mode that reveals comments and meta-data.</p>
+            </div>
+        </div>
+        <div id="data-synonym">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-book-open text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Synonym Finder</h2>
+                <p class="text-xl text-app-muted">Access a built-in thesaurus instantly to find the perfect word without leaving your writing environment.</p>
+            </div>
+        </div>
+        <div id="data-dictionary">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-spell-check text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Custom Dictionary</h2>
+                <p class="text-xl text-app-muted">Teach the spellchecker your unique world-building terms and character names to stop red underlines.</p>
+            </div>
+        </div>
+        <div id="data-findreplace">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-magnifying-glass-arrow-right text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Find & Replace</h2>
+                <p class="text-xl text-app-muted">Search for and update text across a single document or your entire project library at once.</p>
+            </div>
+        </div>
+        <div id="data-sections">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-heading text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Styled Sections</h2>
+                <p class="text-xl text-app-muted">Create and apply reusable formatting presets for recurring elements like chapter headers, blockquotes, or scene breaks.</p>
+            </div>
+        </div>
+        <div id="data-backups">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-clock-rotate-left text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Backups</h2>
+                <p class="text-xl text-app-muted">Automatically save rolling snapshots of your work locally to prevent data loss without needing a cloud subscription.</p>
+            </div>
+        </div>
+        <div id="data-typewriter">
+            <div class="text-center max-w-2xl mx-auto w-full py-10">
+                <i class="fa-solid fa-keyboard text-6xl text-app-highlight mb-8"></i>
+                <h2 class="font-serif text-4xl font-bold mb-6">Typewriter Mode</h2>
+                <p class="text-xl text-app-muted">Keep your active typing line locked to the vertical center of the screen to reduce eye strain and maintain focus.</p>
+            </div>
+        </div>
+
+    </div>
+
     <script>
+        // --- Hover to Play Media Engine ---
+        function playMedia(widget) {
+            const img = widget.querySelector('.feature-media');
+            const iconContainer = widget.querySelector('.media-icon-container');
+            if (img) {
+                const suffix = getThemeSuffix();
+                // Inject the source
+                img.src = img.dataset.baseSrc + suffix + '.' + img.dataset.ext;
+                if (img.tagName === 'VIDEO') {
+                    img.play().catch(e => console.log('Video play prevented', e));
+                }
+                // Fade it in
+                setTimeout(() => {
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-80');
+                }, 50);
+            }
+            if (iconContainer) {
+                iconContainer.classList.add('opacity-0');
+            }
+        }
+
+        function stopMedia(widget) {
+            const img = widget.querySelector('.feature-media');
+            const iconContainer = widget.querySelector('.media-icon-container');
+            if (img) {
+                // Fade it out
+                img.classList.remove('opacity-80');
+                img.classList.add('opacity-0');
+                if (img.tagName === 'VIDEO') {
+                    img.pause();
+                    img.currentTime = 0;
+                }
+                // Strip the source so it stops playing/processing in background
+                setTimeout(() => {
+                    if (img.classList.contains('opacity-0')) {
+                        img.removeAttribute('src');
+                    }
+                }, 300);
+            }
+            if (iconContainer) {
+                iconContainer.classList.remove('opacity-0');
+            }
+        }
+
         // --- Theme / Media Toggling Helper Functions ---
         function isDarkMode() {
             return !document.documentElement.classList.contains('light-mode');
@@ -293,10 +579,11 @@
         function updateGifThemes() {
             const suffix = getThemeSuffix();
             document.querySelectorAll('.feature-media').forEach(media => {
-                if (media.dataset.baseSrc && media.dataset.ext) {
+                // Only update the actual src if it's in the modal or currently being hovered (already has a src)
+                if (media.hasAttribute('src') || media.closest('#modalContent')) {
                     media.src = media.dataset.baseSrc + suffix + '.' + media.dataset.ext;
                     if (media.tagName === 'VIDEO') {
-                        media.load(); // Ensure the video fully swaps source and starts playing again
+                        media.load(); 
                     }
                 }
             });
@@ -345,7 +632,7 @@
         
         function resize() {
             width = window.innerWidth;
-            height = Math.min(window.innerHeight * 1.2, 900); 
+            height = window.innerHeight; // Fill entire viewport for fixed background
             canvas.width = width;
             canvas.height = height;
             initParticles();
@@ -413,105 +700,71 @@
         
         document.addEventListener('DOMContentLoaded', updateGifThemes);
 
-        // --- 3. Feature Subpage Toggling ---
-        function switchFeatureView(viewId, btnElement) {
-            document.querySelectorAll('.feature-view').forEach(view => {
-                view.classList.add('hidden');
-                view.classList.remove('block');
-            });
-
-            document.querySelectorAll('.feature-nav-btn').forEach(btn => {
-                btn.classList.remove('bg-app-highlight', 'text-app-bg');
-                btn.classList.add('bg-app-surface', 'text-app-text');
-            });
-
-            const targetView = document.getElementById(viewId);
-            if (targetView) {
-                targetView.classList.remove('hidden');
-                targetView.classList.add('block');
-                
-                targetView.querySelectorAll('.fade-in-up').forEach(el => {
-                    el.classList.remove('visible'); 
-                    setTimeout(() => el.classList.add('visible'), 50); 
-                });
-            }
-
-            if (btnElement) {
-                btnElement.classList.remove('bg-app-surface', 'text-app-text');
-                btnElement.classList.add('bg-app-highlight', 'text-app-bg');
-            }
-        }
-
-        // --- 4. Image/Video Modal Functionality ---
-        function openModal(baseSrc, extension) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const modalVid = document.getElementById('modalVideo');
+        // --- 3. Expanding Feature Modal ---
+        function openFeatureDetail(id) {
+            const modal = document.getElementById('featureDetailModal');
+            const modalWindow = document.getElementById('modalWindow');
+            const modalContent = document.getElementById('modalContent');
+            const sourceData = document.getElementById('data-' + id);
             
+            if (!sourceData) return;
+
+            // Load Content
+            modalContent.innerHTML = sourceData.innerHTML;
+
+            // Initialize media sources inside the modal
             const suffix = getThemeSuffix();
-            const fullSrc = baseSrc + suffix + '.' + extension;
-            
-            // Toggle visibility depending on format
-            if (extension === 'mp4') {
-                modalImg.classList.add('hidden');
-                modalImg.src = ""; // Clear memory
-                
-                modalVid.src = fullSrc;
-                modalVid.classList.remove('hidden');
-                modalVid.load(); // Force video to recognize new source
-                modalVid.play();
-            } else {
-                modalVid.classList.add('hidden');
-                modalVid.src = ""; // Clear memory
-                
-                modalImg.src = fullSrc;
-                modalImg.classList.remove('hidden');
-            }
-            
+            modalContent.querySelectorAll('.feature-media').forEach(media => {
+                media.src = media.dataset.baseSrc + suffix + '.' + media.dataset.ext;
+                if (media.tagName === 'VIDEO') {
+                    media.load();
+                    media.play();
+                }
+            });
+
+            // Display Modal
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             
+            // Trigger animation
             void modal.offsetWidth;
-            
             modal.classList.remove('opacity-0');
             modal.classList.add('opacity-100');
+            modalWindow.classList.remove('scale-95');
+            modalWindow.classList.add('scale-100');
             
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal(event) {
+        function closeFeatureDetail(event) {
             if (event) {
                 event.stopPropagation();
             }
             
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const modalVid = document.getElementById('modalVideo');
+            const modal = document.getElementById('featureDetailModal');
+            const modalWindow = document.getElementById('modalWindow');
+            const modalContent = document.getElementById('modalContent');
 
+            // Trigger exit animation
             modal.classList.remove('opacity-100');
             modal.classList.add('opacity-0');
+            modalWindow.classList.remove('scale-100');
+            modalWindow.classList.add('scale-95');
             
             document.body.style.overflow = '';
             
             setTimeout(() => {
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
-                
-                // Reset states
-                modalImg.src = "";
-                modalImg.classList.add('hidden');
-                
-                modalVid.pause();
-                modalVid.src = "";
-                modalVid.classList.add('hidden');
+                modalContent.innerHTML = ''; // Clear content to stop videos
             }, 300);
         }
 
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
-                const modal = document.getElementById('imageModal');
+                const modal = document.getElementById('featureDetailModal');
                 if (!modal.classList.contains('hidden')) {
-                    closeModal();
+                    closeFeatureDetail();
                 }
             }
         });
