@@ -39,11 +39,11 @@
 </head>
 <body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="w-full z-50 bg-app-bg/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2">
                 <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
-                <span class="hidden md:block font-serif text-2xl font-bold tracking-wide">Novelative</span>
+                <span class="hidden lg:block font-serif text-2xl font-bold tracking-wide">Novelative</span>
             </a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
                 <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
@@ -52,24 +52,42 @@
                 <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
             </div>
             <div class="flex items-center">
-                <button id="theme-toggle" class="mr-2 md:mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
-                    <i class="fa-solid fa-sun"></i>
-                </button>
-                <a href="download.html" class="hidden md:inline-flex bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+				<button id="theme-toggle" class="p-2 rounded-lg text-app-text opacity-60 hover:opacity-100 transition-colors">
+				    <svg id="headerSunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-3 hidden">
+				        <circle cx="12" cy="12" r="5"></circle>
+				        <line x1="12" y1="1" x2="12" y2="3"></line>
+				        <line x1="12" y1="21" x2="12" y2="23"></line>
+				        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+				        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+				        <line x1="1" y1="12" x2="3" y2="12"></line>
+				        <line x1="21" y1="12" x2="23" y2="12"></line>
+				        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+				        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+				    </svg>
+				
+				    <svg id="headerMoonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-3">
+				        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+				    </svg>
+				</button>
+                <a href="download.html"
+                    class="hidden md:inline-flex bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
                     Download Beta
                 </a>
-                <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-md text-app-muted hover:text-app-text focus:outline-none">
+                <button id="mobile-menu-toggle"
+                    class="md:hidden p-2 rounded-md text-app-muted hover:text-app-text focus:outline-none">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-app-border bg-app-bg flex-col px-6 py-4 gap-4 text-sm font-medium text-app-muted shadow-lg">
-            <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-app-border bg-app-bg flex-col px-6 py-4 gap-4 text-sm font-medium text-app-muted shadow-lg">
+            <a href="index.html" class="text-app-text transition-colors">Home</a>
             <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
-            <a href="purchase.html" class="underline text-app-text transition-colors">Purchase</a>
+            <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
             <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
-            <a href="download.html" class="mt-2 text-center bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+            <a href="download.html"
+                class="mt-2 text-center bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
                 Download Beta
             </a>
         </div>

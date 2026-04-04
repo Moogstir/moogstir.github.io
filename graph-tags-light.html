@@ -205,6 +205,22 @@
             stroke: #cbd5e1;
             stroke-width: 2;
         }
+
+        /* --- Sweeping Idle Shimmer Animations --- */
+        @keyframes wave {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+            30% { box-shadow: 0 0 4px 1px rgba(59, 130, 246, 0.3); border-color: rgba(59, 130, 246, 0.5); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        /* Classes applied dynamically by JavaScript */
+        .play-shimmer.nav-btn {
+            animation: wave 2s var(--shimmer-delay) ease-in-out forwards;
+        }
+
+        .play-shimmer.card {
+            animation: wave 2s var(--shimmer-delay) ease-in-out forwards;
+        }
     </style>
 </head>
 <body>
@@ -472,6 +488,64 @@
     // Make sure lines are drawn correctly if the window resizes
     window.addEventListener('resize', updateLines);
     
+
+        // --- Idle Wave Logic ---
+    let idleTimeout;
+    let waveInterval;
+    
+    const IDLE_TIME = 10000;           // 15 seconds of no movement before becoming idle
+    const WAVE_INTERVAL_TIME = 6000;  // Send a wave every 6 seconds while idle
+    const WAVE_SPEED = 1500;          // How long the wave takes to cross the screen (in ms)
+
+    function triggerWave() {
+        const elements = document.querySelectorAll('.nav-btn, .card');
+        const screenWidth = window.innerWidth;
+
+        elements.forEach(el => {
+            // Find exactly where the element is horizontally
+            const rect = el.getBoundingClientRect();
+            
+            // Calculate delay: elements further right get a longer delay
+            const delay = (rect.left / screenWidth) * WAVE_SPEED;
+            
+            // Inject the dynamic delay into the element's CSS
+            el.style.setProperty('--shimmer-delay', `${delay}ms`);
+            
+            // Reset the animation class so it plays from the beginning
+            el.classList.remove('play-shimmer');
+            void el.offsetWidth; // Force browser reflow to restart animation
+            el.classList.add('play-shimmer');
+        });
+    }
+
+    function becomeIdle() {
+        // Trigger the first wave immediately upon becoming idle
+        triggerWave();
+        // Set an interval to repeat the wave every 4 seconds
+        waveInterval = setInterval(triggerWave, WAVE_INTERVAL_TIME);
+    }
+
+    function resetIdleTimer() {
+        // Stop any active waves and clear timers
+        clearInterval(waveInterval);
+        clearTimeout(idleTimeout);
+        
+        // Strip the animation class immediately if the user moves
+        document.querySelectorAll('.play-shimmer').forEach(el => {
+            el.classList.remove('play-shimmer');
+        });
+
+        // Start the 4-second countdown to becoming idle again
+        idleTimeout = setTimeout(becomeIdle, IDLE_TIME);
+    }
+
+    // Listen for interactions to reset the timer
+    document.addEventListener('mousemove', resetIdleTimer);
+    document.addEventListener('mousedown', resetIdleTimer);
+    document.addEventListener('keydown', resetIdleTimer);
+
+    // Initialize on page load
+    resetIdleTimer();
 </script>
 
 </body>

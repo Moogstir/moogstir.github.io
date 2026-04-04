@@ -151,6 +151,40 @@
         .port.bottom { bottom: -5px; left: calc(50% - 5px); }
         .port.left   { left: -5px; top: calc(50% - 5px); }
         .port.right  { right: -5px; top: calc(50% - 5px); }
+
+/* --- Sweeping Idle Shimmer Animations --- */
+        @keyframes port-wave {
+            0% { filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0)); }
+            30% { filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.6)); stroke: rgba(59, 130, 246, 0.6); }
+            100% { filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0.4)); }
+        }
+
+        @keyframes icon-wave {
+            0% { filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0)); }
+            30% { filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.6)); stroke: rgba(59, 130, 246, 0.6); }
+            100% { filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0.4)); }
+        }
+        
+        @keyframes node-wave {
+            0% { filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0)); }
+            30% { filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.6)); stroke: rgba(59, 130, 246, 0.6); }
+            100% { filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0.4)); }
+        }
+
+        /* Classes applied dynamically by JavaScript */
+        .play-shimmer.port {
+            animation: port-wave 2s var(--shimmer-delay) ease-in-out forwards;
+        }
+
+        .play-shimmer.icon {
+            animation: icon-wave 2s var(--shimmer-delay) ease-in-out forwards;
+        }
+        
+        .play-shimmer.node {
+            animation: node-wave 2s var(--shimmer-delay) ease-in-out forwards;
+        }
+
+
     </style>
 </head>
 <body>
@@ -321,6 +355,64 @@
     });
 
     updateLines();
+
+        // --- Idle Wave Logic ---
+    let idleTimeout;
+    let waveInterval;
+    
+    const IDLE_TIME = 4000;           // 4 seconds of no movement before becoming idle
+    const WAVE_INTERVAL_TIME = 6000;  // Send a wave every 4 seconds while idle
+    const WAVE_SPEED = 1500;          // How long the wave takes to cross the screen (in ms)
+
+    function triggerWave() {
+        const elements = document.querySelectorAll('.port, .icon, .node');
+        const screenWidth = window.innerWidth;
+
+        elements.forEach(el => {
+            // Find exactly where the element is horizontally
+            const rect = el.getBoundingClientRect();
+            
+            // Calculate delay: elements further right get a longer delay
+            const delay = (rect.left / screenWidth) * WAVE_SPEED;
+            
+            // Inject the dynamic delay into the element's CSS
+            el.style.setProperty('--shimmer-delay', `${delay}ms`);
+            
+            // Reset the animation class so it plays from the beginning
+            el.classList.remove('play-shimmer');
+            void el.offsetWidth; // Force browser reflow to restart animation
+            el.classList.add('play-shimmer');
+        });
+    }
+
+    function becomeIdle() {
+        // Trigger the first wave immediately upon becoming idle
+        triggerWave();
+        // Set an interval to repeat the wave every 4 seconds
+        waveInterval = setInterval(triggerWave, WAVE_INTERVAL_TIME);
+    }
+
+    function resetIdleTimer() {
+        // Stop any active waves and clear timers
+        clearInterval(waveInterval);
+        clearTimeout(idleTimeout);
+        
+        // Strip the animation class immediately if the user moves
+        document.querySelectorAll('.play-shimmer').forEach(el => {
+            el.classList.remove('play-shimmer');
+        });
+
+        // Start the 4-second countdown to becoming idle again
+        idleTimeout = setTimeout(becomeIdle, IDLE_TIME);
+    }
+
+    // Listen for interactions to reset the timer
+    document.addEventListener('mousemove', resetIdleTimer);
+    document.addEventListener('mousedown', resetIdleTimer);
+    document.addEventListener('keydown', resetIdleTimer);
+
+    // Initialize on page load
+    resetIdleTimer();
 </script>
 </body>
 </html>
