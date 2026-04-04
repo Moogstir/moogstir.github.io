@@ -29,9 +29,9 @@
     <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen max-h-screen">
 
-    <nav class="w-full z-50 bg-app-bg/95 backdrop-blur-md">
+    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2">
                 <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
@@ -129,7 +129,7 @@
         </div>
     </main>
 
-	<div id="footer-placeholder"></div>
+	<div id="footer-placeholder" class="fixed bottom-0"></div>
 
     <div id="statusModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop" onclick="closeModal()"></div>
