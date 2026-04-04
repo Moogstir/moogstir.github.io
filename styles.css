@@ -17,8 +17,10 @@
 /* --- Variables --- */
 :root {
     /* Dark Mode (Default) */
-    --color-app-bg: 30 30 30;          /* #1E1E1E */
-    --color-app-surface: 37 37 37;     /* #252525 */
+    --color-app-contrast: 255 255 255;       /* White */
+    --color-app-strong: 0 0 0;       /* Black */
+    --color-app-bg: 20 20 20;          /* #1E1E1E */
+    --color-app-surface: 27 27 27;     /* #252525 */
     --color-app-sidebar: 43 43 43;     /* #2B2B2B */
     --color-app-highlight: 251 188 4;  /* #FBBC04 */
     --color-app-highlightHover: 232 175 4; /* #E8AF04 */
@@ -30,8 +32,10 @@
 
 html.light-mode {
     /* Light Mode */
-    --color-app-bg: 249 250 251;       /* Gray-50 */
-    --color-app-surface: 255 255 255;  /* White */
+    --color-app-strong: 255 255 255;       /* White */
+    --color-app-contrast: 0 0 0;       /* black */
+    --color-app-bg: 255 255 255;       /* White */
+    --color-app-surface: 249 250 251;  /* Gray-50 */
     --color-app-sidebar: 243 244 246;  /* Gray-100 */
     --color-app-highlight: 59 130 246;  /* Blue-500 (#3b82f6) */
     --color-app-highlightHover: 37 99 235; /* Blue-600 (#2563eb) */

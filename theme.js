@@ -6,6 +6,7 @@ tailwind.config = {
             colors: {
                 // Colors mapped to CSS variables
                 app: {
+                	strong: 'rgb(var(--color-app-strong) / <alpha-value>)',
                     bg: 'rgb(var(--color-app-bg) / <alpha-value>)',
                     surface: 'rgb(var(--color-app-surface) / <alpha-value>)',
                     sidebar: 'rgb(var(--color-app-sidebar) / <alpha-value>)',
@@ -35,30 +36,44 @@ if (savedTheme !== 'dark') {
 // 2. Setup button listener on load
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('theme-toggle');
-    const logo = document.getElementById('app-logo');
-    const footerLogo = document.getElementById('footer-logo');
-    const heroMockup = document.getElementById('hero-mockup');
     
-    const sunSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>'
-    const moonSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>'
+    // Grab our new header SVG elements
+    const headerSunIcon = document.getElementById('headerSunIcon');
+    const headerMoonIcon = document.getElementById('headerMoonIcon');
 
     if (!btn) return;
     
     function updateUI(isLight) {
+        // MOVED INSIDE: Now it searches for these elements every time the UI updates,
+        // ensuring it finds the footer logo even after it was fetched asynchronously.
+        const logo = document.getElementById('app-logo');
+        const downloadlogo = document.getElementById('download-logo');
+        const footerLogo = document.getElementById('footer-logo');
+        const heroMockup = document.getElementById('hero-mockup');
+        const heroBg = document.getElementById('hero-bg');
+
         if (isLight) {
-            // If Light Mode is active, show Moon icon (switch to Dark)
-            btn.innerHTML = moonSVG;
+            // Light Mode: Show Moon, Hide Sun
+            if (headerMoonIcon) headerMoonIcon.classList.remove('hidden');
+            if (headerSunIcon) headerSunIcon.classList.add('hidden');
+            
             btn.setAttribute('aria-label', 'Switch to Dark Mode');
             if (logo) logo.src = './assets/lightmodeicon.png';
+            if (downloadlogo) downloadlogo.src = './assets/lightmodeicon.png';
             if (footerLogo) footerLogo.src = './assets/lightmodeicon.png';
             if (heroMockup) heroMockup.src = './assets/intro -light.png';
+            if (heroBg) heroBg.src = './assets/herobg -light.png';
         } else {
-            // If Dark Mode is active, show Sun icon (switch to Light)
-            btn.innerHTML = sunSVG;
+            // Dark Mode: Show Sun, Hide Moon
+            if (headerSunIcon) headerSunIcon.classList.remove('hidden');
+            if (headerMoonIcon) headerMoonIcon.classList.add('hidden');
+            
             btn.setAttribute('aria-label', 'Switch to Light Mode');
             if (logo) logo.src = './assets/darkmodeicon.png';
+            if (downloadlogo) downloadlogo.src = './assets/darkmodeicon.png';
             if (footerLogo) footerLogo.src = './assets/darkmodeicon.png';
             if (heroMockup) heroMockup.src = './assets/intro -dark.png';
+            if (heroBg) heroBg.src = './assets/herobg -dark.png';
         }
     }
 
@@ -71,7 +86,44 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('themePreference', isLight ? 'light' : 'dark');
         updateUI(isLight);
         
-        // Dispatch event so canvas/charts can redraw colors
         window.dispatchEvent(new Event('themeChanged'));
     });
+});
+
+// --- Mobile Menu Toggle Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+    }
+});
+
+// --- Footer Fetch Logic ---
+document.addEventListener("DOMContentLoaded", () => {
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    
+    if (footerPlaceholder) {
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load footer');
+                return response.text();
+            })
+            .then(data => {
+                footerPlaceholder.innerHTML = data;
+                
+                // Immediately check the theme once the footer finishes loading
+                // to ensure it matches the rest of the page perfectly on load.
+                const isLight = document.documentElement.classList.contains('light-mode');
+                const footerLogo = document.getElementById('footer-logo');
+                if (footerLogo) {
+                    footerLogo.src = isLight ? './assets/lightmodeicon.png' : './assets/darkmodeicon.png';
+                }
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    }
 });

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'G-T9DS3YHVV6');
-	</script>
-	
-	<script>window.lemonSqueezyAffiliateConfig = { store: "novelative" };</script>
-	<script src="https://lmsqueezy.com/affiliate.js" defer></script>
-	
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-T9DS3YHVV6');
+    </script>
+    
+    <script>window.lemonSqueezyAffiliateConfig = { store: "novelative" };</script>
+    <script src="https://lmsqueezy.com/affiliate.js" defer></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download | Novelative</title>
@@ -26,17 +26,16 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-	<script src="theme.js"></script>
-
+    <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a  href="index.html" class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
                 <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
-                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+                <span class="hidden md:block font-serif text-2xl font-bold tracking-wide">Novelative</span>
             </a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
                 <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
@@ -45,13 +44,25 @@
                 <a href="download.html" class="underline text-app-text transition-colors">Download</a>
             </div>
             <div class="flex items-center">
-                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                <button id="theme-toggle" class="mr-2 md:mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                <a href="download.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                <a href="download.html" class="hidden md:inline-flex bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
                     Download Beta
                 </a>
+                <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-md text-app-muted hover:text-app-text focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-app-border bg-app-bg flex-col px-6 py-4 gap-4 text-sm font-medium text-app-muted shadow-lg">
+            <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+            <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
+            <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
+            <a href="download.html" class="underline text-app-text transition-colors">Download</a>
+            <a href="download.html" class="mt-2 text-center bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                Download Beta
+            </a>
         </div>
     </nav>
 
@@ -60,141 +71,58 @@
         <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50 pointer-events-none"></canvas>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-6xl mx-auto px-6 w-full">
+        <div class="relative z-10 max-w-4xl mx-auto px-6 w-full flex flex-col items-center mt-10">
             
-            <div class="text-center mb-16">
-                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6 fade-in-up">
+            <div class="mb-8 fade-in-up">
+                <img id="download-logo" src="./assets/darkmodeicon.png" class="w-24 h-24 mx-auto drop-shadow-2xl opacity-90" alt="Novelative Logo">
+            </div>
+
+            <div class="text-center mb-10">
+                <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4 fade-in-up" style="transition-delay: 100ms;">
                     Begin Your <span class="text-gold-gradient">Masterpiece.</span> 
                 </h1>
-                <p class="text-xl text-app-muted max-w-2xl mx-auto fade-in-up" style="transition-delay: 100ms;">
-                    Download the latest version of Novelative (v0.1.3-beta). <br>
-                    You get 30 days of use <span class="text-app-highlight">FREE</span>.
+                <p class="text-lg text-app-muted max-w-xl mx-auto fade-in-up leading-relaxed" style="transition-delay: 150ms;">
+                    Download the latest version of Novelative. <br>
+                    You get 30 days of use <span class="text-app-highlight font-semibold">FREE</span>.
                 </p>
             </div>
 
-			<div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
-			    
-			    <div class="bg-app-surface border border-app-border rounded-xl p-8 flex flex-col items-center text-center fade-in-up" style="transition-delay: 200ms;">
-			
-			        <h3 class="font-serif text-4xl font-bold text-app-text mb-2">Windows</h3>
-			        
-			        <div class="w-12 h-1 bg-app-highlight rounded-full mb-4 opacity-80"></div>
-			
-			        <p class="text-app-muted text-sm mb-8 tracking-wide">
-			            Requires Windows 10 or 11 (64-bit)
-			        </p>
-			        
-			        <a href="https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe" onclick="checkPlatform(event)" class="w-full bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-lg shadow-app-highlight/20 flex items-center justify-center gap-3 group-hover:scale-[1.02]">
-			            <span>Download for Free</span>
-			            <i class="fa-solid fa-arrow-right-long text-sm"></i>
-			        </a>
-			        
-			        <div class="mt-6 flex items-center justify-center gap-4 text-xs text-app-muted font-medium uppercase tracking-wider">
-			            <span>v0.1.3-beta</span>
-			            <span class="w-1 h-1 bg-app-muted rounded-full"></span>
-			            <span>203 MB</span>
-			        </div>
-			    </div>
-			
-			    <div class="relative bg-app-surface/50 border border-app-border rounded-xl p-10 flex flex-col items-center text-center fade-in-up" style="transition-delay: 300ms;">
-			
-			        <h3 class="font-serif text-4xl font-bold text-app-muted mb-2">macOS</h3>
-			        
-			        <div class="w-12 h-1 bg-app-border rounded-full mb-4"></div>
-			
-			        <p class="text-app-muted text-sm mb-8 tracking-wide">
-			            Requires macOS 10.15+
-			        </p>
-			        
-			        <div class="w-full flex flex-col gap-3">
-			            <button disabled class="w-full bg-app-surface border border-app-border text-app-muted font-bold py-4 rounded-lg cursor-not-allowed flex items-center justify-center gap-3 opacity-60">
-			                <i class="fa-solid fa-clock"></i> Coming Soon
-			            </button>
-			        </div>
-			        
-			        <div class="mt-6 text-xs text-app-muted">
-			            Currently in development.<br>Join our <span href="https://discord.gg/TUyzpVTXUS" target="_blank" class="hover:cursor-pointer text-blue-500 hover:text-app-highlight">Discord</span> for updates.
-			        </div>
-			    </div>
-			
-			</div>
-
-            <div class="max-w-3xl mx-auto border-t border-app-border pt-12 fade-in-up" style="transition-delay: 400ms;">
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h4 class="text-app-text font-bold mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-circle-info text-app-highlight"></i> Installation Notes
-                        </h4>
-                        <ul class="space-y-3 text-sm text-app-muted">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
-                                <span>No account creation required to start the trial.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
-                                <span>Data is stored locally in standard JSON/Text formats.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check mt-1 text-green-500"></i>
-                                <span>Offline-first: Works without an internet connection.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-app-text font-bold mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-shield-halved text-app-highlight"></i> Safety & Privacy
-                        </h4>
-                        <p class="text-sm text-app-muted leading-relaxed">
-                            Novelative is signed and notarized for your security. We do not track your writing content or upload your files to any cloud server unless you explicitly use a third-party backup integration.
-                        </p>
-                        <a href="privacypolicy.html" class="text-app-highlight hover:text-app-text text-sm mt-2 inline-block border-b border-app-highlight/30 hover:border-app-text pb-0.5 transition-colors">Read Privacy Policy</a>
-                    </div>
+            <div class="fade-in-up w-full flex flex-col items-center justify-center mb-10" style="transition-delay: 200ms;">
+                <a id="main-download-btn" href="#" onclick="handleMainDownload(event)" class="bg-app-highlight text-app-bg px-10 py-4 rounded-md font-bold text-sm tracking-wider uppercase hover:bg-app-highlightHover transition-all flex items-center justify-center gap-3 group hover:scale-[1.02] min-w-[300px]">
+                    <span id="main-download-text">DOWNLOAD FOR WINDOWS</span>
+                    <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                </a>
+                
+                <div class="mt-4 flex items-center gap-2 text-xs text-app-muted font-medium tracking-wider">
+                    <span>v0.1.3-beta</span>
+                    <span class="w-1 h-1 bg-app-muted rounded-full"></span>
+                    <span>203 MB</span>
                 </div>
             </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-app-text font-medium fade-in-up mb-24" style="transition-delay: 250ms;">
+                <a href="https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe" class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline">Download for Windows</a>
+                <span class="w-px h-4 bg-app-border hidden md:block"></span>
+                <button onclick="openModal()" class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer">Download for macOS</button>
+            </div>
+
 
         </div>
     </main>
 
-    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 mb-4 text-app-text">
-                    <img id="footer-logo" src="./assets/darkmodeicon.png" class="w-5 grayscale opacity-70" alt="Logo">
-                    <span class="font-serif text-xl font-bold">Novelative</span>
-                </div>
-                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
-                <p class="mb-4">© Novelative 2026</p> <div class="flex gap-4">
-                	<a href="https://discord.gg/TUyzpVTXUS" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-bold text-app-text mb-4">Product</h4>
-                <ul class="space-y-2">
-                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
-                    <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-app-text mb-4">Support</h4>
-                <ul class="space-y-2">
-                    <li><a href="contact.html" class="hover:text-app-text">Contact</a></li>
-                    <li><a href="privacypolicy.html" class="hover:text-app-text">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+	<div id="footer-placeholder"></div>
 
-    <div id="windowsModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <div id="statusModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop" onclick="closeModal()"></div>
         
         <div class="relative bg-app-surface border border-app-border rounded-xl p-8 max-w-md w-full shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalContent">
             <div class="text-center">
-                <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-6 text-red-500 text-3xl">
-                    <i class="fa-brands fa-windows"></i> 
+                <div class="w-16 h-16 bg-app-highlight/20 rounded-full flex items-center justify-center mx-auto mb-6 text-app-highlight text-3xl">
+                    <i class="fa-solid fa-clock"></i> 
                 </div>
-                <h3 class="font-serif text-2xl font-bold text-app-text mb-4">Windows Only</h3>
+                <h3 class="font-serif text-2xl font-bold text-app-text mb-4">Coming Soon</h3>
                 <p class="text-app-muted mb-8 leading-relaxed">
-                    Novelative is currently available exclusively for Windows. Please visit this page on a Windows PC to download the installer.
+                    Novelative for macOS is currently in development! Keep an eye on our <a href="https://discord.gg/TUyzpVTXUS" target="_blank" class="text-blue-500 hover:text-app-highlight transition-colors">Discord</a> for beta testing updates.
                 </p>
                 <button onclick="closeModal()" class="w-full bg-app-highlight hover:bg-app-highlightHover text-app-bg font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-app-highlight/20">
                     Understood
@@ -207,23 +135,38 @@
     </div>
 
     <script>
-        // --- Platform Check Logic ---
-        function checkPlatform(event) {
-            // Very simple user agent check for Windows
-            // Works for most standard browsers
-            const isWindows = navigator.platform.indexOf('Win') > -1 || 
-                              navigator.userAgent.indexOf('Windows') > -1;
+        // --- OS Detection Logic ---
+        const isWindows = navigator.platform.indexOf('Win') > -1 || navigator.userAgent.indexOf('Windows') > -1;
+        const isMac = navigator.platform.indexOf('Mac') > -1 || navigator.userAgent.indexOf('Mac OS') > -1;
+        
+        const winDownloadUrl = "https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe";
 
-            if (!isWindows) {
-                event.preventDefault(); // Stop the download link
-                openModal();
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnText = document.getElementById('main-download-text');
+            const mainBtn = document.getElementById('main-download-btn');
+
+            if (isMac) {
+                btnText.textContent = "DOWNLOAD FOR MACOS";
+            } else {
+                // Default to windows for everyone else
+                btnText.textContent = "DOWNLOAD FOR WINDOWS";
+                mainBtn.href = winDownloadUrl;
             }
-            // If it IS windows, do nothing (let the link proceed)
+        });
+
+        function handleMainDownload(event) {
+            if (isMac) {
+                event.preventDefault();
+                openModal();
+            } else {
+                // Allow default link behavior for Windows
+                window.location.href = winDownloadUrl;
+            }
         }
 
         // --- Modal Functions ---
         function openModal() {
-            const modal = document.getElementById('windowsModal');
+            const modal = document.getElementById('statusModal');
             const backdrop = document.getElementById('modalBackdrop');
             const content = document.getElementById('modalContent');
             
@@ -239,7 +182,7 @@
         }
 
         function closeModal() {
-            const modal = document.getElementById('windowsModal');
+            const modal = document.getElementById('statusModal');
             const backdrop = document.getElementById('modalBackdrop');
             const content = document.getElementById('modalContent');
             
@@ -253,7 +196,7 @@
             }, 300); 
         }
 
-        // --- Graph Background Animation (Reused) ---
+        // --- Graph Background Animation ---
         const canvas = document.getElementById('graphCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -261,13 +204,11 @@
         
         function getAccentColor() {
             const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
-            // FIX: Replace spaces with commas for valid RGB syntax in Canvas
             return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
         }
 
         let accentColor = getAccentColor();
 
-        // Listen for theme changes to update color
         window.addEventListener('themeChanged', () => {
             accentColor = getAccentColor();
         });
@@ -276,7 +217,7 @@
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.3; // Slower for download page
+                this.vx = (Math.random() - 0.5) * 0.3;
                 this.vy = (Math.random() - 0.5) * 0.3;
                 this.size = Math.random() * 1.5 + 1;
             }
@@ -296,8 +237,7 @@
         
         function resize() {
             width = window.innerWidth;
-            height = window.innerHeight; // Full viewport height for simplicity here
-            // Or use document body height if content scrolls a lot
+            height = window.innerHeight;
             if(document.body.scrollHeight > window.innerHeight) {
                  height = document.body.scrollHeight;
             }
@@ -310,7 +250,7 @@
         
         function initParticles() {
             particles = [];
-            const particleCount = Math.floor(width / 25); // Slightly less dense
+            const particleCount = Math.floor(width / 25);
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }

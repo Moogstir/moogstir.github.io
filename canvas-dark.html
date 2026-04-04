@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Node Canvas</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        #canvas {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-image: radial-gradient(#3f3f46 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        #svg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .connection {
+            fill: none;
+            stroke: #71717a;
+            stroke-width: 2px;
+            transition: stroke 0.2s;
+        }
+
+        .node {
+            position: absolute;
+            background-color: #27272a;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            width: 220px;
+            min-height: 110px;
+            z-index: 10;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            resize: both;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .node.blue { border-top: 4px solid #3b82f6; }
+        .node.red { border-top: 4px solid #ef4444; }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            cursor: grab;
+        }
+        
+        .header:active {
+            cursor: grabbing;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .title {
+            color: #f4f4f5;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 4px;
+            pointer-events: none;
+        }
+
+        .body {
+            padding: 0 12px 12px 12px;
+            color: #a1a1aa;
+            font-size: 13px;
+            flex-grow: 1;
+            user-select: text;
+        }
+
+        /* Base Icon Styles */
+        .icon {
+            width: 15px;
+            height: 15px;
+            stroke: #a1a1aa;
+            stroke-width: 2;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: stroke 0.2s;
+        }
+
+        /* Specific Hover States */
+        .icon-link:hover {
+            stroke: #FBBC04;
+        }
+
+        .icon-trash:hover {
+            stroke: #D34344;
+        }
+        
+        /* Note: .icon-file has no hover state defined, so it remains static */
+
+        /* Dynamic User Icon Colors */
+        .node.blue .icon-user { stroke: #3b82f6; }
+        .node.red .icon-user { stroke: #ef4444; }
+
+        /* Connection Ports */
+        .port {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #52525b;
+            border: 2px solid #27272a;
+            border-radius: 50%;
+            z-index: 20;
+        }
+        .port:hover {
+        	background-color: #FBBC04;
+        }
+
+        .port.top    { top: -5px; left: calc(50% - 5px); }
+        .port.bottom { bottom: -5px; left: calc(50% - 5px); }
+        .port.left   { left: -5px; top: calc(50% - 5px); }
+        .port.right  { right: -5px; top: calc(50% - 5px); }
+    </style>
+</head>
+<body>
+
+<div id="canvas">
+    <svg id="svg-layer">
+        <path id="line1" class="connection"></path>
+        <path id="line2" class="connection"></path>
+    </svg>
+
+
+
+    <div class="node blue" id="node-john" style="left: 30px; top: 30px;">
+        <div class="port top"></div><div class="port bottom"></div><div class="port left"></div><div class="port right"></div>
+        <div class="header">
+            <div class="header-left">
+                <i data-lucide="file" class="icon icon-file"></i>
+                <i data-lucide="user" class="icon icon-user"></i>
+                <span class="title">John</span>
+            </div>
+            <div class="header-right">
+                <i data-lucide="link" class="icon icon-link"></i>
+                <i data-lucide="trash" class="icon icon-trash"></i>
+            </div>
+        </div>
+        <div class="body">Our main protagonist</div>
+    </div>
+
+    <div class="node" id="node-enemies" style="left: 340px; top: 50px;">
+        <div class="port top"></div><div class="port bottom"></div><div class="port left"></div><div class="port right"></div>
+        <div class="header">
+            <div class="header-left">
+                <span class="title">Notes of John</span>
+            </div>
+            <div class="header-right">
+                <i data-lucide="trash" class="icon icon-trash"></i>
+            </div>
+        </div>
+        <div class="body">Johns doesn't like Rowan</div>
+    </div>
+
+    <div class="node red" id="node-rowan" style="left: 195px; top: 180px; ">
+        <div class="port top"></div><div class="port bottom"></div><div class="port left"></div><div class="port right"></div>
+        <div class="header">
+            <div class="header-left">
+                <i data-lucide="file" class="icon icon-file"></i>
+                <i data-lucide="skull" class="icon icon-user"></i>
+                <span class="title">Rowan</span>
+            </div>
+            <div class="header-right">
+                <i data-lucide="link" class="icon icon-link"></i>
+                <i data-lucide="trash" class="icon icon-trash"></i>
+            </div>
+        </div>
+        <div class="body">Add details...</div>
+    </div>
+</div>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // --- Connection Line Logic ---
+    function updateLines() {
+        const johnNode = document.getElementById('node-john');
+        const rowanNode = document.getElementById('node-rowan');
+        const enemiesNode = document.getElementById('node-enemies');
+
+        if (!johnNode || !rowanNode) return;
+
+        // line1: John's right node -> Rowan's top node
+        drawLine(johnNode, 'right', enemiesNode, 'left', 'line1');
+        
+        // line2: John's bottom node -> Rowan's left node
+        drawLine(johnNode, 'bottom', rowanNode, 'left', 'line2');
+    }
+
+    // Helper to get exact x, y coordinates for a specific port
+    function getPortCoords(node, portPosition) {
+        let x = node.offsetLeft;
+        let y = node.offsetTop;
+        const w = node.offsetWidth;
+        const h = node.offsetHeight;
+
+        switch (portPosition) {
+            case 'top':    x += w / 2; break;
+            case 'bottom': x += w / 2; y += h; break;
+            case 'left':   y += h / 2; break;
+            case 'right':  x += w;     y += h / 2; break;
+        }
+        return { x, y };
+    }
+
+    function drawLine(nodeA, portA, nodeB, portB, pathId) {
+        const start = getPortCoords(nodeA, portA);
+        const end = getPortCoords(nodeB, portB);
+
+        // Control point weight for the Bezier curve
+        const curveWeight = 60; 
+        
+        let cp1x = start.x, cp1y = start.y;
+        let cp2x = end.x, cp2y = end.y;
+
+        // Adjust control point 1 based on Node A's port direction
+        if (portA === 'top') cp1y -= curveWeight;
+        if (portA === 'bottom') cp1y += curveWeight;
+        if (portA === 'left') cp1x -= curveWeight;
+        if (portA === 'right') cp1x += curveWeight;
+
+        // Adjust control point 2 based on Node B's port direction
+        if (portB === 'top') cp2y -= curveWeight;
+        if (portB === 'bottom') cp2y += curveWeight;
+        if (portB === 'left') cp2x -= curveWeight;
+        if (portB === 'right') cp2x += curveWeight;
+
+        const path = document.getElementById(pathId);
+        path.setAttribute('d', `M ${start.x} ${start.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${end.x} ${end.y}`);
+    }
+
+    // --- Drag and Drop Logic ---
+    let isDragging = false;
+    let dragTarget = null;
+    let startX, startY, initialLeft, initialTop;
+
+    document.querySelectorAll('.node').forEach(node => {
+        new ResizeObserver(updateLines).observe(node);
+
+        node.addEventListener('mousedown', (e) => {
+            // Updated to ensure clicking icons doesn't trigger drag
+            if(
+                e.target.classList.contains('port') || 
+                e.target.classList.contains('lucide') || 
+                e.target.closest('.icon') || 
+                (e.offsetX > node.offsetWidth - 20 && e.offsetY > node.offsetHeight - 20)
+            ) {
+                return;
+            }
+
+            isDragging = true;
+            dragTarget = node;
+
+            document.querySelectorAll('.node').forEach(n => n.style.zIndex = 10);
+            node.style.zIndex = 11;
+
+            startX = e.clientX;
+            startY = e.clientY;
+            initialLeft = node.offsetLeft;
+            initialTop = node.offsetTop;
+        });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging || !dragTarget) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        dragTarget.style.left = `${initialLeft + dx}px`;
+        dragTarget.style.top = `${initialTop + dy}px`;
+
+        updateLines();
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        dragTarget = null;
+    });
+
+    updateLines();
+</script>
+</body>
+</html>

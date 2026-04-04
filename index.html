@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
 
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'G-T9DS3YHVV6');
-	</script>
-	
-	<script>window.lemonSqueezyAffiliateConfig = { store: "novelative" };</script>
-	<script src="https://lmsqueezy.com/affiliate.js" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-T9DS3YHVV6');
+    </script>
+
+    <script>window.lemonSqueezyAffiliateConfig = { store: "novelative" };</script>
+    <script src="https://lmsqueezy.com/affiliate.js" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novelative | The Writers Studio</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css">
-    
+
     <style>
         /* Poll Selection Styles */
         .poll-card.selected {
@@ -39,19 +42,21 @@
             transform: translateY(-4px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
+
         .poll-card.selected .check-icon {
             opacity: 1;
             transform: scale(1);
         }
     </style>
 </head>
+
 <body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md border-b border-app-border">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a  href="index.html" class="flex items-center gap-2">
+    <nav class="w-full z-50 bg-app-bg/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
                 <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
-                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+                <span class="hidden lg:block font-serif text-2xl font-bold tracking-wide">Novelative</span>
             </a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
                 <a href="index.html" class="underline text-app-text transition-colors">Home</a>
@@ -60,148 +65,246 @@
                 <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
             </div>
             <div class="flex items-center">
-                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
-                    <i class="fa-solid fa-sun"></i>
-                </button>
-                <a href="download.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+				<button id="theme-toggle" class="p-2 rounded-lg text-app-text opacity-60 hover:opacity-100 transition-colors">
+				    <svg id="headerSunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-3 hidden">
+				        <circle cx="12" cy="12" r="5"></circle>
+				        <line x1="12" y1="1" x2="12" y2="3"></line>
+				        <line x1="12" y1="21" x2="12" y2="23"></line>
+				        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+				        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+				        <line x1="1" y1="12" x2="3" y2="12"></line>
+				        <line x1="21" y1="12" x2="23" y2="12"></line>
+				        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+				        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+				    </svg>
+				
+				    <svg id="headerMoonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-3">
+				        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+				    </svg>
+				</button>
+                <a href="download.html"
+                    class="hidden md:inline-flex bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
                     Download Beta
                 </a>
+                <button id="mobile-menu-toggle"
+                    class="md:hidden p-2 rounded-md text-app-muted hover:text-app-text focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-app-border bg-app-bg flex-col px-6 py-4 gap-4 text-sm font-medium text-app-muted shadow-lg">
+            <a href="index.html" class="text-app-text transition-colors">Home</a>
+            <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
+            <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
+            <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
+            <a href="download.html"
+                class="mt-2 text-center bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                Download Beta
+            </a>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50"></canvas>
-        
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
+	<style>
+	    /* Keyframes for the infinite horizontal scroll */
+	    @keyframes scroll-left {
+	        0% { transform: translateX(0); }
+	        100% { transform: translateX(-50%); }
+	    }
+	    
+	    /* Animation class */
+	    .animate-marquee {
+	        animation: scroll-left 30s linear infinite;
+	    }
+	</style>
 
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center p-20">
-            <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 fade-in-up" style="transition-delay: 100ms;">
-                <span class="text-gold-gradient">Finish your draft</span> <br><span class="text-4xl">without the "Middle-of-the-Novel" meltdown.</span>
-            </h1>
-            <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="transition-delay: 300ms;">
-                <a href="download.html" class="bg-app-highlight text-app-bg px-8 py-4 rounded-lg font-bold text-lg hover:bg-app-highlightHover transition-all shadow-lg shadow-app-highlight/40 flex items-center justify-center gap-2">Download Beta</a>
-                <a href="features.html" class="border border-app-border hover:border-app-muted bg-app-surface/50 text-app-text px-8 py-4 rounded-lg font-bold text-lg backdrop-blur-sm transition-all">
-                    Explore Features
-                </a>
+	<section id="hero-section" class="relative pt-0 sm:pt-0 md:pt-6 lg:pt-12 xl:pt-24 pb-8 sm:pb-12 overflow-hidden group bg-app-bg">
+	    
+	    <div class="absolute inset-0 z-0 pointer-events-none transition-opacity duration-300" style="-webkit-mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.15) 65%, transparent 100%); mask-image: radial-gradient(circle 500px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.15) 65%, transparent 100%);">
+	        <img id="hero-bg" src="./assets/herobg -dark.png" alt="Hero Background" class="w-full h-full object-cover object-top opacity-30 mix-blend-overlay" />
+	    </div>
+	
+	    <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50"></canvas>
+	
+	    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 text-left">
+	        <p class="font-serif text-4xl md:text-5xl lg:text-[4.5rem] xl:text-[5.25rem] font-bold leading-tight fade-in-up" style="transition-delay: 100ms;">Where ideas <br>become <span class="text-transparent bg-clip-text bg-gradient-to-r from-app-highlight to-app-text">worlds</span>.</p>
+	        
+	        <p class="text-app-text opacity-80 max-w-[256px] md:max-w-[396px] text-sm md:text-md lg:text-lg mt-2 md:mt-4 lg:max-w-[550px] mb-3 fade-in-up" style="transition-delay: 200ms;">Novelative. Created by a single writer, for <span class="italic">every</span> single writer. Made to kill the messy writing environment.</p>
+	
+	        <div class="mb-24 md:mb-48 lg:mb-60 fade-in-up mt-4 md:mt-7 lg:mt-10" style="transition-delay: 300ms;">
+	            <div class="flex items-center justify-start gap-3">
+	                <a href="download.html" class="inline-flex bg-app-highlight text-app-bg px-10 py-3 rounded-md font-bold text-sm hover:bg-app-highlightHover transition-all shadow-lg shadow-app-highlight/40 items-center gap-2">Try Beta Free</a>
+	                
+	                <a href="features.html" class="inline-flex bg-transparent text-app-text px-6 py-3 rounded-lg font-bold text-sm transition-all hover:text-app-highlight items-center">Explore Features</a>
+	            </div>
+	        </div>
+	
+	        <div class="relative w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-5xl fade-in-up justify-start" style="transition-delay: 500ms;">
+	            <img id="hero-mockup" src="./assets/intro -dark.png" alt="Novelative App Interface showing Split View" class="block w-full h-auto shadow-2xl rounded-xl border border-app-border/50 mb-6">
+	        </div>
+	    </div>
+	
+		<div class="text-left relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 mt-4">
+	        <p class="text-app-text/60 text-xs md:text-sm mb-3">The complete world-building environment:</p>
+	        
+	        <div class="max-w-lg lg:max-w-2xl overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+	            
+	            <div class="flex whitespace-nowrap w-max animate-marquee">
+	                
+	                <div class="flex gap-4 pr-4">
+	                    <span class="text-app-text/90 text-xs md:text-sm tracking-wide">
+	                        Infinite Projects &bull; Wiki-Links &bull; Smart Tagging &bull; Infinite Canvas &bull; Editor Notes &bull; Graph View &bull; Custom Themes &bull; Paged / Continuous &bull; Split View &bull; Focus / Mark-up &bull; Synonyms Finder &bull; Powerful Data Storage &bull; 
+	                    </span>
+	                </div>
+					
+					<div class="flex gap-4 pr-4">
+	                    <span class="text-app-text/90 text-xs md:text-sm tracking-wide">
+	                        Infinite Projects &bull; Wiki-Links &bull; Smart Tagging &bull; Infinite Canvas &bull; Editor Notes &bull; Graph View &bull; Custom Themes &bull; Paged / Continuous &bull; Split View &bull; Focus / Mark-up &bull; Synonyms Finder &bull; Powerful Data Storage &bull;
+	                    </span>
+	                </div>
+	
+	            </div>
+	        </div>
+	    </div>
+	
+	</section>
 
-            </div>
+	<section id="visualize" class="py-16 sm:py-16 md:py-24 lg:py-36 bg-app-surface border-t border-app-border">
+        <div class="mx-auto max-w-[460px] sm:max-w-[640px] md:max-w-[758px] lg:max-w-[950px] xl:max-w-7xl px-6">
 
-            <div class="relative max-w-4xl mx-auto fade-in-up" style="transition-delay: 500ms;">
-                <img id="hero-mockup" src="./assets/intro -dark.png" alt="Novelative App Interface showing Split View" class="w-full h-auto shadow-2xl ">
+            <p class="font-serif text-4xl md:text-[3.5rem] lg:text-7xl xl:text-7xl font-bold fade-in-up" style="transition-delay: 100ms;">Peak Performance</p>
+            
+            <p class="text-app-text opacity-80 max-w-[22rem] sm:max-w-[30rem] md:max-w-[600px] text-[.9rem] md:text-base mt-4 md:mt-6 mb-6 md:mb-8 lg:mb-10 xl:mb-12 fade-in-up" style="transition-delay: 200ms;">Tags, canvases, and graphs integrate seamlessly to transform fragmented notes into a coherent visual ecosystem, engineered for maximum insight.</p>
+
+            <div class="grid grid-cols-3 gap-8 fade-in-up">
+                
+				<div class="relative rounded-xl overflow-hidden shadow-xl col-span-3 row-span-1 xl:col-span-2 xl:row-span-1 min-h-[450px] flex items-end group border border-app-border/50 hover:border-app-highlight/50 transition-colors duration-300">
+				    
+				    <iframe id="canvas-iframe" src="canvas-light.html" class="absolute inset-0 w-full h-full z-0 border-none" frameborder="0" scrolling="no"></iframe>
+				    
+				    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-app-strong to-transparent z-10 h-[35%] pointer-events-none"></div>
+				    
+				    <div class="relative z-20 p-8 w-full text-left pointer-events-none">
+				        <p class="text-app-contrast opacity-100 text-sm">Infinite Canvases.<span class="text-app-text opacity-80"> Stop drawing diagrams by hand. Map out your ideas, characters, and locations seamlessly.</span></p>
+				    </div>
+				    
+				</div>
+
+                <div class="relative rounded-xl overflow-hidden shadow-xl col-span-3 row-span-1 xl:col-span-1 xl:row-span-2 min-h-[450px] flex items-end group border border-app-border/50 hover:border-app-highlight/50 transition-colors duration-300">
+                    
+                    <iframe id="tagging-iframe" src="tagging-light.html" class="absolute inset-0 w-full h-full z-0 border-none" frameborder="0" scrolling="no"></iframe>
+
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-app-strong to-transparent z-10 h-[35%]  pointer-events-none"></div>
+                    
+                    <div class="relative z-20 p-8 w-full text-left">
+                        <p class="text-app-contrast opacity-100 text-sm">Tagging System.<span class="text-app-text opacity-80"> Organize your files your way with custom tags integrated throughout the app.</span></p>
+                    </div>
+                    
+                </div>
+
+                <div class="relative rounded-xl overflow-hidden shadow-xl col-span-3 row-span-1 xl:col-span-2 xl:row-span-1 min-h-[450px] flex items-end group border border-app-border/50 hover:border-app-highlight/50 transition-colors duration-300">
+                    
+                    <iframe id="graph-iframe" src="graph-tags-light.html" class="absolute inset-0 w-full h-full z-0 border-none" frameborder="0" scrolling="no"></iframe>
+
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-app-strong to-transparent z-10 h-[35%]"></div>
+                    
+                    <div class="relative z-20 p-8 w-full text-left">
+                        <p class="text-app-contrast opacity-100 text-sm">Graph View.<span class="text-app-text opacity-80"> Get a bird's-eye view of your project. Navigate groups of tags and visualize hyperlinks between all your files.</span></p>
+                    </div>
+                    
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-app-surface border-y border-app-border">
+    <section class="py-24 bg-app-bg border-t border-app-border">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
-                <div class="fade-in-up">
-                    <div class="w-12 h-12 bg-app-highlight/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
-                        <i class="fa-solid fa-lock text-app-highlight text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Own Your Work</h3>
-                    <p class="text-app-muted leading-relaxed">Offline-first design ensures your novels, notes, and world data are stored securely on your local device. True data ownership guaranteed.</p>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-in-up">
+                <div class="max-w-2xl mb-6 md:mb-0">
+                    <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Features</div>
+                    <h2 class="font-serif text-4xl font-bold mb-4">The Writer's Arsenal</h2>
+                    <p class="text-app-muted text-lg">Powerful quality-of-life tools designed to keep you immersed in
+                        your story without battling your software.</p>
                 </div>
-                <div class="fade-in-up" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 bg-app-highlight/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
-                        <i class="fa-solid fa-sitemap text-app-highlight text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Structured Freedom</h3>
-                    <p class="text-app-muted leading-relaxed">Combine the rigid structure of a file-tree for organization with the limitless freedom of an infinite canvas for plotting and connections.</p>
-                </div>
-                <div class="fade-in-up" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 bg-app-highlight/20 rounded-lg flex items-center justify-center mb-4 mx-auto md:mx-0">
-                        <i class="fa-solid fa-circle-half-stroke text-app-highlight text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Designed for Focus</h3>
-                    <p class="text-app-muted leading-relaxed">Dark, Light, or Custom themes with intelligent collapsing sidebars and Novelative-only features engineered to simplify your complex projects.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="visualize" class="py-24 bg-app-bg">
-        <div class="max-w-7xl mx-auto px-6 space-y-32">
-            
-            <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
-                <div class="md:w-1/2">
-                    <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Infinite Canvases</div>
-                    <h2 class="font-serif text-4xl font-bold mb-6">Instantly Grasp Your World's Complexity.</h2>
-                    <p class="text-app-muted text-lg mb-6">
-                        Stop drawing diagrams by hand. Novelative Canvas's help you plot out your ideas on an infinite canvas.
-                    </p>
-                    <ul class="space-y-4 text-app-muted text-lg">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-cube text-app-highlight mt-1.5"></i>
-                            <span><strong>Every File Incorporated:</strong> Drag and drop character, locations, chapters or any other file directly into a canvas.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
-                            <span><strong>Nodules:</strong> Snap node cards together or add node connection lines to map out complex ideas.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 relative">
-                    <img data-base-src="assets/app-screenshot-canvas" data-ext="png" src="assets/app-screenshot-canvas-dark.png" alt="Novelative Canvas System" class="theme-toggle-img w-full h-auto shadow-2xl rounded-lg">
-                </div>
+                <a href="features.html"
+                    class="inline-flex items-center text-app-highlight hover:text-app-highlightHover font-bold transition-all group border-b border-transparent hover:border-app-highlight pb-1">
+                    View full feature list
+                    <i
+                        class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
-                <div class="md:w-1/2 order-2 md:order-1 relative">
-                    <img data-base-src="assets/app-screenshot-tag" data-ext="png" src="assets/app-screenshot-tag-dark.png" alt="Novelative App Tagging System" class="theme-toggle-img w-full h-auto shadow-2xl rounded-lg">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Arsenal Card 1 -->
+                <div
+                    class="bg-app-surface border border-app-border rounded-xl p-6 hover:border-app-highlight hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-up">
+                    <div
+                        class="w-12 h-12 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-4 text-app-highlight text-xl">
+                        <i class="fa-solid fa-table-columns"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-app-text mb-2">Split View</h3>
+                    <p class="text-app-muted text-sm leading-relaxed">Open two documents side-by-side to reference your
+                        outline while drafting chapters.</p>
                 </div>
-                <div class="md:w-1/2 order-1 md:order-2">
-                    <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Tagging System</div>
-                    <h2 class="font-serif text-4xl font-bold mb-6">Powerful Organization, Personalized for You</h2>
-                    <p class="text-app-muted text-lg mb-6">
-                        Novelative's tagging system allows you to organize your files YOUR way, integrated systems allthroughout the app make it a breeze to visualize your project in a variety of useful ways.
-                    </p>
-                    <ul class="space-y-4 text-app-muted text-lg">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-wand-magic-sparkles text-app-highlight mt-1.5"></i>
-                            <span><strong>Custom Tags:</strong> Customize the appearance of every tag and apply as many tags as needed for every file.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-table-columns text-app-highlight mt-1.5"></i>
-                            <span><strong>Tagging Utility:</strong> Tags appear in the hierarchy next to your file's name. But tags are also visualized inside canvases. And use the Graph View to visualize your tagged files in a whole new way.</span>
-                        </li>
-                    </ul>
+                <!-- Arsenal Card 2 -->
+                <div class="bg-app-surface border border-app-border rounded-xl p-6 hover:border-app-highlight hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-up"
+                    style="transition-delay: 50ms;">
+                    <div
+                        class="w-12 h-12 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-4 text-app-highlight text-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-app-text mb-2">Focus Mode</h3>
+                    <p class="text-app-muted text-sm leading-relaxed">Switch between a detailed markup editor and a
+                        distraction-free clean writing interface.</p>
+                </div>
+                <!-- Arsenal Card 3 -->
+                <div class="bg-app-surface border border-app-border rounded-xl p-6 hover:border-app-highlight hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-up"
+                    style="transition-delay: 100ms;">
+                    <div
+                        class="w-12 h-12 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-4 text-app-highlight text-xl">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-app-text mb-2">Custom Themes</h3>
+                    <p class="text-app-muted text-sm leading-relaxed">Personalize your app with pre-set modes or design
+                        expansive custom color palettes.</p>
+                </div>
+                <!-- Arsenal Card 4 -->
+                <div class="bg-app-surface border border-app-border rounded-xl p-6 hover:border-app-highlight hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-up"
+                    style="transition-delay: 150ms;">
+                    <div
+                        class="w-12 h-12 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-4 text-app-highlight text-xl">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-app-text mb-2">Auto Backups</h3>
+                    <p class="text-app-muted text-sm leading-relaxed">Automatically save rolling snapshots of your work
+                        locally to prevent data loss unconditionally.</p>
+                </div>
+                <!-- Arsenal Card 5 -->
+                <div class="bg-app-surface border border-app-border rounded-xl p-6 hover:border-app-highlight hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-up"
+                    style="transition-delay: 200ms;">
+                    <div
+                        class="w-12 h-12 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-4 text-app-highlight text-xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-app-text mb-2">Thesaurus</h3>
+                    <p class="text-app-muted text-sm leading-relaxed">Access a built-in thesaurus to find the perfect
+                        word instantly without leaving your draft.</p>
+                </div>
+                <!-- Arsenal Card 6 -->
+                <div class="bg-app-surface border border-app-border rounded-xl p-6 hover:border-app-highlight hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col fade-in-up"
+                    style="transition-delay: 250ms;">
+                    <div
+                        class="w-12 h-12 bg-app-bg border border-app-border rounded-lg flex items-center justify-center mb-4 text-app-highlight text-xl">
+                        <i class="fa-solid fa-keyboard"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-app-text mb-2">Typewriter Mode</h3>
+                    <p class="text-app-muted text-sm leading-relaxed">Keep your active typing line locked to the
+                        screen's center to reduce eye strain over long periods.</p>
                 </div>
             </div>
-            
-            <div class="flex flex-col md:flex-row items-center gap-16 fade-in-up">
-                <div class="md:w-1/2">
-                    <div class="text-app-highlight text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Graph View</div>
-                    <h2 class="font-serif text-4xl font-bold mb-6">Visualize & Navigate.</h2>
-                    <p class="text-app-muted text-lg mb-6">
-                        Use Novelative's Graph View to navigate and organize your files to get a view of your project.
-                    </p>
-                    <ul class="space-y-4 text-app-muted text-lg">
-                        <li class="flex items-start gap-3">
-                            <i class="text-app-highlight fa-solid fa-cube text-app-highlight mt-1.5"></i>
-                            <span><strong>Tag View:</strong> Every file is organized into groups of tags, easy for navigating files with certain tags.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="text-app-highlight fa-solid fa-layer-group text-app-highlight mt-1.5"></i>
-                            <span><strong>Link View:</strong> Show's the links between all your files that have hyperlinks.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 relative">
-                    <img data-base-src="assets/app-screenshot-graph" data-ext="png" src="assets/app-screenshot-graph-dark.png" alt="Novelative Graph View" class="theme-toggle-img w-full h-auto shadow-2xl rounded-lg">
-                </div>
-            </div>
-            
         </div>
-        
-        <div class="pt-20 max-w-4xl mx-auto text-center">
-            <a href="features.html" class="inline-flex items-center border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-8 py-3 rounded-lg font-bold transition-all group">
-                See All Features
-                <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-        </div>
-    
     </section>
 
     <section class="py-20 bg-app-surface border-y border-app-border">
@@ -209,15 +312,18 @@
             <div class="fade-in-up">
                 <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">The "Accidental" App</h2>
                 <div class="w-20 h-1 bg-app-highlight mb-8"></div>
-                
+
                 <p class="text-app-muted text-lg mb-6 leading-relaxed">
-                    I never planned to create an app for the public, or to ever launch anything. I was deeply into world-building, and used a professional desktop app to create and store my world. But organizing all my thoughts and ideas was a mess.
+                    I never planned to create an app for the public, or to ever launch anything. I was deeply into
+                    world-building, and used a professional desktop app to create and store my world. But organizing all
+                    my thoughts and ideas was a mess.
                 </p>
                 <p class="text-app-muted text-lg mb-6 leading-relaxed">
                     So I decided I'd make my own app—just for myself. And it worked!
                 </p>
                 <p class="text-app-muted text-lg mb-8 leading-relaxed font-medium text-app-text">
-                    It wasn't until I realized that my self-made app had solved a <em>REAL</em> problem. It's impossible to navigate your complex worlds with standard tools. Novelative is the answer to that problem.
+                    It wasn't until I realized that my self-made app had solved a <em>REAL</em> problem. It's impossible
+                    to navigate your complex worlds with standard tools. Novelative is the answer to that problem.
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4">
@@ -236,19 +342,23 @@
                 <div class="absolute -inset-4 bg-app-highlight/5 rounded-2xl blur-xl"></div>
                 <div class="relative bg-app-bg border border-app-border p-8 rounded-xl shadow-2xl">
                     <h3 class="font-bold text-xl mb-4 text-app-text">Why your voice matters</h3>
-                    <p class="text-app-muted mb-6">Since this tool wasn't built in a corporate boardroom, it doesn't have to follow corporate rules. We build what works for <em>us</em>.</p>
+                    <p class="text-app-muted mb-6">Since this tool wasn't built in a corporate boardroom, it doesn't
+                        have to follow corporate rules. We build what works for <em>us</em>.</p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-bug text-red-400 mt-1"></i>
-                            <span class="text-app-muted"><strong>Catching Bugs:</strong> No matter how much we test, real-world usage reveals things we miss.</span>
+                            <span class="text-app-muted"><strong>Catching Bugs:</strong> No matter how much we test,
+                                real-world usage reveals things we miss.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-wand-magic-sparkles text-[#FBBC04] mt-1"></i>
-                            <span class="text-app-muted"><strong>Workflow Refinement:</strong> We want to know where the app feels "slow" or "clunky" in your actual writing process.</span>
+                            <span class="text-app-muted"><strong>Workflow Refinement:</strong> We want to know where the
+                                app feels "slow" or "clunky" in your actual writing process.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-map text-[#3B82F6] mt-1"></i>
-                            <span class="text-app-muted"><strong>Feature Priority:</strong> We have a roadmap, but you tell us which roads to take first.</span>
+                            <span class="text-app-muted"><strong>Feature Priority:</strong> We have a roadmap, but you
+                                tell us which roads to take first.</span>
                         </li>
                     </ul>
                 </div>
@@ -265,43 +375,56 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 mb-10">
-                
-                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up" onclick="selectPollOption(1)" id="poll-option-1">
-                    <div class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
+
+                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up"
+                    onclick="selectPollOption(1)" id="poll-option-1">
+                    <div
+                        class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
                         <i class="fa-solid fa-circle-check text-xl"></i>
                     </div>
-                    <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                    <div
+                        class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
                         <i class="fa-solid fa-chart-pie"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-app-text">Targets & Analytics</h3>
-                    <p class="text-sm text-app-muted">Set project and file word/page count targets with visual progress bars and notification milestones.</p>
+                    <p class="text-sm text-app-muted">Set project and file word/page count targets with visual progress
+                        bars and notification milestones.</p>
                 </div>
 
-                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up" onclick="selectPollOption(2)" style="transition-delay: 50ms;" id="poll-option-2">
-                    <div class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
+                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up"
+                    onclick="selectPollOption(2)" style="transition-delay: 50ms;" id="poll-option-2">
+                    <div
+                        class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
                         <i class="fa-solid fa-circle-check text-xl"></i>
                     </div>
-                    <div class="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                    <div
+                        class="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors">
                         <i class="fa-solid fa-window-restore"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-app-text">Multi-Window Mode</h3>
-                    <p class="text-sm text-app-muted">Ability to pop text files and canvases out into separate desktop windows while keeping them linked.</p>
+                    <p class="text-sm text-app-muted">Ability to pop text files and canvases out into separate desktop
+                        windows while keeping them linked.</p>
                 </div>
 
-                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up" onclick="selectPollOption(3)" style="transition-delay: 100ms;" id="poll-option-3">
-                    <div class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
+                <div class="poll-card cursor-pointer bg-app-surface border border-app-border rounded-xl p-6 transition-all duration-300 hover:border-app-highlight group relative fade-in-up"
+                    onclick="selectPollOption(3)" style="transition-delay: 100ms;" id="poll-option-3">
+                    <div
+                        class="check-icon absolute top-4 right-4 text-app-highlight opacity-0 transform scale-50 transition-all duration-300">
                         <i class="fa-solid fa-circle-check text-xl"></i>
                     </div>
-                    <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-green-500 group-hover:text-white transition-colors">
+                    <div
+                        class="w-12 h-12 bg-green-500/10 text-green-500 rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-green-500 group-hover:text-white transition-colors">
                         <i class="fa-solid fa-rotate-left"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-app-text">UI Undo/Redo</h3>
-                    <p class="text-sm text-app-muted">Add visible buttons for Undo and Redo actions in the toolbar (currently shortcut only).</p>
+                    <p class="text-sm text-app-muted">Add visible buttons for Undo and Redo actions in the toolbar
+                        (currently shortcut only).</p>
                 </div>
             </div>
 
             <div class="text-center fade-in-up" style="transition-delay: 200ms;">
-                <button id="voteBtn" onclick="submitVote()" disabled class="bg-app-surface border border-app-border text-app-muted font-bold py-3 px-10 rounded-lg transition-all cursor-not-allowed opacity-60">
+                <button id="voteBtn" onclick="submitVote()" disabled
+                    class="bg-app-surface border border-app-border text-app-muted font-bold py-3 px-10 rounded-lg transition-all cursor-not-allowed opacity-60">
                     Select an option above
                 </button>
                 <p id="voteThankYou" class="hidden text-app-highlight font-medium mt-4">
@@ -311,11 +434,92 @@
         </div>
     </section>
 
+    <section class="py-24 bg-app-surface border-t border-app-border">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <div class="text-app-highlight font-bold tracking-widest text-sm uppercase mb-2">Questions</div>
+                <h2 class="font-serif text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-app-muted text-lg">Everything you need to know about Novelative.</p>
+            </div>
+
+            <div class="space-y-4 fade-in-up" style="transition-delay: 100ms;">
+                <div
+                    class="bg-app-bg border border-app-border rounded-xl overflow-hidden shadow-sm hover:border-app-highlight/50 transition-colors">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-lg text-app-text pr-4">Is my data stored in the cloud?</span>
+                        <i
+                            class="fa-solid fa-plus text-app-highlight transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-app-muted leading-relaxed">
+                            No. Novelative is built with an offline-first approach. Your manuscripts, notes, and world
+                            data are stored securely on your local device. We believe in true data ownership.
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-app-bg border border-app-border rounded-xl overflow-hidden shadow-sm hover:border-app-highlight/50 transition-colors">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-lg text-app-text pr-4">Do I need a subscription?</span>
+                        <i
+                            class="fa-solid fa-plus text-app-highlight transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-app-muted leading-relaxed">
+                            Novelative is a one-time purchase that gives you access to Novelative FOR LIFE, including
+                            all updates and new versions. Novelative is also free to try for the first 30 days of use.
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-app-bg border border-app-border rounded-xl overflow-hidden shadow-sm hover:border-app-highlight/50 transition-colors">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-lg text-app-text pr-4">Can I move my work?</span>
+                        <i
+                            class="fa-solid fa-plus text-app-highlight transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-app-muted leading-relaxed">
+                            Yes, Novelative saves your content into a single JSON file. You can use the "Save As"
+                            feature to move a copy of your project anywhere you want, easily.
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-app-bg border border-app-border rounded-xl overflow-hidden shadow-sm hover:border-app-highlight/50 transition-colors">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-lg text-app-text pr-4">Are mobile apps planned?</span>
+                        <i
+                            class="fa-solid fa-plus text-app-highlight transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-5 text-app-muted leading-relaxed">
+                            Currently, Novelative is a desktop-first application built for Windows and macOS, focusing
+                            on providing the most powerful environment for deep work. A companion mobile app for quick
+                            notes is on our long-term timeline.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section class="py-20 bg-app-bg border-y border-app-border">
         <div class="max-w-5xl mx-auto px-6 fade-in-up">
-            <div class="bg-app-surface border border-app-border rounded-xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
-                
-                <div class="absolute -right-20 -top-20 w-64 h-64 bg-[#5865F2] opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+            <div
+                class="bg-app-surface border border-app-border rounded-xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+
+                <div
+                    class="absolute -right-20 -top-20 w-64 h-64 bg-[#5865F2] opacity-10 rounded-full blur-3xl pointer-events-none">
+                </div>
 
                 <div class="text-center md:text-left relative z-10">
                     <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
@@ -323,11 +527,13 @@
                         <h2 class="font-serif text-3xl font-bold text-app-text">Join the Community</h2>
                     </div>
                     <p class="text-app-muted text-lg max-w-xl">
-                        Connect with other world-builders, chat directly with the developers, and get real-time updates on our Discord server.
+                        Connect with other world-builders, chat directly with the developers, and get real-time updates
+                        on our Discord server.
                     </p>
                 </div>
-                
-                <a href="https://discord.gg/TUyzpVTXUS" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg shadow-[#5865F2]/20 transition-all transform hover:scale-105 flex-shrink-0 flex items-center gap-2 relative z-10">
+
+                <a href="https://discord.gg/TUyzpVTXUS" target="_blank"
+                    class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg shadow-[#5865F2]/20 transition-all transform hover:scale-105 flex-shrink-0 flex items-center gap-2 relative z-10">
                     <span>Join Server</span>
                     <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                 </a>
@@ -342,9 +548,11 @@
             <p class="text-xl text-app-muted mb-10">
                 Download Novelative today and take control of your narrative.
             </p>
-            
+
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="download.html" class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Try Free (No Sign-Up)</a>
+                <a href="download.html"
+                    class="bg-app-highlight hover:bg-app-highlightHover text-app-bg px-10 py-4 rounded-lg font-bold text-xl shadow-lg shadow-app-highlight/30 transition-all transform hover:-translate-y-1">Try
+                    Free (No Sign-Up)</a>
                 <div class="text-app-muted text-sm">
                     <div class="mb-1">Windows | macOS</div>
                     <div>First 30 days of use FREE. No sign-up & no card information.</div>
@@ -353,42 +561,39 @@
         </div>
     </section>
 
-    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted mt-auto">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 mb-4 text-app-text">
-                    <img id="footer-logo" src="./assets/darkmodeicon.png" class="w-5 grayscale opacity-70" alt="Logo">
-                    <span class="font-serif text-xl font-bold">Novelative</span>
-                </div>
-                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
-                <p class="mb-4">© Novelative 2026</p> <div class="flex gap-4">
-                	<a href="https://discord.gg/TUyzpVTXUS" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-bold text-app-text mb-4">Product</h4>
-                <ul class="space-y-2">
-                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
-                    <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-app-text mb-4">Support</h4>
-                <ul class="space-y-2">
-                    <li><a href="contact.html" class="hover:text-app-text">Contact</a></li>
-                    <li><a href="privacypolicy.html" class="hover:text-app-text">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-    
-    <button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-app-highlight text-app-bg w-10 h-10 rounded-lg shadow-2xl flex items-center justify-center opacity-0 translate-y-10 pointer-events-none transition-all duration-300 hover:scale-110 hover:bg-app-highlightHover">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+	<div id="footer-placeholder"></div>
+
+	<div id="floating-actions" class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 opacity-0 translate-y-10 pointer-events-none transition-all duration-300">
+        <button id="backToTop"
+            class="bg-app-highlight text-app-bg w-10 h-10 rounded-lg shadow-2xl flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:bg-app-highlightHover">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+        
+		<button id="floatingThemeToggle"
+            class="bg-app-surface border border-app-border text-app-text w-10 h-10 rounded-lg shadow-2xl flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:border-app-highlight">
+            
+            <svg id="floatingSunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+
+            <svg id="floatingMoonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 hidden">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            
+        </button>
+    </div>
 
     <script>
         // --- EmailJS Initialization ---
-        (function() {
+        (function () {
             emailjs.init({
                 publicKey: "7Lq-JMbXtVbwLCluy",
             });
@@ -403,18 +608,18 @@
             document.querySelectorAll('.poll-card').forEach(card => {
                 card.classList.remove('selected');
             });
-            
+
             // Select clicked
             const target = document.getElementById('poll-option-' + id);
             target.classList.add('selected');
-            
+
             selectedVote = id;
-            
+
             // Set the feature name based on the ID
-            if(id === 1) selectedFeatureName = "Targets & Analytics";
-            if(id === 2) selectedFeatureName = "Multi-Window Mode";
-            if(id === 3) selectedFeatureName = "UI Undo/Redo";
-            
+            if (id === 1) selectedFeatureName = "Targets & Analytics";
+            if (id === 2) selectedFeatureName = "Multi-Window Mode";
+            if (id === 3) selectedFeatureName = "UI Undo/Redo";
+
             // Enable button
             const btn = document.getElementById('voteBtn');
             btn.disabled = false;
@@ -425,10 +630,10 @@
 
         function submitVote() {
             if (selectedVote === 0) return;
-            
+
             const btn = document.getElementById('voteBtn');
             const originalText = btn.innerText;
-            
+
             btn.innerText = "Sending...";
             btn.classList.add('cursor-not-allowed', 'opacity-75');
             btn.disabled = true;
@@ -437,21 +642,21 @@
             const params = {
                 feature: selectedFeatureName
             };
-            
+
             // Send the email
             emailjs.send('service_ixkkajg', 'template_b0ni3zg', params)
                 .then(() => {
                     // Success UI
                     btn.classList.add('hidden');
-                    
+
                     const thanks = document.getElementById('voteThankYou');
                     thanks.classList.remove('hidden');
                     // Ensure NO bounce animation is added
-                    
+
                     // Lock the poll
                     document.querySelectorAll('.poll-card').forEach(card => {
                         card.style.pointerEvents = 'none';
-                        if(!card.classList.contains('selected')) {
+                        if (!card.classList.contains('selected')) {
                             card.style.opacity = '0.5';
                         }
                     });
@@ -481,26 +686,137 @@
             });
         }
 
-        // --- Graph Background Animation (Canvas) ---
+// --- Graph Background Animation (Canvas) ---
         const canvas = document.getElementById('graphCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        
+
+        // Define accentColor (Restored!)
         function getAccentColor() {
             const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
             return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
         }
-
+        
         let accentColor = getAccentColor();
-
         window.addEventListener('themeChanged', () => {
             accentColor = getAccentColor();
             updateImageThemes();
         });
+        
+// 1. Add mouse tracking variables
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 120 // How close the mouse needs to be to affect particles
+        };
 
-        document.addEventListener('DOMContentLoaded', updateImageThemes);
+        // --- NEW: Idle Auto-Swipe (Ghost Cursor) Logic ---
+        let idleTimer = null;
+        let isAutoSwiping = false;
+        let swipeAnimationId = null;
 
+        function startAutoSwipe() {
+            isAutoSwiping = true;
+            
+            // 🌟 INCREASE RADIUS FOR THE GHOST CURSOR
+            mouse.radius = 300; // Change this number to make the swipe bigger or smaller
+
+            const duration = 2500; // The swipe takes 2.5 seconds to cross the screen
+            const startTime = performance.now();
+            
+            // Define a path across the screen
+            const startX = -100;
+            const endX = width + 100;
+            const startY = height * 0.3; 
+            const endY = height * 0.6;   
+
+            const heroSection = document.getElementById('hero-section');
+
+            function animateSwipe(currentTime) {
+                if (!isAutoSwiping) return; // Stop if the user touched the screen/mouse
+
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Smooth acceleration and deceleration (Ease In-Out)
+                const easeProgress = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+                // X moves steadily across, Y uses a math curve (sine wave) for a cool "swooping" arc
+                mouse.x = startX + (endX - startX) * easeProgress;
+                mouse.y = startY + (endY - startY) * easeProgress + Math.sin(progress * Math.PI) * 200;
+
+                // Trigger the Hero Image Spotlight Effect simultaneously!
+                if (heroSection) {
+                    heroSection.style.setProperty('--mouse-x', `${mouse.x}px`);
+                    heroSection.style.setProperty('--mouse-y', `${mouse.y}px`);
+                }
+
+                if (progress < 1) {
+                    swipeAnimationId = requestAnimationFrame(animateSwipe);
+                } else {
+                    // Swipe finished!
+                    isAutoSwiping = false;
+                    mouse.x = null;
+                    mouse.y = null;
+                    
+                    // 🌟 RESET RADIUS BACK TO NORMAL
+                    mouse.radius = 120; 
+                    
+                    resetIdleTimer(); // Restart the 7s countdown
+                }
+            }
+            swipeAnimationId = requestAnimationFrame(animateSwipe);
+        }
+
+        function resetIdleTimer() {
+            // If user takes control during a ghost swipe, cancel the ghost cursor instantly
+            if (isAutoSwiping) {
+                isAutoSwiping = false;
+                
+                // 🌟 RESET RADIUS BACK TO NORMAL IMMEDIATELY
+                mouse.radius = 120; 
+                
+                cancelAnimationFrame(swipeAnimationId);
+            }
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(startAutoSwipe, 7000); // Trigger after 7 seconds of inactivity
+        }
+
+        // 2. Track mouse movement over the entire window
+        window.addEventListener('mousemove', function(event) {
+            resetIdleTimer(); // Reset timer on user activity
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
+        });
+
+        // Also reset timer on mobile touches and scrolling
+        window.addEventListener('touchstart', resetIdleTimer);
+        window.addEventListener('scroll', resetIdleTimer);
+        
+        // Clear mouse position when the cursor leaves the browser tab
+        window.addEventListener('mouseout', function(event) {
+            if (event.relatedTarget === null) { 
+                mouse.x = null;
+                mouse.y = null;
+            }
+        });
+
+        // Start the idle timer as soon as the page loads
+        resetIdleTimer();
+        // --- END Auto-Swipe Logic ---
+        
+        // Clear mouse position when the cursor leaves the browser tab
+        window.addEventListener('mouseout', function(event) {
+            // event.relatedTarget is null when the mouse leaves the document entirely
+            if (event.relatedTarget === null) { 
+                mouse.x = null;
+                mouse.y = null;
+            }
+        });
+        
+        // 3. Update the Particle class
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
@@ -509,16 +825,41 @@
                 this.vy = (Math.random() - 0.5) * 0.4;
                 this.size = Math.random() * 1.5 + 1;
             }
+            
             update() {
+                // Normal floating movement
                 this.x += this.vx;
                 this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
+        
+                // Bounce off walls
+                if (this.x < 0 || this.x > width) this.vx = -this.vx;
+                if (this.y < 0 || this.y > height) this.vy = -this.vy;
+        
+                // Add the Repel/Forcefield logic
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouse.radius) {
+                        // Calculate how much force to apply
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        
+                        const pushX = forceDirectionX * force * -3; 
+                        const pushY = forceDirectionY * force * -3;
+                        
+                        this.x += pushX;
+                        this.y += pushY;
+                    }
+                }
             }
+
             draw() {
-                ctx.fillStyle = accentColor;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = accentColor;
                 ctx.fill();
             }
         }
@@ -531,10 +872,10 @@
             initParticles();
         }
         window.addEventListener('resize', resize);
-        
+
         function initParticles() {
             particles = [];
-            const particleCount = Math.floor(width / 20);
+            const particleCount = Math.floor(width / 18);
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
@@ -551,8 +892,8 @@
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < 120) {
                         ctx.beginPath();
-                        const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
-                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1200})`; 
+                        const rgb = accentColor.replace('rgba(', '').replace(')', '').split(',').slice(0, 3).join(',');
+                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance / 1200})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -564,10 +905,10 @@
         }
 
         window.onload = function () {
-            resize(); 
+            resize();
             animate();
             updateImageThemes();
-            
+
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -578,7 +919,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); 
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
@@ -587,26 +928,136 @@
                 observer.observe(el);
             });
             
+            // --- Hero Image Spotlight Effect ---
+            const heroSection = document.getElementById('hero-section');
+            if (heroSection) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    // Update the CSS variables for the mask center
+                    heroSection.style.setProperty('--mouse-x', `${x}px`);
+                    heroSection.style.setProperty('--mouse-y', `${y}px`);
+                });
+            }
+
+// --- Floating Actions Scroll Logic ---
+            const floatingActions = document.getElementById('floating-actions');
             const backToTopBtn = document.getElementById('backToTop');
 
-			window.addEventListener('scroll', () => {
-			    if (window.scrollY > 400) {
-			        backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-			        backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-			    } else {
-			        backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-			        backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-			    }
-			});
-			
-			backToTopBtn.addEventListener('click', () => {
-			    window.scrollTo({
-			        top: 0,
-			        behavior: 'smooth'
-			    });
-			});
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    floatingActions.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    floatingActions.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                } else {
+                    floatingActions.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                    floatingActions.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+// --- Floating Theme Toggle Logic ---
+            const floatingThemeToggle = document.getElementById('floatingThemeToggle');
+            const floatingSunIcon = document.getElementById('floatingSunIcon');
+            const floatingMoonIcon = document.getElementById('floatingMoonIcon');
+            const mainThemeToggle = document.getElementById('theme-toggle');
+
+            // Route the click to your main toggle logic
+            floatingThemeToggle.addEventListener('click', () => {
+                if (mainThemeToggle) mainThemeToggle.click();
+            });
+
+            // Keep the floating icons synced with the current theme
+            function syncFloatingThemeIcon() {
+                if (isDarkMode()) {
+                    // In dark mode: Show Sun, Hide Moon
+                    floatingSunIcon.classList.remove('hidden');
+                    floatingMoonIcon.classList.add('hidden');
+                } else {
+                    // In light mode: Show Moon, Hide Sun
+                    floatingMoonIcon.classList.remove('hidden');
+                    floatingSunIcon.classList.add('hidden');
+                }
+            }
+
+            // Sync when theme changes and on initial load
+            window.addEventListener('themeChanged', syncFloatingThemeIcon);
+            syncFloatingThemeIcon();
+
+            // --- FAQ Accordion Logic ---
+            const faqBtns = document.querySelectorAll('.faq-btn');
+            faqBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('i');
+
+                    // Close all others
+                    document.querySelectorAll('.faq-content').forEach(otherContent => {
+                        if (otherContent !== content && otherContent.style.maxHeight) {
+                            otherContent.style.maxHeight = null;
+                            otherContent.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    // Toggle current
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(45deg)';
+                    }
+                });
+            });
+
+            // --- Iframe Theme Swap Logic ---
+            function updateIframeTheme() {
+                const isDarkMode = !document.documentElement.classList.contains('light-mode');
+
+                // Canvas iframe
+                const canvasIframe = document.getElementById('canvas-iframe');
+                if (canvasIframe) {
+                    const targetSrc = isDarkMode ? 'canvas-dark.html' : 'canvas-light.html';
+                    if (!canvasIframe.src.endsWith(targetSrc)) {
+                        canvasIframe.src = targetSrc;
+                    }
+                }
+
+                // Tagging iframe
+                const taggingIframe = document.getElementById('tagging-iframe');
+                if (taggingIframe) {
+                    const targetSrc = isDarkMode ? 'tagging-dark.html' : 'tagging-light.html';
+                    if (!taggingIframe.src.endsWith(targetSrc)) {
+                        taggingIframe.src = targetSrc;
+                    }
+                }
+
+                // Graph iframe
+                const graphIframe = document.getElementById('graph-iframe');
+                if (graphIframe) {
+                    const targetSrc = isDarkMode ? 'graph-tags-dark.html' : 'graph-tags-light.html';
+                    if (!graphIframe.src.endsWith(targetSrc)) {
+                        graphIframe.src = targetSrc;
+                    }
+                }
+            }
+
+            // Set the correct iframe file on initial load
+            updateIframeTheme();
+
+            // Update the iframe file whenever the theme toggle button is clicked
+            window.addEventListener('themeChanged', updateIframeTheme);
+
         }
     </script>
-    
+
 </body>
+
 </html>

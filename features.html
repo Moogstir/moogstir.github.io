@@ -39,7 +39,7 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2">
                 <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
-                <span class="font-serif text-2xl font-bold tracking-wide">Novelative</span>
+                <span class="hidden md:block font-serif text-2xl font-bold tracking-wide">Novelative</span>
             </a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
                 <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
@@ -48,13 +48,26 @@
                 <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
             </div>
             <div class="flex items-center">
-                <button id="theme-toggle" class="mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                <button id="theme-toggle" class="mr-2 md:mr-4 p-2 rounded-full text-app-muted hover:text-app-text transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                <a href="download.html" class="bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                <a href="download.html" class="hidden md:inline-flex bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
                     Download Beta
                 </a>
+                <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-md text-app-muted hover:text-app-text focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-app-border bg-app-bg flex-col px-6 py-4 gap-4 text-sm font-medium text-app-muted shadow-lg">
+            <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
+            <a href="features.html" class="underline text-app-text transition-colors">Features</a>
+            <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
+            <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
+            <a href="download.html" class="mt-2 text-center bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
+                Download Beta
+            </a>
         </div>
     </nav>
     
@@ -62,18 +75,20 @@
         
         <div class="relative w-full max-w-[100rem] mx-auto min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-12">
             
-            <div class="text-center w-full max-w-2xl px-6 z-0">
-                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 fade-in-up">
+            <div class="text-center w-full max-w-2xl md:max-w-[45vw] lg:max-w-[50vw] xl:max-w-2xl px-6 z-0">
+                <h1 class="font-serif text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-bold mb-6 fade-in-up">
                     Features That <span class="text-gold-gradient">Define</span>
                 </h1>
-                <p class="text-lg md:text-xl text-app-muted mx-auto fade-in-up" style="transition-delay: 100ms;">
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-app-muted mx-auto fade-in-up" style="transition-delay: 100ms;">
                     Novelative is for novelists — writers who need control, structure, and visualization far beyond standard word processors.
                 </p>
             </div>
             
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-app-muted opacity-60 pointer-events-none fade-in-up" style="transition-delay: 400ms;">
-			    <span class="text-[10px] font-semibold uppercase tracking-[0.2em]">Scroll</span>
-			    <i class="fa-solid fa-chevron-down text-xs"></i>
+			<div class="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none z-20">
+			    <div class="flex flex-col items-center gap-2 text-app-muted opacity-60 animate-bounce fade-in-up" style="transition-delay: 400ms;">
+			        <span class="text-[10px] font-semibold uppercase tracking-[0.2em]">Scroll</span>
+			        <i class="fa-solid fa-chevron-down text-xs"></i>
+			    </div>
 			</div>
 
             <div class="hidden md:block absolute inset-0 pointer-events-none">
@@ -351,35 +366,8 @@
             </div>
         </div>
     </section>
-    
-    <footer class="bg-app-bg py-12 border-t border-app-border text-sm text-app-muted relative z-10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 mb-4 text-app-text">
-                    <img id="footer-logo" src="./assets/darkmodeicon.png" class="w-5 grayscale opacity-70" alt="Logo">
-                    <span class="font-serif text-xl font-bold">Novelative</span>
-                </div>
-                <p class="max-w-xs mb-4">A powerful, offline-first writing studio designed for novelists and world-builders.</p>
-                <p class="mb-4">© Novelative 2026</p> <div class="flex gap-4">
-                	<a href="https://discord.gg/TUyzpVTXUS" target="_blank" class="hover:text-app-text"><i class="fa-brands fa-discord text-lg"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-bold text-app-text mb-4">Product</h4>
-                <ul class="space-y-2">
-                    <li><a href="download.html" class="hover:text-app-text">Download</a></li>
-                    <li><a href="purchase.html" class="hover:text-app-text">Pricing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-app-text mb-4">Support</h4>
-                <ul class="space-y-2">
-                    <li><a href="contact.html" class="hover:text-app-text">Contact</a></li>
-                    <li><a href="privacypolicy.html" class="hover:text-app-text">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+
+	<div id="footer-placeholder"></div>
 
     <div id="featureDetailModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeFeatureDetail(event)">
         <div class="relative w-[90vw] max-w-5xl bg-app-bg border border-app-border rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300" id="modalWindow" onclick="event.stopPropagation()">

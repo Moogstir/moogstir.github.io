@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Knowledge Graph</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* Dotted background pattern for the entire page */
+        #canvas {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Top-left fixed navigation (Won't push elements down) */
+        .main-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 5px;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid transparent;
+            color: #475569;
+            padding: 8px 16px;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-btn.active {
+            color: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        .nav-btn:hover:not(.active) {
+            color: #3b82f6;
+        }
+
+        /* Common view styles */
+        .view-content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .view-content.active {
+            display: block;
+        }
+
+        /* Shared node styling logic */
+        .node-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .node-label {
+            font-size: 10px;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .node-wrapper:hover {
+            transform: scale(1.15);
+        }
+
+        .node-wrapper:hover .node-label {
+            color: #3b82f6;
+        }
+
+        /* Lucide Icon Colors */
+        .lucide {
+            width: 16px;
+            height: 16px;
+            transition: stroke 0.2s;
+        }
+        .icon-red { stroke: #ef4444; }
+        .icon-blue { stroke: #3b82f6; }
+        .icon-green { stroke: #16a34a; }
+
+        .node-wrapper:hover .lucide {
+            stroke: #3b82f6; /* All turn blue on hover */
+        }
+
+        /* Standard Dot Node (for untagged) */
+        .dot-node {
+            width: 8px;
+            height: 8px;
+            background-color: #475569;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .node-wrapper:hover .dot-node {
+            background-color: #3b82f6;
+        }
+
+        /* *** VIEW 1: TAGS VIEW (Cards) *** */
+        .card {
+            position: absolute;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            cursor: grab;
+            user-select: none;
+            min-width: 200px;
+        }
+
+        .card:active {
+            cursor: grabbing;
+        }
+
+        .card.protagonist { border-color: #bae6fd; background-color: #f0f9ff; }
+        .card.untagged { border-color: #cbd5e1; background-color: #f8fafc; }
+        .card.antagonist { border-color: #fecaca; background-color: #fef2f2; }
+        .card.manuscript { border-color: #bbf7d0; background-color: #f0fdf4; }
+
+        .card-header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+            font-size: 10px;
+        }
+
+        .protagonist .card-header { color: #3b82f6; }
+        .untagged .card-header { color: #475569; }
+        .antagonist .card-header { color: #ef4444; }
+        .manuscript .card-header { color: #16a34a; }
+
+        .item-count {
+            font-size: 8px;
+            font-weight: normal;
+            opacity: 0.7;
+        }
+
+        .nodes-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* *** VIEW 2: LINKS VIEW (Free-form) *** */
+        .ff-node {
+            position: absolute;
+            cursor: grab;
+            z-index: 10; /* Keep nodes above lines */
+        }
+        
+        .ff-node:active {
+            cursor: grabbing;
+        }
+
+        /* SVG layer for dynamic lines */
+        #connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Lets you click through the SVG to elements below */
+            z-index: 1;
+        }
+
+        line {
+            stroke: #cbd5e1;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body>
+
+<div id="canvas">
+
+    <nav class="main-nav">
+        <button class="nav-btn active" id="btn-tags" onclick="showView('tags')">Tags</button>
+        <button class="nav-btn" id="btn-links" onclick="showView('links')">Links</button>
+    </nav>
+
+    <div id="view-tags" class="view-content active">
+        <div class="card protagonist" style="left: 360px; top: 25px;">
+            <div class="card-header">
+                <span>Protagonist</span>
+                <span class="item-count">2 files</span>
+            </div>
+            <div class="nodes-container">
+                <div class="node-wrapper">
+                    <span class="node-label">John</span>
+                    <i data-lucide="user" class="icon-blue"></i>
+                </div>
+                <div class="node-wrapper">
+                    <span class="node-label">Shannon</span>
+                    <i data-lucide="user" class="icon-blue"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="card untagged" style="left: 260px; top: 255px; min-width: 350px;">
+            <div class="card-header">
+                <span>Untagged</span>
+                <span class="item-count">3 files</span>
+            </div>
+            <div class="nodes-container">
+                <div class="node-wrapper">
+                    <span class="node-label">Relationship Map</span>
+                    <div class="dot-node" title="Relationship Map"></div>
+                </div>
+                <div class="node-wrapper">
+                    <span class="node-label">Characters</span>
+                    <div class="dot-node" title="Characters"></div>
+                </div>
+                <div class="node-wrapper">
+                    <span class="node-label">Development/Sandbox</span>
+                    <div class="dot-node" title="Development/Sandbox"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card antagonist" style="left: 520px; top: 150px;">
+            <div class="card-header">
+                <span>Antagonist</span>
+                <span class="item-count">1 files</span>
+            </div>
+            <div class="nodes-container">
+                <div class="node-wrapper">
+                    <span class="node-label">Rowan</span>
+                    <i data-lucide="skull" class="icon-red"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="card manuscript" style="left: 50px; top: 130px; min-width: 400px;">
+            <div class="card-header">
+                <span>Book/Manuscript</span>
+                <span class="item-count">4 files</span>
+            </div>
+            <div class="nodes-container">
+                <div class="node-wrapper">
+                    <span class="node-label">Book/Manuscript</span>
+                    <i data-lucide="book" class="icon-green"></i>
+                </div>
+                <div class="node-wrapper">
+                    <span class="node-label">Act 1</span>
+                    <i data-lucide="book" class="icon-green"></i>
+                </div>
+                <div class="node-wrapper">
+                    <span class="node-label">1 - Speculations</span>
+                    <i data-lucide="book" class="icon-green"></i>
+                </div>
+                <div class="node-wrapper">
+                    <span class="node-label">2 - Ozone and Glass</span>
+                    <i data-lucide="book" class="icon-green"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-links" class="view-content">
+        
+        <svg id="connection-lines">
+            <line id="line-rowan-john" />
+            <line id="line-john-shannon" />
+            <line id="line-characters-speculations" />
+        </svg>
+
+        <div class="ff-node node-wrapper" id="node-rowan" style="left: 100px; top: 150px;">
+            <span class="node-label">Rowan</span>
+            <i data-lucide="skull" class="icon-red"></i>
+        </div>
+
+        <div class="ff-node node-wrapper" id="node-john" style="left: 400px; top: 60px;">
+            <span class="node-label">John</span>
+            <i data-lucide="user" class="icon-blue"></i>
+        </div>
+
+        <div class="ff-node node-wrapper" id="node-shannon" style="left: 650px; top: 250px;">
+            <span class="node-label">Shannon</span>
+            <i data-lucide="user" class="icon-blue"></i>
+        </div>
+
+        <div class="ff-node node-wrapper" style="left: 40px; top: 280px;">
+            <i data-lucide="book" class="icon-green"></i>
+            <span class="node-label">Book/Manuscript</span>
+        </div>
+
+        <div class="ff-node node-wrapper" style="left: 60px; top: 80px;">
+            <i data-lucide="book" class="icon-green"></i>
+            <span class="node-label">Act 1</span>
+        </div>
+
+        <div class="ff-node node-wrapper" style="left: 400px; top: 230px;">
+            <i data-lucide="book" class="icon-green"></i>
+            <span class="node-label">2 - Ozone and Glass</span>
+        </div>
+
+        <div class="ff-node node-wrapper" id="node-speculations" style="left: 550px; top: 350px;">
+            <i data-lucide="book" class="icon-green"></i>
+            <span class="node-label">1 - Speculations</span>
+        </div>
+
+        <div class="ff-node node-wrapper" id="node-characters" style="left: 90px; top: 90px;">
+            <span class="node-label">Characters</span>
+            <div class="dot-node"></div>
+        </div>
+
+        <div class="ff-node node-wrapper" style="left: 260px; top: 370px;">
+            <span class="node-label">Relationship Map</span>
+            <div class="dot-node"></div>
+        </div>
+
+        <div class="ff-node node-wrapper" style="left: 550px; top: 130px;">
+            <span class="node-label">Development/Sandbox</span>
+            <div class="dot-node"></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // --- Segmented Control Toggle Logic ---
+    function showView(viewName) {
+        document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+        if (viewName === 'tags') {
+            document.getElementById('view-tags').classList.add('active');
+            document.getElementById('btn-tags').classList.add('active');
+        } else if (viewName === 'links') {
+            document.getElementById('view-links').classList.add('active');
+            document.getElementById('btn-links').classList.add('active');
+            // Give a slight delay so Lucide finishes rendering SVGs before measuring centers
+            setTimeout(updateLines, 10); 
+        }
+    }
+
+    // --- Dynamic Line Drawing ---
+    function getCenter(element) {
+        // Find the specific icon (.lucide SVG or .dot-node) inside the wrapper
+        const icon = element.querySelector('.lucide, .dot-node');
+        
+        if (icon) {
+            // Get the bounding box of just the icon to connect exactly to its center
+            const rect = icon.getBoundingClientRect();
+            return {
+                x: rect.left + (rect.width / 2),
+                y: rect.top + (rect.height / 2)
+            };
+        }
+        
+        // Fallback if no icon is found
+        return {
+            x: element.offsetLeft + (element.offsetWidth / 2),
+            y: element.offsetTop + (element.offsetHeight / 2)
+        };
+    }
+
+    function updateLines() {
+        if (!document.getElementById('view-links').classList.contains('active')) return;
+
+        // Pair 1: Rowan to John
+        const rowan = getCenter(document.getElementById('node-rowan'));
+        const john = getCenter(document.getElementById('node-john'));
+        const lineRJ = document.getElementById('line-rowan-john');
+        lineRJ.setAttribute('x1', rowan.x); lineRJ.setAttribute('y1', rowan.y);
+        lineRJ.setAttribute('x2', john.x); lineRJ.setAttribute('y2', john.y);
+
+        // Pair 2: John to Shannon
+        const shannon = getCenter(document.getElementById('node-shannon'));
+        const lineJS = document.getElementById('line-john-shannon');
+        lineJS.setAttribute('x1', john.x); lineJS.setAttribute('y1', john.y);
+        lineJS.setAttribute('x2', shannon.x); lineJS.setAttribute('y2', shannon.y);
+
+        // Pair 3: Characters to Speculations
+        const chars = getCenter(document.getElementById('node-characters'));
+        const specs = getCenter(document.getElementById('node-speculations'));
+        const lineCS = document.getElementById('line-characters-speculations');
+        lineCS.setAttribute('x1', chars.x); lineCS.setAttribute('y1', chars.y);
+        lineCS.setAttribute('x2', specs.x); lineCS.setAttribute('y2', specs.y);
+    }
+
+    // --- Universal Dragging Logic (Cards & Nodes) ---
+    function makeDraggable(elements, onMoveCallback = null) {
+        elements.forEach(el => {
+            let isDragging = false;
+            let startX, startY, initialLeft, initialTop;
+
+            el.addEventListener('mousedown', (e) => {
+                // For cards, prevent dragging if clicking on an internal node wrapper
+                if (el.classList.contains('card') && e.target.closest('.node-wrapper')) return;
+
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                initialLeft = el.offsetLeft;
+                initialTop = el.offsetTop;
+
+                // Bring to front
+                if (el.classList.contains('card')) {
+                    document.querySelectorAll('.card').forEach(c => c.style.zIndex = '1');
+                    el.style.zIndex = '10';
+                } else {
+                    document.querySelectorAll('.ff-node').forEach(n => n.style.zIndex = '10');
+                    el.style.zIndex = '100';
+                }
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                el.style.left = `${initialLeft + dx}px`;
+                el.style.top = `${initialTop + dy}px`;
+                
+                // If there's a callback provided (like updateLines), run it
+                if (onMoveCallback) onMoveCallback();
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    }
+
+    // Apply drag to Cards
+    makeDraggable(document.querySelectorAll('.card'));
+    
+    // Apply drag to Free-form nodes, and trigger line updates when they move
+    makeDraggable(document.querySelectorAll('.ff-node'), updateLines);
+
+    // Make sure lines are drawn correctly if the window resizes
+    window.addEventListener('resize', updateLines);
+    
+</script>
+
+</body>
+</html>
