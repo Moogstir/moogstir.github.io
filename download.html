@@ -122,7 +122,7 @@
             <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-app-text font-medium fade-in-up mb-24" style="transition-delay: 250ms;">
                 <a href="https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe" class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer">Download for Windows</a>
                 <span class="w-px h-4 bg-app-border hidden md:block"></span>
-                <button onclick="openModal()" class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer">Download for macOS</button>
+                <a href="https://github.com/Novelative/Mac-User-Releases/releases/latest/download/Novelative-Setup.dmg" class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer">Download for macOS</a>
             </div>
 
 
@@ -131,89 +131,36 @@
 
 	<div id="footer-placeholder" class="fixed bottom-0 w-full"></div>
 
-    <div id="statusModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop" onclick="closeModal()"></div>
-        
-        <div class="relative bg-app-surface border border-app-border rounded-xl p-8 max-w-md w-full shadow-2xl transform scale-95 opacity-0 transition-all duration-300" id="modalContent">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-app-highlight/20 rounded-full flex items-center justify-center mx-auto mb-6 text-app-highlight text-3xl">
-                    <i class="fa-solid fa-clock"></i> 
-                </div>
-                <h3 class="font-serif text-2xl font-bold text-app-text mb-4">Coming Soon</h3>
-                <p class="text-app-muted mb-8 leading-relaxed">
-                    Novelative for macOS is currently in development! Keep an eye on our <a href="https://discord.gg/TUyzpVTXUS" target="_blank" class="text-blue-500 hover:text-app-highlight transition-colors">Discord</a> for beta testing updates.
-                </p>
-                <button onclick="closeModal()" class="w-full bg-app-highlight hover:bg-app-highlightHover text-app-bg font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-app-highlight/20">
-                    Understood
-                </button>
-            </div>
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-app-muted hover:text-app-text transition-colors">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-        </div>
-    </div>
-
     <script>
         // --- OS Detection Logic ---
-        const isWindows = navigator.platform.indexOf('Win') > -1 || navigator.userAgent.indexOf('Windows') > -1;
-        const isMac = navigator.platform.indexOf('Mac') > -1 || navigator.userAgent.indexOf('Mac OS') > -1;
-        
-        const winDownloadUrl = "https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe";
+		const isWindows = navigator.platform.indexOf('Win') > -1 || navigator.userAgent.indexOf('Windows') > -1;
+		const isMac = navigator.platform.indexOf('Mac') > -1 || navigator.userAgent.indexOf('Mac OS') > -1;
+		
+		const winDownloadUrl = "https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe";
+		const macDownloadUrl = "https://github.com/Novelative/Mac-User-Releases/releases/latest/download/Novelative-Setup.dmg"; // Update filename if different
+		
+		document.addEventListener('DOMContentLoaded', () => {
+		    const btnText = document.getElementById('main-download-text');
+		    const mainBtn = document.getElementById('main-download-btn');
+		
+		    if (isMac) {
+		        btnText.textContent = "DOWNLOAD FOR MACOS";
+		    } else {
+		        // Default to windows for everyone else
+		        btnText.textContent = "DOWNLOAD FOR WINDOWS";
+		    }
+		});
+		
+		function handleMainDownload(event) {
+		    event.preventDefault(); // Prevent default link behavior
+		    
+		    // Determine target URL based on detection
+		    const downloadUrl = isMac ? macDownloadUrl : winDownloadUrl;
+		    
+		    // Trigger the download
+		    window.location.href = downloadUrl;
+		}
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const btnText = document.getElementById('main-download-text');
-            const mainBtn = document.getElementById('main-download-btn');
-
-            if (isMac) {
-                btnText.textContent = "DOWNLOAD FOR MACOS";
-            } else {
-                // Default to windows for everyone else
-                btnText.textContent = "DOWNLOAD FOR WINDOWS";
-                mainBtn.href = winDownloadUrl;
-            }
-        });
-
-        function handleMainDownload(event) {
-            if (isMac) {
-                event.preventDefault();
-                openModal();
-            } else {
-                // Allow default link behavior for Windows
-                window.location.href = winDownloadUrl;
-            }
-        }
-
-        // --- Modal Functions ---
-        function openModal() {
-            const modal = document.getElementById('statusModal');
-            const backdrop = document.getElementById('modalBackdrop');
-            const content = document.getElementById('modalContent');
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            // Trigger animation
-            setTimeout(() => {
-                backdrop.classList.remove('opacity-0');
-                content.classList.remove('opacity-0', 'scale-95');
-                content.classList.add('scale-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('statusModal');
-            const backdrop = document.getElementById('modalBackdrop');
-            const content = document.getElementById('modalContent');
-            
-            backdrop.classList.add('opacity-0');
-            content.classList.add('opacity-0', 'scale-95');
-            content.classList.remove('scale-100');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 300); 
-        }
 
         // --- Graph Background Animation ---
         const canvas = document.getElementById('graphCanvas');
