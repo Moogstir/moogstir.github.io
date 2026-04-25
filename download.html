@@ -1,266 +1,440 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-T9DS3YHVV6');
-    </script>
-    
-    <script>window.lemonSqueezyAffiliateConfig = { store: "novelative" };</script>
-    <script src="https://lmsqueezy.com/affiliate.js" defer></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download | Novelative</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <head>
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-T9DS3YHVV6"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-    <script src="theme.js"></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body style="user-select: none;" class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen max-h-screen">
+            gtag("config", "G-T9DS3YHVV6");
+        </script>
 
-    <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <img id="app-logo" src="./assets/darkmodeicon.png" class="w-7">
-                <span class="hidden lg:block font-serif text-2xl font-bold tracking-wide">Novelative</span>
-            </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-app-muted">
-                <a href="index.html" class="hover:text-app-text transition-colors">Home</a>
-                <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
-                <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
-                <a href="download.html" class="underline text-app-text transition-colors">Download</a>
-            </div>
-            <div class="flex items-center">
-				<button id="theme-toggle" class="p-2 rounded-lg text-app-text opacity-60 hover:opacity-100 transition-colors">
-				    <svg id="headerSunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-3 hidden">
-				        <circle cx="12" cy="12" r="5"></circle>
-				        <line x1="12" y1="1" x2="12" y2="3"></line>
-				        <line x1="12" y1="21" x2="12" y2="23"></line>
-				        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-				        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-				        <line x1="1" y1="12" x2="3" y2="12"></line>
-				        <line x1="21" y1="12" x2="23" y2="12"></line>
-				        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-				        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-				    </svg>
-				
-				    <svg id="headerMoonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-3">
-				        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-				    </svg>
-				</button>
-                <a href="download.html"
-                    class="hidden md:inline-flex bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
-                    Download Beta
+        <script>
+            window.lemonSqueezyAffiliateConfig = { store: "novelative" };
+        </script>
+        <script src="https://lmsqueezy.com/affiliate.js" defer></script>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Download | Novelative</title>
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <script src="theme.js"></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body
+        style="user-select: none"
+        class="bg-app-bg text-app-text font-sans antialiased overflow-x-hidden flex flex-col min-h-screen max-h-screen"
+    >
+        <nav class="fixed w-full z-50 bg-app-bg/95 backdrop-blur-md">
+            <div
+                class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center"
+            >
+                <a href="index.html" class="flex items-center gap-2">
+                    <img
+                        id="app-logo"
+                        src="./assets/darkmodeicon.png"
+                        class="w-7"
+                    />
+                    <span
+                        class="hidden lg:block font-serif text-2xl font-bold tracking-wide"
+                        >Novelative</span
+                    >
                 </a>
-                <button id="mobile-menu-toggle"
-                    class="md:hidden p-2 rounded-md text-app-muted hover:text-app-text focus:outline-none">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden md:hidden border-t border-app-border bg-app-bg flex-col px-6 py-4 gap-4 text-sm font-medium text-app-muted shadow-lg">
-            <a href="index.html" class="text-app-text transition-colors">Home</a>
-            <a href="features.html" class="hover:text-app-text transition-colors">Features</a>
-            <a href="purchase.html" class="hover:text-app-text transition-colors">Purchase</a>
-            <a href="download.html" class="hover:text-app-text transition-colors">Download</a>
-            <a href="download.html"
-                class="mt-2 text-center bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all">
-                Download Beta
-            </a>
-        </div>
-    </nav>
+                <div
+                    class="hidden md:flex gap-8 text-sm font-medium text-app-muted"
+                >
+                    <a
+                        href="index.html"
+                        class="hover:text-app-text transition-colors"
+                        >Home</a
+                    >
+                    <a
+                        href="features.html"
+                        class="hover:text-app-text transition-colors"
+                        >Features</a
+                    >
+                    <a
+                        href="purchase.html"
+                        class="hover:text-app-text transition-colors"
+                        >Purchase</a
+                    >
+                    <a
+                        href="download.html"
+                        class="underline text-app-text transition-colors"
+                        >Download</a
+                    >
+                </div>
+                <div class="flex items-center">
+                    <button
+                        id="theme-toggle"
+                        class="p-2 rounded-lg text-app-text opacity-60 hover:opacity-100 transition-colors"
+                    >
+                        <svg
+                            id="headerSunIcon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-4 h-4 mr-3 hidden"
+                        >
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line
+                                x1="4.22"
+                                y1="4.22"
+                                x2="5.64"
+                                y2="5.64"
+                            ></line>
+                            <line
+                                x1="18.36"
+                                y1="18.36"
+                                x2="19.78"
+                                y2="19.78"
+                            ></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line
+                                x1="4.22"
+                                y1="19.78"
+                                x2="5.64"
+                                y2="18.36"
+                            ></line>
+                            <line
+                                x1="18.36"
+                                y1="5.64"
+                                x2="19.78"
+                                y2="4.22"
+                            ></line>
+                        </svg>
 
-    <main class="flex-grow relative flex items-center justify-center pt-32 pb-24">
-        
-        <canvas id="graphCanvas" class="absolute inset-0 z-0 opacity-50 pointer-events-none"></canvas>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"></div>
-
-        <div class="relative z-10 max-w-4xl mx-auto px-6 w-full flex flex-col items-center mt-10">
-            
-            <div class="mb-8 fade-in-up">
-                <img id="download-logo" src="./assets/darkmodeicon.png" class="w-24 h-24 mx-auto drop-shadow-2xl opacity-90" alt="Novelative Logo">
-            </div>
-
-            <div class="text-center mb-10">
-                <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4 fade-in-up" style="transition-delay: 100ms;">
-                    Begin Your <span class="text-gold-gradient">Masterpiece.</span> 
-                </h1>
-                <p class="text-lg text-app-muted max-w-xl mx-auto fade-in-up leading-relaxed" style="transition-delay: 150ms;">
-                    Download the latest version of Novelative. <br>
-                    You get 30 days of use <span class="text-app-highlight font-semibold">FREE</span>.
-                </p>
-            </div>
-
-            <div class="fade-in-up w-full flex flex-col items-center justify-center mb-10" style="transition-delay: 200ms;">
-                <a id="main-download-btn" href="#" onclick="handleMainDownload(event)" class="bg-app-highlight text-app-bg px-10 py-4 rounded-md font-bold text-sm tracking-wider uppercase hover:bg-app-highlightHover transition-all flex items-center justify-center gap-3 group hover:scale-[1.02] min-w-[300px]">
-                    <span id="main-download-text">DOWNLOAD FOR WINDOWS</span>
-                    <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
-                </a>
-                
-                <div class="mt-4 flex items-center gap-2 text-xs text-app-muted font-medium tracking-wider">
-                    <span>v0.1.4-beta</span>
-                    <span class="w-1 h-1 bg-app-muted rounded-full"></span>
-                    <span>203 MB</span>
+                        <svg
+                            id="headerMoonIcon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-4 h-4 mr-3"
+                        >
+                            <path
+                                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                            ></path>
+                        </svg>
+                    </button>
+                    <a
+                        href="download.html"
+                        class="hidden md:inline-flex bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all"
+                    >
+                        Download Beta
+                    </a>
+                    <button
+                        id="mobile-menu-toggle"
+                        class="md:hidden p-2 rounded-md text-app-muted hover:text-app-text focus:outline-none"
+                    >
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
-
-            <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-app-text font-medium fade-in-up mb-24" style="transition-delay: 250ms;">
-                <a href="https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe" class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer">Download for Windows</a>
-                <span class="w-px h-4 bg-app-border hidden md:block"></span>
-                <a href="https://github.com/Novelative/Mac-User-Releases/releases/latest/download/Novelative-Setup.dmg" class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer">Download for macOS</a>
+            <!-- Mobile Menu -->
+            <div
+                id="mobile-menu"
+                class="hidden md:hidden border-t border-app-border bg-app-bg flex-col px-6 py-4 gap-4 text-sm font-medium text-app-muted shadow-lg"
+            >
+                <a href="index.html" class="text-app-text transition-colors"
+                    >Home</a
+                >
+                <a
+                    href="features.html"
+                    class="hover:text-app-text transition-colors"
+                    >Features</a
+                >
+                <a
+                    href="purchase.html"
+                    class="hover:text-app-text transition-colors"
+                    >Purchase</a
+                >
+                <a
+                    href="download.html"
+                    class="hover:text-app-text transition-colors"
+                    >Download</a
+                >
+                <a
+                    href="download.html"
+                    class="mt-2 text-center bg-app-highlight/10 border border-app-highlight text-app-highlight hover:bg-app-highlight hover:text-app-bg px-5 py-2 rounded-md font-semibold transition-all"
+                >
+                    Download Beta
+                </a>
             </div>
+        </nav>
 
+        <main
+            class="flex-grow relative flex items-center justify-center pt-32 pb-24"
+        >
+            <canvas
+                id="graphCanvas"
+                class="absolute inset-0 z-0 opacity-50 pointer-events-none"
+            ></canvas>
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg/50 to-app-bg z-0 pointer-events-none"
+            ></div>
 
-        </div>
-    </main>
+            <div
+                class="relative z-10 max-w-4xl mx-auto px-6 w-full flex flex-col items-center mt-10"
+            >
+                <div class="mb-8 fade-in-up">
+                    <img
+                        id="download-logo"
+                        src="./assets/darkmodeicon.png"
+                        class="w-24 h-24 mx-auto drop-shadow-2xl opacity-90"
+                        alt="Novelative Logo"
+                    />
+                </div>
 
-	<div id="footer-placeholder" class="fixed bottom-0 w-full"></div>
+                <div class="text-center mb-10">
+                    <h1
+                        class="font-serif text-4xl md:text-5xl font-bold mb-4 fade-in-up"
+                        style="transition-delay: 100ms"
+                    >
+                        Begin Your
+                        <span class="text-gold-gradient">Masterpiece.</span>
+                    </h1>
+                    <p
+                        class="text-lg text-app-muted max-w-xl mx-auto fade-in-up leading-relaxed"
+                        style="transition-delay: 150ms"
+                    >
+                        Download the latest version of Novelative. <br />
+                        You get 30 days of use
+                        <span class="text-app-highlight font-semibold"
+                            >FREE</span
+                        >.
+                    </p>
+                </div>
 
-    <script>
-        // --- OS Detection Logic ---
-		const isWindows = navigator.platform.indexOf('Win') > -1 || navigator.userAgent.indexOf('Windows') > -1;
-		const isMac = navigator.platform.indexOf('Mac') > -1 || navigator.userAgent.indexOf('Mac OS') > -1;
-		
-		const winDownloadUrl = "https://github.com/Novelative/User-Releases/releases/latest/download/Novelative-Setup.exe";
-		const macDownloadUrl = "https://github.com/Novelative/Mac-User-Releases/releases/latest/download/Novelative-Setup.dmg"; // Update filename if different
-		
-		document.addEventListener('DOMContentLoaded', () => {
-		    const btnText = document.getElementById('main-download-text');
-		    const mainBtn = document.getElementById('main-download-btn');
-		
-		    if (isMac) {
-		        btnText.textContent = "DOWNLOAD FOR MACOS";
-		    } else {
-		        // Default to windows for everyone else
-		        btnText.textContent = "DOWNLOAD FOR WINDOWS";
-		    }
-		});
-		
-		function handleMainDownload(event) {
-		    event.preventDefault(); // Prevent default link behavior
-		    
-		    // Determine target URL based on detection
-		    const downloadUrl = isMac ? macDownloadUrl : winDownloadUrl;
-		    
-		    // Trigger the download
-		    window.location.href = downloadUrl;
-		}
+                <div
+                    class="fade-in-up w-full flex flex-col items-center justify-center mb-10"
+                    style="transition-delay: 200ms"
+                >
+                    <a
+                        id="main-download-btn"
+                        href="#"
+                        onclick="handleMainDownload(event)"
+                        class="bg-app-highlight text-app-bg px-10 py-4 rounded-md font-bold text-sm tracking-wider uppercase hover:bg-app-highlightHover transition-all flex items-center justify-center gap-3 group hover:scale-[1.02] min-w-[300px]"
+                    >
+                        <span id="main-download-text"
+                            >DOWNLOAD FOR WINDOWS</span
+                        >
+                        <i
+                            class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"
+                        ></i>
+                    </a>
 
+                    <div
+                        class="mt-4 flex items-center gap-2 text-xs text-app-muted font-medium tracking-wider"
+                    >
+                        <span>v0.1.4-beta</span>
+                        <span class="w-1 h-1 bg-app-muted rounded-full"></span>
+                        <span>203 MB</span>
+                    </div>
+                </div>
 
-        // --- Graph Background Animation ---
-        const canvas = document.getElementById('graphCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        
-        function getAccentColor() {
-            const style = getComputedStyle(document.documentElement).getPropertyValue('--color-app-highlight').trim();
-            return style ? `rgba(${style.split(' ').join(',')}, 1)` : 'rgba(251, 191, 36, 1)';
-        }
+                <div
+                    class="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-app-text font-medium fade-in-up mb-24"
+                    style="transition-delay: 250ms"
+                >
+                    <a
+                        href="https://github.com/Novelative/Win-User-Releases/releases/latest/download/Novelative-Setup.exe"
+                        class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer"
+                        >Download for Windows</a
+                    >
+                    <span class="w-px h-4 bg-app-border hidden md:block"></span>
+                    <a
+                        href="https://github.com/Novelative/Mac-User-Releases/releases/latest/download/Novelative-Setup.dmg"
+                        class="hover:text-app-highlight transition-colors underline-offset-4 hover:underline text-app-muted cursor-pointer"
+                        >Download for macOS</a
+                    >
+                </div>
+            </div>
+        </main>
 
-        let accentColor = getAccentColor();
+        <div id="footer-placeholder" class="fixed bottom-0 w-full"></div>
 
-        window.addEventListener('themeChanged', () => {
-            accentColor = getAccentColor();
-        });
+        <script>
+            // --- OS Detection Logic ---
+            const isWindows =
+                navigator.platform.indexOf("Win") > -1 ||
+                navigator.userAgent.indexOf("Windows") > -1;
+            const isMac =
+                navigator.platform.indexOf("Mac") > -1 ||
+                navigator.userAgent.indexOf("Mac OS") > -1;
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.3;
-                this.vy = (Math.random() - 0.5) * 0.3;
-                this.size = Math.random() * 1.5 + 1;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-            draw() {
-                ctx.fillStyle = accentColor;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-        
-        function resize() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            if(document.body.scrollHeight > window.innerHeight) {
-                 height = document.body.scrollHeight;
-            }
+            const winDownloadUrl =
+                "https://github.com/Novelative/Win-User-Releases/releases/latest/download/Novelative-Setup.exe";
+            const macDownloadUrl =
+                "https://github.com/Novelative/Mac-User-Releases/releases/latest/download/Novelative-Setup.dmg"; // Update filename if different
 
-            canvas.width = width;
-            canvas.height = height;
-            initParticles();
-        }
-        window.addEventListener('resize', resize);
-        
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.floor(width / 25);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
+            document.addEventListener("DOMContentLoaded", () => {
+                const btnText = document.getElementById("main-download-text");
+                const mainBtn = document.getElementById("main-download-btn");
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
-                        ctx.beginPath();
-                        const rgb = accentColor.replace('rgba(','').replace(')','').split(',').slice(0,3).join(',');
-                        ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance/1000})`; 
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-
-        // --- Scroll Reveal ---
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                if (isMac) {
+                    btnText.textContent = "DOWNLOAD FOR MACOS";
+                } else {
+                    // Default to windows for everyone else
+                    btnText.textContent = "DOWNLOAD FOR WINDOWS";
                 }
             });
-        }, observerOptions);
 
-        window.onload = function () {
-            resize();
-            animate();
-            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-        }
-    </script>
-</body>
+            function handleMainDownload(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Determine target URL based on detection
+                const downloadUrl = isMac ? macDownloadUrl : winDownloadUrl;
+
+                // Trigger the download
+                window.location.href = downloadUrl;
+            }
+
+            // --- Graph Background Animation ---
+            const canvas = document.getElementById("graphCanvas");
+            const ctx = canvas.getContext("2d");
+            let width, height;
+            let particles = [];
+
+            function getAccentColor() {
+                const style = getComputedStyle(document.documentElement)
+                    .getPropertyValue("--color-app-highlight")
+                    .trim();
+                return style
+                    ? `rgba(${style.split(" ").join(",")}, 1)`
+                    : "rgba(251, 191, 36, 1)";
+            }
+
+            let accentColor = getAccentColor();
+
+            window.addEventListener("themeChanged", () => {
+                accentColor = getAccentColor();
+            });
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.3;
+                    this.vy = (Math.random() - 0.5) * 0.3;
+                    this.size = Math.random() * 1.5 + 1;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+                draw() {
+                    ctx.fillStyle = accentColor;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                if (document.body.scrollHeight > window.innerHeight) {
+                    height = document.body.scrollHeight;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                initParticles();
+            }
+            window.addEventListener("resize", resize);
+
+            function initParticles() {
+                particles = [];
+                const particleCount = Math.floor(width / 25);
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                    for (let j = i; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 100) {
+                            ctx.beginPath();
+                            const rgb = accentColor
+                                .replace("rgba(", "")
+                                .replace(")", "")
+                                .split(",")
+                                .slice(0, 3)
+                                .join(",");
+                            ctx.strokeStyle = `rgba(${rgb}, ${0.1 - distance / 1000})`;
+                            ctx.lineWidth = 1;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            // --- Scroll Reveal ---
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1,
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            window.onload = function () {
+                resize();
+                animate();
+                document
+                    .querySelectorAll(".fade-in-up")
+                    .forEach((el) => observer.observe(el));
+            };
+        </script>
+    </body>
 </html>
